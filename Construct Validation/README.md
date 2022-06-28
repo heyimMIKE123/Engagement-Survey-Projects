@@ -2,7 +2,7 @@
 
  This folder is for our construct validation project. All materials for the construct validation process should be placed here. 
 
- NOTE: This project relies on our "final scale definition" project to be completed first
+
 
 
 
