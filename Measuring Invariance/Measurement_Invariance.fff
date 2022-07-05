@@ -1,0 +1,5 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\includegraphics[width=4.71in]{steps} \caption{Steps for measurement invariance (as recommended by Xu, 2012).}\label{fig:figure1}
+\end{figure*}
