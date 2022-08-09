@@ -140,6 +140,16 @@ qualtrics.engage$from <- "Qualtrics"
 together <- rbind(prolific, snowball, qualtrics.engage)
 descr::freq(together$from)
 
+###################################################################################
+###################################################################################
+###################################################################################
+#library(descr)        ## quick look at distributions of item response across samples (swapped items iteratively) - 8/9/22
+
+#par(mfrow = c(3, 1))
+
+#hist(prolific$B22)
+#hist(snowball$B22)
+#hist(qualtrics.engage$B22)
 
 ###################################################################################
 ###################################################################################
@@ -147,13 +157,29 @@ descr::freq(together$from)
 
 ## Drop candidates are 1,3,4 & 25,26,28
 
+together$C14 <- 7-together$C14
+
+psych::alpha(together[1:8])
+psych::alpha(together[9:14])
+psych::alpha(together[15:20])
+
+psych::alpha(together[c(1:3, 9:10, 15:16)])
+psych::alpha(together[c(4:5, 11:12, 17:18)])
+psych::alpha(together[c(6:8, 13:14, 19:20)])
+
+cor(together[1:8], use="pairwise.complete.obs")   ## probably C4 gets axed
+psych::alpha(together[1:3])
+
+cor(together[c(1:3, 9:10, 15:16)], use="pairwise.complete.obs")
+
+
 library(lavaan)
 
 bifactor <-'
 Absorption = ~C1  + C3  + A5  + A8  + B10 + B11
 Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
 Dedication = ~C25 + C26 + C28 + A31 + A32 + B34 + B35
-Cognitive  = ~C1  + C3  + C4  + C14 + C16 + C25 + C26 + C28
+Cognitive  = ~C1  + C3  + C14 + C16 + C25 + C26 + C28
 Affective  = ~A5  + A8  + A17 + A19 + A31 + A32
 Behavioral = ~B10 + B11 + B21 + B22 + B34 + B35
 Absorption ~~ 0*Affective
@@ -168,7 +194,7 @@ Dedication ~~ 0*Cognitive
 Dedication ~~ 1*Dedication
 '
 
-Fit.mod <- lavaan::cfa(bifactor, data = data, missing = "ML", estimator = 'MLR')
+Fit.mod <- lavaan::cfa(bifactor, data = together, missing = "ML", estimator = 'MLR')
 
 # semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), "std", layout = "tree3",
 #                  rotation = 2, curvePivot=TRUE, style="lisrel", nCharNodes = 0, pastel=FALSE)
@@ -176,3 +202,6 @@ Fit.mod <- lavaan::cfa(bifactor, data = data, missing = "ML", estimator = 'MLR')
 semPlot::semPaths(Fit.mod, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", rainbowStart=.5,sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, asize=2)
 
 standardizedSolution(Fit.mod)
+write.csv(fitMeasures(Fit.mod), "minusC4.csv")
+
+## Empirically C4 is a candidate for exclusion - conceptually we also agree it can be axed

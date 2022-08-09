@@ -1,0 +1,7 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{20to18_files/figure-latex/scalereduction-1.pdf}
+\caption{\label{fig:scalereduction}Bifactor analysis minus Item 4.}
+\end{figure*}
