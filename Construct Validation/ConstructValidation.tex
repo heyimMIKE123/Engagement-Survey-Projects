@@ -173,19 +173,19 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={20 to 18 - Final Scale Definitions of the Bifactor Engagement Scale},
+  pdftitle={Construct and Criterion-related validation of the Bifactor Engagement Scale},
   pdfauthor={Mike DeFabiis1, Casey Osorio2, Morgan Russell1, \& John Kulas3},
   pdflang={en-EN},
   pdfkeywords={keywords},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{20 to 18 - Final Scale Definitions of the Bifactor Engagement Scale}
+\title{Construct and Criterion-related validation of the Bifactor Engagement Scale}
 \author{Mike DeFabiis\textsuperscript{1}, Casey Osorio\textsuperscript{2}, Morgan Russell\textsuperscript{1}, \& John Kulas\textsuperscript{3}}
 \date{}
 
 
-\shorttitle{20 to 18}
+\shorttitle{Bifactor Validation}
 
 \authornote{
 
@@ -198,7 +198,7 @@ Enter author note here.
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Montclair State University\\\textsuperscript{2} Harver\\\textsuperscript{3} eRg}
 
 \abstract{%
-We finalize the scale definitions for a bifactor engagement measure that is comprised of intentionally complex items.
+We present the results of a construct and criterion-related validation of a new measure of employee engagement.
 }
 
 
@@ -297,57 +297,14 @@ A previous instrument administration reduced 36 candidate items to 20. Primarily
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-We used R (Version 4.2.1; R Core Team, 2022) and the R-packages \emph{careless} (Version 1.2.1; Yentes \& Wilhelm, 2021), \emph{descr} (Version 1.1.5; Dirk Enzmann, Schwartz, Jain, \& Kraft, 2021), \emph{lavaan} (Version 0.6.12; Rosseel, 2012), \emph{papaja} (Version 0.1.1; Aust \& Barth, 2022), and \emph{tinylabels} (Version 0.2.3; Barth, 2022) for all our analyses.
+We used R (Version 4.2.1; R Core Team, 2022) and the R-packages \emph{papaja} (Version 0.1.1; Aust \& Barth, 2022), and \emph{tinylabels} (Version 0.2.3; Barth, 2022) for all our analyses.
 
-\begin{figure}
-\centering
-\includegraphics{20to18_files/figure-latex/scalereduction-1.pdf}
-\caption{\label{fig:scalereduction}Bifactor analysis minus Item 4.}
-\end{figure}
-
-Looking first at the Absorption-Cognition candidate items, Item 4 stood out as a candidate for exclusion based on empirical indices (corrected item-total correlations, inter-item correlations, and bifactor analysis fit {[}\(\chi^2_{with}\) = 676.51, \(\chi^2_{without}\) = 499.05{]}). Conceptually we also agreed that Item 4 was not uniquely critical for comprehensive coverage across either the Cognition or Absorption constructs. Figure \ref{fig:scalereduction} presents the visual CFA.
+Looking first at the Absorption-Cognition candidate items, Item 4 stood out as a candidate for exclusion based on empirical indices (corrected item-total correlations, inter-item correlations, and bifactor analysis fit. Conceptually we also agreed that Item 4 was not uniquely critical for comprehensive coverage across either the Cognition or Absorption constructs. Figure presents the visual CFA.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\begin{lltable}
-
-\begin{longtable}{llll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
-\caption{\label{tab:itemstable}Suggested final scale definitions.}\\
-\toprule
-Substantive & \multicolumn{1}{c}{Attitudinal} & \multicolumn{1}{c}{Item.Number} & \multicolumn{1}{c}{Item.Stem}\\
-\midrule
-\endfirsthead
-\caption*{\normalfont{Table \ref{tab:itemstable} continued}}\\
-\toprule
-Substantive & \multicolumn{1}{c}{Attitudinal} & \multicolumn{1}{c}{Item.Number} & \multicolumn{1}{c}{Item.Stem}\\
-\midrule
-\endhead
-Absorption & Cognitive & 1 & I am able to concentrate on my work without getting distracted\\
-Absorption & Cognitive & 3 & Time passes quickly while I'm working\\
-Absorption & Affective & 5 & I enjoy thinking about work even when I'm not at work\\
-Absorption & Affective & 8 & I love starting my workday\\
-Absorption & Behavioral & 10 & I have to be reminded to take breaks while I'm at work\\
-Absorption & Behavioral & 11 & I never miss a work deadline\\
-Vigor & Cognitive & 14 & Thinking about work saps my energy\\
-Vigor & Cognitive & 16 & I'm able to maintain good levels of energy throughout the workday\\
-Vigor & Affective & 17 & I enjoy spending time completing my job tasks\\
-Vigor & Affective & 19 & I feek motivated to go beyond what is asked of me at work\\
-Vigor & Behavioral & 21 & When work is slow I find ways to be productive\\
-Vigor & Behavioral & 22 & I express enthusiasm for my job while at work\\
-Dedication & Cognitive & 25 & I plan to stay with this company as my career advances\\
-Dedication & Cognitive & 26 & I believe this company cares about my career goals\\
-Dedication & Cognitive & 28 & This organization challenges me to work at my full potential\\
-Dedication & Affective & 31 & I feel proud of my accomplishments within this organization\\
-Dedication & Affective & 32 & My job makes me feel like I'm part of something meaningful\\
-Dedication & Behavioral & 34 & I embrace challenging situations at work\\
-Dedication & Behavioral & 35 & I speak positively about this organization to others\\
-\bottomrule
-\end{longtable}
-
-\end{lltable}
-
-The final recommended scale definitions are located in Table \ref{tab:itemstable}.
+The final recommended scale definitions are located in Table.
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -376,9 +333,6 @@ Cole, M. S., Walter, F., Bedeian, A. G., \& O'Boyle, E. H. (2012). Job burnout a
 
 \leavevmode\vadjust pre{\hypertarget{ref-csikszentmihalyi1990flow}{}}%
 Csikszentmihalyi, M. (1990). \emph{Flow: The psychology of optimal experience} (Vol. 1990). Harper \& Row New York.
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-descr}{}}%
-Dirk Enzmann, J. Aquino. I. R. source code and/or documentation written by, Schwartz, M., Jain, N., \& Kraft, S. (2021). \emph{Descr: Descriptive statistics}. Retrieved from \url{https://CRAN.R-project.org/package=descr}
 
 \leavevmode\vadjust pre{\hypertarget{ref-elloy_examination_1991}{}}%
 Elloy, D. F., Everett, J. E., \& Flynn, W. R. (1991). An examination of the correlates of job involvement. \emph{Group \& Organization Studies}, \emph{16}(2), 160--177. \url{https://doi.org/10.1177/105960119101600204}
@@ -425,9 +379,6 @@ R Core Team. (2022). \emph{R: A language and environment for statistical computi
 \leavevmode\vadjust pre{\hypertarget{ref-rosenberg_cognitive_1960}{}}%
 Rosenberg, M. J. (1960). Cognitive, affective, and behavioral components of attitudes. In \emph{Attitude organization and change}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-R-lavaan}{}}%
-Rosseel, Y. (2012). {lavaan}: An {R} package for structural equation modeling. \emph{Journal of Statistical Software}, \emph{48}(2), 1--36. \url{https://doi.org/10.18637/jss.v048.i02}
-
 \leavevmode\vadjust pre{\hypertarget{ref-engage_2022}{}}%
 Russell, M., Ossorio Duffoo, C., Garcia Prieto Palacios Roji, R., \& Kulas, J. (2022). Development of an intentional bifactor measure of engagement. \emph{The Seattle Edition of SIOP}, 1--14. SIOP.
 
@@ -457,9 +408,6 @@ Taris, T. W., Ybema, J. F., \& Beek, I. van. (2017). Burnout and engagement: Ide
 
 \leavevmode\vadjust pre{\hypertarget{ref-timms2012burnt}{}}%
 Timms, C., Brough, P., \& Graham, D. (2012). Burnt-out but engaged: The co-existence of psychological burnout and engagement. \emph{Journal of Educational Administration}, \emph{50}(3), 327--345.
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-careless}{}}%
-Yentes, R. D., \& Wilhelm, F. (2021). \emph{Careless: Procedures for computing indices of careless responding}.
 
 \end{CSLReferences}
 

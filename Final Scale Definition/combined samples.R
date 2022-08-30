@@ -137,8 +137,14 @@ prolific$from <- "Prolific"
 snowball$from <- "Snowball"
 qualtrics.engage$from <- "Qualtrics"
 
-together <- rbind(prolific, snowball, qualtrics.engage)
-descr::freq(together$from)
+samplefrom <- rbind(prolific, snowball, qualtrics.engage)
+descr::freq(samplefrom$from)
+
+set.seed(36)
+
+temp <- sort(sample(nrow(samplefrom), nrow(samplefrom)*.5))
+together <- samplefrom[temp,]
+cfa <- samplefrom[-temp,]
 
 ###################################################################################
 ###################################################################################
@@ -205,3 +211,66 @@ standardizedSolution(Fit.mod)
 write.csv(fitMeasures(Fit.mod), "minusC4.csv")
 
 ## Empirically C4 is a candidate for exclusion - conceptually we also agree it can be axed
+
+psych::alpha(together[c(1:2,4:8)])
+psych::alpha(together[c(6:8, 13:14, 19:20)])
+
+## Empirically 25 has lowest corrected item-totals with both attitude (cognition) and substantive (dedication), however, these are marginal and the CONTENT of 26 and 28 are a bit redundant, so we would like to retain 25 and drop either 26 or 28
+
+
+bifactor_28 <-'
+Absorption = ~C1  + C3  + A5  + A8  + B10 + B11
+Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
+Dedication = ~C25 + C28 + A31 + A32 + B34 + B35
+Cognitive  = ~C1  + C3  + C14 + C16 + C25 + C28
+Affective  = ~A5  + A8  + A17 + A19 + A31 + A32
+Behavioral = ~B10 + B11 + B21 + B22 + B34 + B35
+Absorption ~~ 0*Affective
+Absorption ~~ 0*Behavioral
+Absorption ~~ 0*Cognitive
+Vigor      ~~ 0*Affective
+Vigor      ~~ 0*Behavioral
+Vigor      ~~ 0*Cognitive
+Dedication ~~ 0*Affective
+Dedication ~~ 0*Behavioral
+Dedication ~~ 0*Cognitive
+Dedication ~~ 1*Dedication
+'
+
+bifactor_26 <-'
+Absorption = ~C1  + C3  + A5  + A8  + B10 + B11
+Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
+Dedication = ~C25 + C26 + A31 + A32 + B34 + B35
+Cognitive  = ~C1  + C3  + C14 + C16 + C25 + C26
+Affective  = ~A5  + A8  + A17 + A19 + A31 + A32
+Behavioral = ~B10 + B11 + B21 + B22 + B34 + B35
+Absorption ~~ 0*Affective
+Absorption ~~ 0*Behavioral
+Absorption ~~ 0*Cognitive
+Vigor      ~~ 0*Affective
+Vigor      ~~ 0*Behavioral
+Vigor      ~~ 0*Cognitive
+Dedication ~~ 0*Affective
+Dedication ~~ 0*Behavioral
+Dedication ~~ 0*Cognitive
+Dedication ~~ 1*Dedication
+'
+
+
+Fit.26 <- lavaan::cfa(bifactor_26, data = together, missing = "ML", estimator = 'MLR')
+Fit.28 <- lavaan::cfa(bifactor_28, data = together, missing = "ML", estimator = 'MLR')
+
+semPlot::semPaths(Fit.26, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", rainbowStart=.5,sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, asize=2)
+semPlot::semPaths(Fit.28, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", rainbowStart=.5,sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, asize=2)
+
+## correlations among cog, beh, affect higher with 28 - more moderate with 26 retained (that means we lean toward retaining 26 and deleting 28)
+
+write.csv(fitMeasures(Fit.26), "fit26.csv")
+write.csv(fitMeasures(Fit.28), "fit28.csv")
+
+together$cog <- rowMeans(together[c(1:2,4:7)], na.rm=TRUE)
+together$aff <- rowMeans(together[9:14], na.rm=TRUE)
+together$beh <- rowMeans(together[15:20], na.rm=TRUE)
+
+cor(together[22:24], use = "pairwise")
+

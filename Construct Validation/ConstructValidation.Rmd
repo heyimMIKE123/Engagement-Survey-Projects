@@ -1,6 +1,6 @@
 ---
-title             : "20 to 18 - Final Scale Definitions of the Bifactor Engagement Scale"
-shorttitle        : "20 to 18"
+title             : "Construct and Criterion-related validation of the Bifactor Engagement Scale"
+shorttitle        : "Bifactor Validation"
 
 author: 
   - name          : "Mike DeFabiis"
@@ -26,7 +26,7 @@ authornote: |
   Enter author note here.
 
 abstract: |
-  We finalize the scale definitions for a bifactor engagement measure that is comprised of intentionally complex items. 
+  We present the results of a construct and criterion-related validation of a new measure of employee engagement. 
   
 keywords          : "keywords"
 wordcount         : "X"
@@ -236,101 +236,13 @@ A previous instrument administration reduced 36 candidate items to 20. Primarily
 We used `r cite_r("r-references.bib")` for all our analyses. 
 
 
-```{r scalereduction, fig.cap="Bifactor analysis minus Item 4."}
 
-## Drop candidates are 1,3,4 & 25,26,28
-
-together$C14 <- 7-together$C14
-
-cog <- psych::alpha(together[1:8])
-aff <- psych::alpha(together[9:14])
-beh <- psych::alpha(together[15:20])
-
-abs <- psych::alpha(together[c(1:3, 9:10, 15:16)])
-vig <- psych::alpha(together[c(4:5, 11:12, 17:18)])
-ded <- psych::alpha(together[c(6:8, 13:14, 19:20)])
-
-# cor(together[1:8], use="pairwise.complete.obs")   ## probably C4 gets axed
-# psych::alpha(together[1:3])
-
-# cor(together[c(1:3, 9:10, 15:16)], use="pairwise.complete.obs")
-
-
-library(lavaan)
-
-bifactor1 <-'
-Absorption = ~C1  + C3  + C4  + A5  + A8  + B10 + B11
-Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
-Dedication = ~C25 + C26 + C28 + A31 + A32 + B34 + B35
-Cognitive  = ~C1  + C3  + C4  + C14 + C16 + C25 + C26 + C28
-Affective  = ~A5  + A8  + A17 + A19 + A31 + A32
-Behavioral = ~B10 + B11 + B21 + B22 + B34 + B35
-Absorption ~~ 0*Affective
-Absorption ~~ 0*Behavioral
-Absorption ~~ 0*Cognitive
-Vigor      ~~ 0*Affective
-Vigor      ~~ 0*Behavioral
-Vigor      ~~ 0*Cognitive
-Dedication ~~ 0*Affective
-Dedication ~~ 0*Behavioral
-Dedication ~~ 0*Cognitive
-Dedication ~~ 1*Dedication
-'
-
-bifactor4 <-'
-Absorption = ~C1  + C3  + A5  + A8  + B10 + B11
-Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
-Dedication = ~C25 + C26 + C28 + A31 + A32 + B34 + B35
-Cognitive  = ~C1  + C3  + C14 + C16 + C25 + C26 + C28
-Affective  = ~A5  + A8  + A17 + A19 + A31 + A32
-Behavioral = ~B10 + B11 + B21 + B22 + B34 + B35
-Absorption ~~ 0*Affective
-Absorption ~~ 0*Behavioral
-Absorption ~~ 0*Cognitive
-Vigor      ~~ 0*Affective
-Vigor      ~~ 0*Behavioral
-Vigor      ~~ 0*Cognitive
-Dedication ~~ 0*Affective
-Dedication ~~ 0*Behavioral
-Dedication ~~ 0*Cognitive
-Dedication ~~ 1*Dedication
-'
-
-Fit.mod1 <- lavaan::cfa(bifactor1, data = together, missing = "ML", estimator = 'MLR')
-Fit.mod4 <- lavaan::cfa(bifactor4, data = together, missing = "ML", estimator = 'MLR')
-
-# semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), "std", layout = "tree3",
-#                  rotation = 2, curvePivot=TRUE, style="lisrel", nCharNodes = 0, pastel=FALSE)
-
-semPlot::semPaths(Fit.mod4, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", rainbowStart=.5,sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, asize=2)
-
-stand1 <- standardizedSolution(Fit.mod1)
-fit1 <- fitMeasures(Fit.mod1)
-
-stand4 <- standardizedSolution(Fit.mod4)
-fit4 <- fitMeasures(Fit.mod4)
-
-```
-
-Looking first at the Absorption-Cognition candidate items, Item 4 stood out as a candidate for exclusion based on empirical indices (corrected item-total correlations, inter-item correlations, and bifactor analysis fit [$\chi^2_{with}$ = `r fit1[3]`, $\chi^2_{without}$ = `r fit4[3]`]). Conceptually we also agreed that Item 4 was not uniquely critical for comprehensive coverage across either the Cognition or Absorption constructs. Figure \@ref(fig:scalereduction) presents the visual CFA.
+Looking first at the Absorption-Cognition candidate items, Item 4 stood out as a candidate for exclusion based on empirical indices (corrected item-total correlations, inter-item correlations, and bifactor analysis fit. Conceptually we also agreed that Item 4 was not uniquely critical for comprehensive coverage across either the Cognition or Absorption constructs. Figure  presents the visual CFA.
 
 # Results
 
-```{r itemstable}
 
-items <- read.csv("modification indices KEY - Hopefully Final.csv")  ## without 4
-
-apa_table(
-  items
-  , caption = "Suggested final scale definitions."
-  , escape = TRUE
-  , landscape = TRUE
-)
-
-```
-
-
-The final recommended scale definitions are located in Table \@ref(tab:itemstable). 
+The final recommended scale definitions are located in Table. 
 
 # Discussion
 
