@@ -33,16 +33,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Engagement vs.~Attitude: Measurement Invariance across Item Orderings},
-  pdfauthor={Casey Osorio-Duffoo2, Renata Garcia Prieto Palacios Roji1, Morgan Russell1, \& John Kulas1},
-  pdflang={en-EN},
-  pdfkeywords={Engagement, engagement},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -165,7 +155,7 @@
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
-\keywords{Engagement, engagement\newline\indent Word count: X}
+\keywords{Measurement Invariance\newline\indent Word count: X}
 \DeclareDelayedFloatFlavor{ThreePartTable}{table}
 \DeclareDelayedFloatFlavor{lltable}{table}
 \DeclareDelayedFloatFlavor*{longtable}{table}
@@ -176,13 +166,23 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Bought but Paritially Sold? Measurement Invariance across Purchased and Snowball Samples},
+  pdfauthor={John Kulas1, Casey Osorio-Duffoo3, Mike Defabiis2, \& Morgan Russell2},
+  pdflang={en-EN},
+  pdfkeywords={Measurement Invariance},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{Engagement vs.~Attitude: Measurement Invariance across Item Orderings}
-\author{Casey Osorio-Duffoo\textsuperscript{2}, Renata Garcia Prieto Palacios Roji\textsuperscript{1}, Morgan Russell\textsuperscript{1}, \& John Kulas\textsuperscript{1}}
+\title{Bought but Paritially Sold? Measurement Invariance across Purchased and Snowball Samples}
+\author{John Kulas\textsuperscript{1}, Casey Osorio-Duffoo\textsuperscript{3}, Mike Defabiis\textsuperscript{2}, \& Morgan Russell\textsuperscript{2}}
 \date{}
 
 
-\shorttitle{BiFactor Engagement}
+\shorttitle{Measurement Invariance}
 
 \authornote{
 
@@ -190,20 +190,34 @@ Add complete departmental affiliations for each author here. Each new line herei
 
 Enter author note here.
 
-Correspondence concerning this article should be addressed to Casey Osorio-Duffoo, 1 Normal Ave, Montclair, NJ 07043. E-mail: \href{mailto:caseyosorio@gmail.com}{\nolinkurl{caseyosorio@gmail.com}}
+Correspondence concerning this article should be addressed to John Kulas, 1 Awesome Lane, Mosquitosota. E-mail: \href{mailto:jtkulas@ergreports.com}{\nolinkurl{jtkulas@ergreports.com}}
 
 }
 
-\affiliation{\vspace{0.5cm}\textsuperscript{1} Montclair State University\\\textsuperscript{2} Harver}
+\affiliation{\vspace{0.5cm}\textsuperscript{1} eRg\\\textsuperscript{2} Harver\\\textsuperscript{3} Montclair State University}
 
 \abstract{%
-The most common current definition of attitudinal engagement implicates sub-dimensions of vigor, dedication, and absorption. The tripartite model of attitudes specifies cognitive, behavioral, and affective components. The current study investigates measurement invariance across a new measure of engagement that intentionally crosses the substantive and attitudinal components. Through counterbalancing the order of item presentation, we provide response cues regarding structural priority. Analyses of measurement invariance reveal that\ldots{}
+The literature tilts predominantly positive regarding the benefits of ``purchased'' samples that have become more prevalent within organizational surveying applications within the past 15 or so years. The current study explores the measurement invariance of an 18-item engagement survey across five different samples: 1) voluntary snowball, 2) cleaned Qualtrics, 3) cleaned Prolific, 4) flagged Qualtrics, and 5) flagged Prolific.
 }
 
 
 
 \begin{document}
 \maketitle
+
+First emerging in the 1990's (Li et al., 1999), commercial online panel data (OPD) is more commonly encountered, although questions regarding data quality persist {[}Walter et al. (2019); {]}. Walter et al. (2019) did a meta-analysis
+
+Porter et al. (2019)'s qualitative review concluded with practical recomendations such as
+
+The appeal is obvious - other than the financial obstacle, these OPD options bypass the so-called ``courtship rituals'' that are often (at least percieved to be) necessary when attempting to sample from organizational populations (e.g., Tracy, 2019)
+
+Need help finding:
+
+\begin{itemize}
+\tightlist
+\item
+  Walter et al. (2019)
+\end{itemize}
 
 The roots of employee {[}aka work; e.g., W. Schaufeli and Bakker (2010){]} engagement research likely started with theoretical expansions of forms of employee participation (see, for example, Ferris \& Hellier, 1984) and job involvement (e.g., Elloy et al., 1991). This exploration extended into broader considerations of attitudes and emotions (Staw et al., 1994) and were informed by further exploration of the dimensionality of constructs such as organizational commitment (Meyer \& Allen, 1991). The 1990's saw focused development and refinement (for example, a dissertation; Leone (1995) or actual semantic reference; Kahn (1990a)). Staw et al. (1994) investigated the relationships between \emph{positive emotions} and favorable work outcomes, and although they do not use the word, ``engagement'', their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct.
 
@@ -267,7 +281,7 @@ Our 18-item engagement measure was crafted to be intentionally complex (each ite
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-We used R (Version 4.1.1; R Core Team, 2021) and the R-packages \emph{papaja} (Version 0.1.0.9999; Aust \& Barth, 2022), and \emph{tinylabels} (Version 0.2.3; Barth, 2022) for all our analyses.
+We used R (Version 4.2.1; R Core Team, 2021) and the R-packages \emph{papaja} (Version 0.1.1; Aust \& Barth, 2022), and \emph{tinylabels} (Version 0.2.3; Barth, 2022) for all our analyses.
 
 The omnibus CFA's, regardless of item ordering, across respondents showed fair fit for both the substantive (\(\chi^2_{substantive}\)=, \emph{df}=, \emph{RMSEA}=) as well as attitudinal structures (\(\chi^2_{attitudinal}\)=, \emph{df}=, \emph{RMSEA}=). Additional fit indices for the two models are presented in Table XX. Figures 1 and 2 present the omnibus models visually (standardized coefficients displayed). Note that the primary source of misfit for both models within the omnibus analysis is item 14, which is the lone reverse-coded item within the inventory, ``Thinking about work saps my energy''.
 
@@ -354,6 +368,9 @@ Leiter, M., \& Maslach, C. (2004). Areas of worklife: A structured approach to o
 \leavevmode\vadjust pre{\hypertarget{ref-leone_relation_1995}{}}%
 Leone, D. R. (1995). \emph{The relation of work climate, higher order need satisfaction, need salience, and causality orientations to work engagement, psychological adjustment, and job satisfaction} {[}PhD thesis{]}. ProQuest Information \& Learning.
 
+\leavevmode\vadjust pre{\hypertarget{ref-li1999impact}{}}%
+Li, H., Kuo, C., \& Rusell, M. G. (1999). The impact of perceived channel utilities, shopping orientations, and demographics on the consumer's online buying behavior. \emph{Journal of Computer-Mediated Communication}, \emph{5}(2), JCMC521.
+
 \leavevmode\vadjust pre{\hypertarget{ref-maslach1997causes}{}}%
 Maslach, C., \& Leiter, M. (1997). What causes burnout. \emph{Maslach C, Leiter MP. The Truth About Burnout: How Organizations Cause Personal Stress and What to Do about It. San Francisco, CA: Josey-Bass Publishers}, 38--60.
 
@@ -365,6 +382,9 @@ Meredith, W. (1993). Measurement invariance, factor analysis and factorial invar
 
 \leavevmode\vadjust pre{\hypertarget{ref-meyer_three-component_1991}{}}%
 Meyer, J. P., \& Allen, N. J. (1991). A three-component conceptualization of organizational commitment. \emph{Human Resource Management Review}, \emph{1}(1), 61--89.
+
+\leavevmode\vadjust pre{\hypertarget{ref-porter2019use}{}}%
+Porter, C. O., Outlaw, R., Gale, J. P., \& Cho, T. S. (2019). The use of online panel data in management research: A review and recommendations. \emph{Journal of Management}, \emph{45}(1), 319--344.
 
 \leavevmode\vadjust pre{\hypertarget{ref-R-base}{}}%
 R Core Team. (2021). \emph{R: A language and environment for statistical computing}. R Foundation for Statistical Computing. \url{https://www.R-project.org/}
@@ -401,6 +421,12 @@ Taris, T. W., Ybema, J. F., \& Beek, I. van. (2017). Burnout and engagement: Ide
 
 \leavevmode\vadjust pre{\hypertarget{ref-timms2012burnt}{}}%
 Timms, C., Brough, P., \& Graham, D. (2012). Burnt-out but engaged: The co-existence of psychological burnout and engagement. \emph{Journal of Educational Administration}, \emph{50}(3), 327--345.
+
+\leavevmode\vadjust pre{\hypertarget{ref-tracy2019qualitative}{}}%
+Tracy, S. J. (2019). \emph{Qualitative research methods: Collecting evidence, crafting analysis, communicating impact}. John Wiley \& Sons.
+
+\leavevmode\vadjust pre{\hypertarget{ref-walter2019tale}{}}%
+Walter, S. L., Seibert, S. E., Goering, D., \& O'Boyle, E. H. (2019). A tale of two sample sources: Do results from online panel data and conventional data converge? \emph{Journal of Business and Psychology}, \emph{34}(4), 425--452.
 
 \end{CSLReferences}
 

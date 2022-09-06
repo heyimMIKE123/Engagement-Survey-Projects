@@ -1,40 +1,40 @@
 ---
-title             : "Engagement vs. Attitude: Measurement Invariance across Item Orderings"
-shorttitle        : "BiFactor Engagement"
+title             : "Bought but Paritially Sold? Measurement Invariance across Purchased and Snowball Samples"
+shorttitle        : "Measurement Invariance"
 
 author: 
-  - name          : "Casey Osorio-Duffoo"
-    affiliation   : "2"
-    corresponding : yes    # Define only one corresponding author
-    address       : "1 Normal Ave, Montclair, NJ 07043"
-    email         : "caseyosorio@gmail.com"
-  - name          : "Renata Garcia Prieto Palacios Roji"
-    affiliation   : "1"
-  - name          : "Morgan Russell"
-    affiliation   : "1"
   - name          : "John Kulas"
     affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "1 Awesome Lane, Mosquitosota"
+    email         : "jtkulas@ergreports.com"
+  - name          : "Casey Osorio-Duffoo"
+    affiliation   : "3"
+  - name          : "Mike Defabiis"
+    affiliation   : "2"
+  - name          : "Morgan Russell"
+    affiliation   : "2"
 
 affiliation:
   - id            : "1"
-    institution   : "Montclair State University"
+    institution   : "eRg"
   - id            : "2"
     institution   : "Harver"
-
+  - id            : "3"
+    institution   : "Montclair State University"
+    
 authornote: |
   Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
 
   Enter author note here.
 
 abstract: |
-  The most common current definition of attitudinal engagement implicates sub-dimensions of vigor, dedication, and absorption. The tripartite model of attitudes specifies cognitive, behavioral, and affective components. The current study investigates measurement invariance across a new measure of engagement that intentionally crosses the substantive and attitudinal components. Through counterbalancing the order of item presentation, we provide response cues regarding structural priority. Analyses of measurement invariance reveal that... 
-
-    <!-- https://tinyurl.com/ybremelq -->
+  The literature tilts predominantly positive regarding the benefits of "purchased" samples that have become more prevalent within organizational surveying applications within the past 15 or so years. The current study explores the measurement invariance of an 18-item engagement survey across five different samples: 1) voluntary snowball, 2) cleaned Qualtrics, 3) cleaned Prolific, 4) flagged Qualtrics, and 5) flagged Prolific. 
   
-keywords          : "Engagement, engagement"
+keywords          : "Measurement Invariance"
 wordcount         : "X"
 
-bibliography      : ["r-references.bib", "engage.bib", "siopadds.bib", "bifactor.bib", "book.bib", "renata.bib"]
+bibliography      : ["r-references.bib", "engage.bib", "siopadds.bib", "measinv.bib", "book.bib", "renata.bib"]
 
 floatsintext      : no #change to yes if we want all tables to be put in-line rather than pushed to end of paper
 figurelist        : no
@@ -60,6 +60,16 @@ r_refs("r-references.bib")
 set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
+
+First emerging in the 1990's [@li1999impact], commercial online panel data (OPD) is more commonly encountered, although questions regarding data quality persist [@walter2019tale; ]. @walter2019tale did a meta-analysis
+
+@porter2019use's qualitative review concluded with practical recomendations such as
+
+The appeal is obvious - other than the financial obstacle, these OPD options bypass the so-called "courtship rituals" that are often (at least percieved to be) necessary when attempting to sample from organizational populations [e.g., @tracy2019qualitative]
+
+Need help finding:
+
++ @walter2019tale
 
 The roots of employee [aka work; e.g., @schaufeli_conceptualization_2010] engagement research likely started with theoretical expansions of forms of employee participation [see, for example, @ferris_added_1984] and job involvement [e.g., @elloy_examination_1991]. This exploration extended into broader considerations of attitudes and emotions [@staw_employee_1994] and were informed by further exploration of the dimensionality of constructs such as organizational commitment [@meyer_three-component_1991]. The 1990's saw focused development and refinement (for example, a dissertation; @leone_relation_1995 or actual semantic reference; @kahn_psychological_1990). @staw_employee_1994 investigated the relationships between *positive emotions* and favorable work outcomes, and although they do not use the word, "engagement", their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct.
 
