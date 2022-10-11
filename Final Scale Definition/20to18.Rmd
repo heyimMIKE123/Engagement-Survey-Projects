@@ -10,8 +10,6 @@ author:
     email         : "defabiism1@montclair.edu" 
   - name          : "Casey Osorio"
     affiliation   : "2"
-  - name          : "Morgan Russell"
-    affiliation   : "1"
   - name          : "John Kulas"
     affiliation   : "3"
 
@@ -28,7 +26,7 @@ authornote: |
   Enter author note here.
 
 abstract: |
-  We finalize the scale definitions for a bifactor engagement measure that is comprised of intentionally complex items. 
+  We finalize the scale definitions for a bifactor engagement measure that is comprised of intentionally complex items. This complexity crosses attitudinal and substantive components. The final scale definition exhibited moderately good bifactor fit. 
   
 keywords          : "keywords"
 wordcount         : "X"
@@ -44,8 +42,9 @@ figurelist        : no
 tablelist         : no
 footnotelist      : no
 
+csl               : "apa7.csl"
 classoption       : "man"
-output            : papaja::apa6_word
+output            : papaja::apa6_pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -60,15 +59,25 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
 ```
 
 
-The origins of employee [aka work; e.g., @schaufeli_conceptualization_2010] engagement research began with theoretical expansions of forms of employee participation [see, for example, @ferris_added_1984] and job involvement [e.g., @elloy_examination_1991]. Overtime research and theory expanded into broader considerations of attitudes and emotions [@staw_employee_1994] and were further supplemented by the dimensionality of constructs such as organizational commitment [@meyer_three-component_1991]. The 1990's saw focused development and refinement [for example, a dissertation; @leone_relation_1995 or actual semantic reference; @kahn1990psychological]. 
+The origins of research on employee [aka work, e.g., @schaufeli_conceptualization_2010] engagement began with theoretical expansions of forms of employee participation [see, for example, @ferris_added_1984] and job involvement [e.g., @elloy_examination_1991]. Over a period of time research and theory expanded into broader considerations of attitudes and emotions [@staw_employee_1994] and were further informed by discoveries regarding the dimensionality of related constructs such as organizational commitment [@meyer_three-component_1991]. The 1990's saw further development and refinement. For example, @leone_relation_1995 conducted a dissertation and explicit semantic referral to "engagement" became popularized by @kahn1990psychological. 
 
-This development inevitably resulted in multiple differing perspectives of engagement. Some viewed engagement from an attitudinal perspective [@staw_employee_1994; @kahn1990psychological], while others viewed it from a substative perspective [@schaufeli_measurement_2002]. @schaufeli2013engagement distinguished between various forms of engagement (work engagement and employee engagement). @maslach_early_2008 proposed that engagement and burnout [a psychological syndrome consisting of exhaustion, cynicism, and inefficacy; see @leiter_areas_2004; @maslach1997causes] are direct opposites of each other, though many consider these constructs to be conceptually distinct (@timms2012burnt; @kim_burnout_2009; @goering2017not; @schaufeli2008workaholism; @trogolo2020work). The present article explores two methods for constructing a scale that incorporates both the substantive and attitudinal models into one, a more classical one based on corrected item-total correlations and one based on modification indices.
+The surging interest inevitably resulted in multiple differing perspectives of engagement. Some viewed engagement from a globally evaluative perspective [@staw_employee_1994; @kahn1990psychological], while others approached its study by deconstrucing the construct's content domain specification [@schaufeli_measurement_2002]. @schaufeli2013engagement distinguished between various forms of engagement (work engagement and employee engagement). @maslach_early_2008 proposed that engagement and burnout[^burn] [@maslach1997causes] are direct opposites of each other, though most contemporary researchers consider these constructs to be conceptually distinct [@timms2012burnt; @kim_burnout_2009; @goering2017not; @schaufeli2008workaholism; @trogolo2020work], although certainly not universally [@cole2012job; @taris2017burnout]. @goering2017not explore nomological networks, concluding that these two constructs have a moderate (negative) association, but also distinct nomological networks. @schaufeli2008workaholism investigated both internal and external association indicators, concluding that engagement and burnout (as well as *workaholism*) should be considered three distinct constructs. . 
 
-# Existing Measures of Engagement
+[^burn]: Burnout is a psychological syndrome consisting of exhaustion, cynicism, and inefficacy [see, for example, @leiter_areas_2004].
 
-Multiple measures of engagement currently exist, with one notable measure being the Intellectual, Social, Affective (ISA) Engagement Scale [@soane2012development]. This 9-item measure draws inspiration from @kahn_psychological_1990's theory towards engagement, primarily utilizing his belief that an individual’s work role demonstrates a focus for engagement. In the ISA Engagement Scale, the focused role is accompanied by activation and positive affect. Together, these components result in three facets in @soane2012development's multidimensional model: Intellectual Engagement, Social Engagement, and Affective Engagement. Intellectual engagement refers to the degree of intellectual absorption one has in their work and the degree they think about improving work [@soane2012development]. Social engagement primarily concerns social connections in a workplace context as well as having shared values with colleagues [@soane2012development]. According to @soane2012development, Affective engagement refers to 'the extent to which one experiences a state of positive affect relating to one's work role'. Together these three facets comprise ISA engagement. This is the first known measure of engagement that is validated at both the facet and factor level, having validated both ISA engagement and its three facets [@soane2012development]. 
+## Existing Measures of Engagement
+
+The intent with our measure is to have an assessment of engagement with flexible application exhibiting equal appeal to both academics and practitioners. Our review of measures therefore discusses measures that are commonly viewed as *either* academic or applied, although please note that this is an imposed subjective distinction.  
+
+### Research measures (e.g., freely available).
+
+Multiple research measures of engagement currently exist, with one notable measure being the Intellectual, Social, Affective (ISA) Engagement Scale [@soane2012development]. This 9-item measure draws inspiration from @kahn_psychological_1990's theory towards engagement, primarily utilizing his belief that an individual’s work role demonstrates a focus for engagement. In the ISA Engagement Scale, the focused role is accompanied by activation and positive affect. Together, these components result in three facets in @soane2012development's multidimensional model: Intellectual Engagement, Social Engagement, and Affective Engagement. Intellectual engagement refers to the degree of intellectual absorption one has in their work and the degree they think about improving work [@soane2012development]. Social engagement primarily concerns social connections in a workplace context as well as having shared values with colleagues [@soane2012development]. According to @soane2012development, Affective engagement refers to 'the extent to which one experiences a state of positive affect relating to one's work role'. Together these three facets comprise ISA engagement. This is the first known measure of engagement that is validated at both the facet and factor level, having validated both ISA engagement and its three facets [@soane2012development]. 
 
 Another example of an engagement measure comes from @saks_antecedents_2006, who splits engagement into two distinct entities: job engagement and organization engagement. This dichotomy largely results from @kahn_psychological_1990’s theory that an individual’s role is central to engagement. @saks_antecedents_2006 believes that employees typically have more than one role, with the most important being their work role and their role as a member of an organization. The former role is specific to the employee’s job, while the latter is more broad and refers to the organization as a whole. Antecedents and consequences of employee engagement were also tested, with findings suggesting that perceived organizational support precedes both job and organizational engagement and that job satisfaction, organizational commitment, intent to quit, and organizational citizenship behaviors (OCBs) at the individual and organization level are outcomes of high and low levels of engagement. Recently the model was revisited and revised to include several new antecedents (e.g. leadership, job demands, dispositional characteristics, etc.) leading to engagement as well as consequences (e.g. burnout, stress, health and well-being, etc.) resulting from high or low levels of engagement [@saks2019antecedents].
+
+Perhaps the most commonly cited research measure is the Utrecht Work Engagement Scale (UWES), wherein @schaufeli_uwesutrecht_2003 specify a "positive, fulfilling, work-related state of mind that is characterized by vigor, dedication, and absorption" (p. 74). Via their conceptualization, vigor is described as high levels of energy and mental resilience while working. Dedication refers to being strongly involved in one’s work and experiencing a sense of significance, enthusiasm, inspiration, pride, and challenge. Absorption is characterized by being fully concentrated and happily engrossed in one’s work, whereby time passes quickly and one has difficulties with detaching oneself from work [@schaufeli_measurement_2002]. This absorption element has been noted as being influenced in conceptual specification by [@csikszentmihalyi1990flow]'s concept of "flow".
+
+### Commercial measures (e.g., typically fee-based).
 
 Gallup’s Q12 is a popular commercial measure for engagement. The Q12 is a 12-item measure that originated from a push to use “soft” metrics as opposed to “hard” ones for future action planning [@coffman_hard_1999]. In this interpretation “soft” metrics tend to be metrics that are more abstract and difficult to measure (e.g. engagement, brand loyalty), while “hard” metrics are easily-measured and typically deal with concrete numbers (e.g. turnover, profitability). In the original creation of the survey, each of the 12 items were found to relate to important organizational outcomes including productivity, profitability, turnover, and customer satisfaction [@coffman_hard_1999]. A recent meta-analysis of 456 studies revealed that the Q12 also relates to additional performance measures such as absenteeism, wellbeing, and organizational citizenship [@harter_relationship_2013]. While this engagement measure is one of the most popular, some scholars disagree with its conceptualization as “engagement”; some feel that this measure is better described as (or no different than) a measure of overall satisfaction, as the two concepts are highly correlated, *r* = .91 [@sirota2013enthusiastic]. 
 
@@ -79,6 +88,7 @@ BlessingWhite, another consulting firm, provides a different model for engagemen
 The last commercial example is Towers Perrin-ISR, which holds the philosophy that employee engagement can only be worked on indirectly; engagement can only be attained through effective leadership, business strategy, and organizational culture [@towersperrin2009]. Rather than focus on building an involved model for engagement, Towers Perrin-ISR instead focuses on leadership development and creating a healthy organizational culture. Through fulfilling these antecedents of engagement, @towersperrin2009 argues that employees will have a vivid understanding of organizational goals. In addition, employees will become committed to the organization and motivated to contribute. 
 
 ## Engagement as an attitude
+
 @staw_employee_1994 investigated the relationships between *positive emotions* and favorable work outcomes, and, although they do not explicitly mention the word "engagement", their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct. Clear in this history is the specification of engagement as a work *attitude*. @staw_employee_1994 isn't the only reference to engagement as an attitude; @kahn1990psychological defines engagement as "the harnessing of organization members' selves to their work roles; in engagement, people employ and express themselves physically, cognitively, and emotionally during role performances". These theories of engagement as an attitude were heavily inspired by @rosenberg_cognitive_1960 's tripartite model of attitudes. According to @rosenberg_cognitive_1960, attitudes are a molar construct with cognitive, affective, and behavioral dimensions as its molecular parts. While this model is not specifically geared towards engagement, many researchers have drawn inspiration from it and have used it to help better understand individuals' reactions to certain attitude objects [@kaiser_campbell_2019]. These attiudinal definitions of engagement were quickly bypassed by subsequent papers (see, for example, [@baumruk2004missing] and [@shaw2005engagement], who framed it in terms of one's cognitive and affective *commitment* to one's organization). Although falling out of favor in the decades following its construction, interest in the tripartite model was revived by @kaiser_campbell_2019.
 
 ## Engagement as substantive
@@ -91,20 +101,15 @@ Typically, bifactor analyses are utilized when exploring common method variance 
 2. The degree to which a group of non-correlated factors reflect common variance among item clusters.
 The current study breaks away from this tradition, as two factor groups, as opposed to one factor group and a general factor, will be compared in order to assess two general factors from each group: attitidunal and substantive. 
 
-# Our Proposed Model of Engagement
+## Our Proposed Model of Engagement
+
 The present article extends our previous exploration of two methods for constructing an engagement scale. The first method incorporates both the substantive and attitudinal models into one based on corrected item-total correlations, while the second method incorporates substantive and attitudinal models into one based on modification indices. Our conceptualization of work engagement is a mental state wherein employees: a) feel energized (*Vigor*), b) are enthusiastic about the content of their work and the things they do (*Dedication*), and c) are so immersed in their work activities that time seems compressed (*Absorption*). We further decompose each of these facets into three attitudinal components: d) feeling (e.g., affect), e) thought (e.g., cognition), and f) action (e.g., behavior). Development and construct validation of the focal 18-item measure of engagement is described in @engage_2022 whereas the current study focuses on administrative response cues in the form of order of item presentation. The expectation is that either model (attitudinal or substantive) will exhibit stronger factorial validity when item administration parallels latent structure.
 
-Our contributions:
-
-1. Methodological
-  + Intentional bi-factor structure
-2. Practical
-  + A new public domain measure of engagement
-  + Scalable to two aggregations (research [DAC] and actionable [ABC])
-3. Theoretical
-  + Possibly help explain some of the high inter-scale correlations reported with other measures 
+The current SIOP presentation describes an effort to construct a measure of engagement that may be simultaneously  explores two methods for constructing a scale that incorporates both the substantive and attitudinal models into one
 
 # Methods
+
+We solicited three different samples for purposes of winnowing from 20 to 18 final scale items. One sample was a Prolific panel, one was a Qualtrics panel, and one was a "snowball" sample whereby friends and colleagues of the paper authors were invited to participate. In the snowball sample, invited individuals were also asked to further forward the survey along to friends and colleagues of theirs, with the "forwarding along" component being requested *ad infinitum*. 
 
 ## Participants
 
@@ -232,17 +237,15 @@ together <- rbind(prolific, snowball, qualtrics.engage)
 
 ```
 
-Of the `r (nrow(newdata.att)+nrow(newdata.sub))` total Qualtrics panel respondents, `r (nrow(newdata.att)+nrow(newdata.sub))-(nrow(qualtrics.engage))` were excluded based on conservative indices of carelessness across the larger survey (consistent non-differentiating responses across more than 20 consecutive items or greater than 50% missing responses. For Prolific panel respondents, `r nrow(prolific)` were retained of `r nrow(use)` total participants due to the same exclusion criteria. The smaller (*n* = `r nrow(snowball)`) snowball sample retained all participants for a total combined analysis sample of `r nrow(together)`.
-
-## Material
-
-
+Of the `r (nrow(newdata.att)+nrow(newdata.sub))` total Qualtrics panel respondents, `r (nrow(newdata.att)+nrow(newdata.sub))-(nrow(qualtrics.engage))` were excluded based on conservative indices of carelessness across the larger survey (consistent non-differentiating responses across more than 20 consecutive items or greater than 50% missing responses). For Prolific panel respondents, `r nrow(prolific)` were retained of `r nrow(use)` total participants due to the same exclusion criteria. The smaller (*n* = `r nrow(snowball)`) snowball sample retained all participants for a total combined analysis sample of `r nrow(together)`.
 
 ## Procedure
 
-A previous instrument administration reduced 36 candidate items to 20. Primarily for reason of equal balance, we wanted to ultimately land on 18 items (6 per attitudinal/substantive scale dimension, 2 per bifactor subscale). Two primary considerations were given to the decision to retain or delete the 6 deletion candidates: 1) is the content of the item necessary for the definitional content domain, and 2) does the empirical functioning of the item implicate possible revision/deletion. The items considered deletion candidates were from the Absorption-Cognition subscale (Item 1: *I am able to concentrate on my work without getting distracted*, Item 3: *Time passes quickly while I'm working*, and Item 4: *I find it difficult to mentally disconnect from work*) and the Dedication-Cognition subscale (Item 25: *I plan to stay with this company as my career advances*, Item 26: *I believe this company cares about my career goals*, and Item 28: *This organization challenges me to work at my full potential*).
+A previous instrument administration reduced an initial list of 36 candidate items to 20 [@engage_2022]. Primarily for reason of equal balance, we wanted to ultimately retain only 18 items (6 per attitudinal/substantive scale dimension, 2 per bifactor subscale). The items considered candidates for deltion were from the Absorption-Cognition subscale (Item 1: *I am able to concentrate on my work without getting distracted*, Item 3: *Time passes quickly while I'm working*, and Item 4: *I find it difficult to mentally disconnect from work*) and the Dedication-Cognition subscale (Item 25: *I plan to stay with this company as my career advances*, Item 26: *I believe this company cares about my career goals*, and Item 28: *This organization challenges me to work at my full potential*)[^numbers]. Two primary considerations were given to the decision to retain or delete the 6 deletion candidates: 1) is the content of the item necessary for the definitional content domain, and 2) does the empirical functioning of the item implicate priority regarding deletion or retention.
 
-## Data analysis
+[^numbers]: Item numbers presented here are legacy numbers from the initial 36-item pool of candidate indicators. 
+
+# Results
 
 We used `r cite_r("r-references.bib")` for all our analyses. 
 
@@ -288,6 +291,7 @@ Dedication ~~ 0*Cognitive
 Dedication ~~ 1*Dedication
 '
 
+
 bifactor4 <-'
 Absorption = ~C1  + C3  + A5  + A8  + B10 + B11
 Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
@@ -306,14 +310,35 @@ Dedication ~~ 0*Behavioral
 Dedication ~~ 0*Cognitive
 Dedication ~~ 1*Dedication
 '
+## Oops bifactor1 actually has all 20 items in it - below is new 19-item bifactor1
+
+bifactor1.new <-'
+Absorption = ~C3  + C4  + A5  + A8  + B10 + B11
+Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
+Dedication = ~C25 + C26 + C28 + A31 + A32 + B34 + B35
+Cognitive  = ~C3  + C4  + C14 + C16 + C25 + C26 + C28
+Affective  = ~A5  + A8  + A17 + A19 + A31 + A32
+Behavioral = ~B10 + B11 + B21 + B22 + B34 + B35
+Absorption ~~ 0*Affective
+Absorption ~~ 0*Behavioral
+Absorption ~~ 0*Cognitive
+Vigor      ~~ 0*Affective
+Vigor      ~~ 0*Behavioral
+Vigor      ~~ 0*Cognitive
+Dedication ~~ 0*Affective
+Dedication ~~ 0*Behavioral
+Dedication ~~ 0*Cognitive
+Dedication ~~ 1*Dedication
+'
 
 Fit.mod1 <- lavaan::cfa(bifactor1, data = together, missing = "ML", estimator = 'MLR')
 Fit.mod4 <- lavaan::cfa(bifactor4, data = together, missing = "ML", estimator = 'MLR')
+Fit.mod1.new <- lavaan::cfa(bifactor1.new, data = together, missing = "ML", estimator = 'MLR')
 
 # semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), "std", layout = "tree3",
 #                  rotation = 2, curvePivot=TRUE, style="lisrel", nCharNodes = 0, pastel=FALSE)
 
-semPlot::semPaths(Fit.mod4, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", rainbowStart=.5,sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, asize=2)
+#semPlot::semPaths(Fit.mod4, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", rainbowStart=.5,sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, asize=2)
 
 stand1 <- standardizedSolution(Fit.mod1)
 fit1 <- fitMeasures(Fit.mod1)
@@ -321,11 +346,108 @@ fit1 <- fitMeasures(Fit.mod1)
 stand4 <- standardizedSolution(Fit.mod4)
 fit4 <- fitMeasures(Fit.mod4)
 
+stand1.new <- standardizedSolution(Fit.mod1.new)
+fit1.new <- fitMeasures(Fit.mod1.new)
+
 ```
 
-Looking first at the Absorption-Cognition candidate items, Item 4 stood out as a candidate for exclusion based on empirical indices (corrected item-total correlations, inter-item correlations, and bifactor analysis fit [$\chi^2_{with}$ = `r fit1[3]`, $\chi^2_{without}$ = `r fit4[3]`]). Conceptually we also agreed that Item 4 was not uniquely critical for comprehensive coverage across either the Cognition or Absorption constructs. Figure \@ref(fig:scalereduction) presents the visual CFA.
+```{r 19to18, fig.cap="Bifactor analysis final 18-item scale(s) definitions.", fig.height=8}
 
-# Results
+## Empirically 25 has lowest corrected item-totals with both attitude (cognition) and substantive (dedication), however, these are marginal and the CONTENT of 26 and 28 are a bit redundant, so we would like to retain 25 and drop either 26 or 28
+
+
+bifactor_28 <-'
+Absorption = ~C1  + C3  + A5  + A8  + B10 + B11
+Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
+Dedication = ~C25 + C28 + A31 + A32 + B34 + B35
+Cognitive  = ~C1  + C3  + C14 + C16 + C25 + C28
+Affective  = ~A5  + A8  + A17 + A19 + A31 + A32
+Behavioral = ~B10 + B11 + B21 + B22 + B34 + B35
+Absorption ~~ 0*Affective
+Absorption ~~ 0*Behavioral
+Absorption ~~ 0*Cognitive
+Vigor      ~~ 0*Affective
+Vigor      ~~ 0*Behavioral
+Vigor      ~~ 0*Cognitive
+Dedication ~~ 0*Affective
+Dedication ~~ 0*Behavioral
+Dedication ~~ 0*Cognitive
+Dedication ~~ 1*Dedication
+'
+
+bifactor_26 <-'
+Absorption = ~C1  + C3  + A5  + A8  + B10 + B11
+Vigor      = ~C14 + C16 + A17 + A19 + B21 + B22
+Dedication = ~C25 + C26 + A31 + A32 + B34 + B35
+Cognitive  = ~C1  + C3  + C14 + C16 + C25 + C26
+Affective  = ~A5  + A8  + A17 + A19 + A31 + A32
+Behavioral = ~B10 + B11 + B21 + B22 + B34 + B35
+Absorption ~~ 0*Affective
+Absorption ~~ 0*Behavioral
+Absorption ~~ 0*Cognitive
+Vigor      ~~ 0*Affective
+Vigor      ~~ 0*Behavioral
+Vigor      ~~ 0*Cognitive
+Dedication ~~ 0*Affective
+Dedication ~~ 0*Behavioral
+Dedication ~~ 0*Cognitive
+Dedication ~~ 1*Dedication
+'
+
+
+Fit.26 <- lavaan::cfa(bifactor_26, data = together, missing = "ML", estimator = 'MLR')
+Fit.28 <- lavaan::cfa(bifactor_28, data = together, missing = "ML", estimator = 'MLR')
+
+semPlot::semPaths(Fit.26, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", rainbowStart=.5,sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, asize=2)
+
+#semPlot::semPaths(Fit.28, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", rainbowStart=.5,sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, asize=2)
+
+stand3 <- standardizedSolution(Fit.26)
+fit26 <- fitMeasures(Fit.26)
+
+stand4 <- standardizedSolution(Fit.28)
+fit28 <- fitMeasures(Fit.28)
+
+```
+
+Looking first at the Absorption-Cognition candidate items (1, 3, and 4), Item 4 stood out as a candidate for exclusion based on empirical indices (corrected item-total correlations, inter-item correlations, and bifactor analysis fit; $\chi^2_{with4}$ = `r fit1[3]`, $\chi^2_{without4}$ = `r fit4[3]`). Conceptually we also agreed that Item 4 was not uniquely critical for comprehensive coverage across either the Cognition or Absorption constructs. 
+
+Regarding candidate items 25, 26, and 28, item 25 exhibited the weakest corrected item-total correlation for both Dedication (*r* = .69) and Cognition (*r* = .60), however, the relative magnitudes were moderately high, coefficients for all three items were comparable (ranging from .60 to .78) and the item 25 content was deemed critical for both the Cognition as well as Dedication content domains. Two different CFAs were performed with comparable fit indices - one retaining only item 26 ($\chi^2_{keep26}$ = `r fit26[3]`), and the other instead retaining item 28 ($\chi^2_{keep28}$ = `r fit28[3]`). 
+
+Ultimately the definitional uniqueness of item 26, focusing on percieved reciprocity and support regarding tenure/career objectives led to a decision for retention. This entire scale reduction endeavor, therefore, concluded with the deletions of Item 4, "I find it difficult to mentally disconnect from work" and Item 28, "This organization challenges me to work at my full potential".  
+
+>Note. Put corrected item-totals table in if have time (for both scales - substantive and attitudinal; probably only items 1, 3, 4 and 25, 26, 28)
+
+```{r fitindicestable}
+
+Final1.1 <- as.data.frame(fitMeasures(Fit.mod1))
+Final1.4 <- as.data.frame(fitMeasures(Fit.mod4))
+Final1.26 <- as.data.frame(fitMeasures(Fit.26))
+Final1.28 <- as.data.frame(fitMeasures(Fit.28))
+Final1.1.new <- as.data.frame(fitMeasures(Fit.mod1.new))
+
+
+Model <- c("Original", "Retain 1", "Retain 4", "Retain 26", "Retain 28")
+chisq <- round(c(Final1.1[3,1], Final1.1.new[3,1], Final1.4[3,1], Final1.26[3,1], Final1.28[3,1]),2)
+df <-    round(c(Final1.1[4,1], Final1.1.new[4,1], Final1.4[4,1], Final1.26[4,1], Final1.28[4,1]),2)
+RMSEA <- round(c(Final1.1[44,1], Final1.1.new[44,1], Final1.4[44,1], Final1.26[44,1], Final1.28[44,1]),2)
+SRMR <-  round(c(Final1.1[58,1], Final1.1.new[58,1], Final1.4[58,1], Final1.26[58,1], Final1.28[58,1]),2)
+CFI <-   round(c(Final1.1[17,1], Final1.1.new[17,1], Final1.4[17,1], Final1.26[17,1], Final1.28[17,1]),2)
+TLI <-   round(c(Final1.1[18,1], Final1.1.new[18,1], Final1.4[18,1], Final1.26[18,1], Final1.28[18,1]),2)
+AIC <-   round(c(Final1.1[38,1], Final1.1.new[38,1], Final1.4[38,1], Final1.26[38,1], Final1.28[38,1]),2)
+
+fittable <- as.data.frame(cbind(Model,chisq, df, RMSEA, SRMR, CFI, TLI, AIC))
+
+apa_table(
+  fittable
+  , caption = "Fit indices four different bifactor CFAs."
+  , escape = TRUE
+  , landscape = TRUE
+  , note = "Items were dropped sequentially, the first two CFAs reflect 19 items and the last two reflect 18"
+)
+
+
+```
 
 ```{r itemstable}
 
@@ -336,15 +458,18 @@ apa_table(
   , caption = "Suggested final scale definitions."
   , escape = TRUE
   , landscape = TRUE
+  , note = "The recommended response scale is 'Strongly Disagree', 'Disagree', 'Somewhat Disagree', 'Somewhat Agree', 'Agree', and 'Strongly Agree'"
 )
 
 ```
 
-
-The final recommended scale definitions are located in Table \@ref(tab:itemstable). 
+Figure \@ref(fig:19to18) presents the visual CFA for the final scale definitions, Table \@ref(tab:fitindicestable) presents a more comprehensive table of fit indices, and Table \@ref(tab:itemstable) presents the final recommendation regarding the 18-item scale definitions, including the individual item stems. 
 
 # Discussion
 
+We believe that this project has theoretical, methodological, and practical implications. By specifying known sources of item covariance (through *a priori* specification of alternative factors), it is possible that we may help explain some of the high inter-scale correlations that have been reported with other measures of engagement. We do this via extension of the bifactor analsis tradition, which historically has been used in common method variance investigations where only "one" alternative factor is specified. Although not common in the literature, we hope that this type of extension of bifactor analyses may be further pursued and investigated. 
+
+Our primary aspiration for developing this measure was that it would be a public domain instrument that would draw equal appeal from both practitioners and academics. These preliminary investigations suggest that it is scalable to two aggregations which we have been referring to as: 1) research (DAC), and 2) actionable (ABC). Our (as-of-yet untested) assumption is that practitioners may be more interested in feedback regarding how their employees *think*, *feel*, and *behave* with regard to engagement. Academics, on the other hand, may be more interested in possible differentiation between levels of dedication, absorption, and vigor. Having one assessment that may aggregate to either framework not only addresses the demand of constituent users, but it also facilitates aggregation across samplings for broader purposes such as norms development, validation, and metaanalysis.
 
 \newpage
 
