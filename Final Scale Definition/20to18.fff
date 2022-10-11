@@ -2,6 +2,6 @@
 \ifnextchar[{\eatarg}{}
 
 \centering
-\includegraphics{20to18_files/figure-latex/scalereduction-1.pdf}
-\caption{\label{fig:scalereduction}Bifactor analysis minus Item 4.}
+\includegraphics{20to18_files/figure-latex/19to18-1.pdf}
+\caption{\label{fig:19to18}Bifactor analysis final 18-item scale(s) definitions.}
 \end{figure*}

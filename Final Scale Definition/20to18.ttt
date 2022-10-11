@@ -1,5 +1,39 @@
 \begin{lltable}
 
+\begin{TableNotes}[para]
+\normalsize{\textit{Note.} Items were dropped sequentially, the first two CFAs reflect 19 items and the last two reflect 18}
+\end{TableNotes}
+
+\begin{longtable}{llllllll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:fitindicestable}Fit indices four different bifactor CFAs.}\\
+\toprule
+Model & \multicolumn{1}{c}{chisq} & \multicolumn{1}{c}{df} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{SRMR} & \multicolumn{1}{c}{CFI} & \multicolumn{1}{c}{TLI} & \multicolumn{1}{c}{AIC}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:fitindicestable} continued}}\\
+\toprule
+Model & \multicolumn{1}{c}{chisq} & \multicolumn{1}{c}{df} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{SRMR} & \multicolumn{1}{c}{CFI} & \multicolumn{1}{c}{TLI} & \multicolumn{1}{c}{AIC}\\
+\midrule
+\endhead
+Original & 676.51 & 145 & 0.06 & 0.04 & 0.94 & 0.93 & 60686.58\\
+Retain 1 & 682.6 & 128 & 0.07 & 0.04 & 0.94 & 0.92 & 57744.46\\
+Retain 4 & 499.05 & 128 & 0.05 & 0.03 & 0.96 & 0.94 & 57173.78\\
+Retain 26 & 442.39 & 112 & 0.05 & 0.03 & 0.96 & 0.94 & 54493.47\\
+Retain 28 & 458.12 & 112 & 0.06 & 0.03 & 0.96 & 0.94 & 54425.65\\
+\bottomrule
+\addlinespace
+\insertTableNotes
+\end{longtable}
+
+\end{lltable}
+\efloatseparator
+ 
+\begin{lltable}
+
+\begin{TableNotes}[para]
+\normalsize{\textit{Note.} The recommended response scale is 'Strongly Disagree', 'Disagree', 'Somewhat Disagree', 'Somewhat Agree', 'Agree', and 'Strongly Agree'}
+\end{TableNotes}
+
 \begin{longtable}{llll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
 \caption{\label{tab:itemstable}Suggested final scale definitions.}\\
 \toprule
@@ -25,12 +59,13 @@ Vigor & Behavioral & 21 & When work is slow I find ways to be productive\\
 Vigor & Behavioral & 22 & I express enthusiasm for my job while at work\\
 Dedication & Cognitive & 25 & I plan to stay with this company as my career advances\\
 Dedication & Cognitive & 26 & I believe this company cares about my career goals\\
-Dedication & Cognitive & 28 & This organization challenges me to work at my full potential\\
 Dedication & Affective & 31 & I feel proud of my accomplishments within this organization\\
 Dedication & Affective & 32 & My job makes me feel like I'm part of something meaningful\\
 Dedication & Behavioral & 34 & I embrace challenging situations at work\\
 Dedication & Behavioral & 35 & I speak positively about this organization to others\\
 \bottomrule
+\addlinespace
+\insertTableNotes
 \end{longtable}
 
 \end{lltable}
