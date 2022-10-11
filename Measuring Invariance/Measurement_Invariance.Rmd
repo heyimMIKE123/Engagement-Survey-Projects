@@ -50,9 +50,12 @@ classoption       : "man"
 output            : papaja::apa6_pdf
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include = FALSE, echo=FALSE}
 library("papaja")
+library("SKTools")
 r_refs("r-references.bib")
+
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 ```{r analysis-preferences}
@@ -122,6 +125,258 @@ Data was obtained from two sources. In the first sampling, 282 individuals respo
 ## Materials
 
 Our 18-item engagement measure was crafted to be intentionally complex (each item is intended to load on two constructs). This complexity, however, derives from a crossing of the attitudinal components of affect, cognition, and behavior with the substantive engagement components of vigor, dedication, and absorption. Within the current investigation, we realized $\alpha$'s of  (Absorption),  (Dedication),  (Vigor),  (Affect),  (Cognition), and  (Behavior). The 6-point response scale is: Strongly Disagree, Disagree, Somewhat Disagree, Somewhat Agree, Agree, Strongly Agree. The item stems as well as their scale assocation are presented in Table XX. 
+
+## Analysis
+```{r}
+library(tidyverse)
+library(readr)
+library(SKTools)
+
+# Cleaning Data 
+# Prolific Data
+initial_data_screen <- read_csv("prolific data/initial_data_screen.csv") %>% 
+  mutate(data = "prolific_initial")
+
+inprogress <- read_csv("prolific data/inprogress.csv") %>% 
+  mutate(data = "prolific_inprogress")
+
+# Engagement
+Engagement_post_Qualtrics <- read_csv("Snowball Data/Engagement Post Qualtrics 2022-11-19.csv") %>% 
+  mutate(data = "snowball")
+
+
+initial2 <- initial_data_screen %>% 
+  select(Q845:Q864,data) %>% 
+  purrr::set_names(as.character(slice(.,1))) %>% 
+  slice(-1:-2) %>% 
+  rename(Item_1="I am able to concentrate on my work without getting distracted",
+         Item_2="Time passes quickly while I'm working",
+         Item_3="I find it difficult to mentally disconnect from work", 
+         Item_4 = "Thinking about work saps my energy",
+         Item_5 = "I'm able to maintain good levels of energy throughout the workday",
+         Item_6 = "I plan to stay with this company as my career advances",
+         Item_7 = "I believe this company cares about my career goals",
+         Item_8 = "This organization challenges me to work at my full potential",
+         Item_9 = "I enjoy thinking about work even when I'm not at work",
+         Item_10 = "I love starting my workday",
+         Item_11 = "I enjoy spending time completing my job tasks",
+         Item_12 = "I feel motivated to go beyond what is asked of me at work",
+         Item_13 = "I feel proud of my accomplishments within this organization",
+         Item_14 = "My job makes me feel like I'm part of something meaningful",
+         Item_15 = "I have to be reminded to take breaks while I'm at work" ,
+         Item_16 = "I never miss a work deadline",
+         Item_17 = "When work is slow I find ways to be productive",
+         Item_18 = "I express enthusiasm for my job while at work",
+         Item_19 = "I embrace challenging situations at work",
+         Item_20 = "I speak positively about this organization to others",
+         data = "prolific_initial") %>% 
+  select(Item_1,Item_2,Item_3,Item_4,Item_5,Item_6,Item_7,Item_8,Item_9,Item_10,Item_11,Item_12,Item_13,Item_14,Item_15,Item_16,Item_17,Item_18,Item_19,Item_20,data)
+
+
+inprogress2 <- inprogress %>% 
+  select(V380:V399, data) %>% 
+  purrr::set_names(as.character(slice(.,1))) %>% 
+  slice(-1) %>% 
+    rename(Item_1="I am able to concentrate on my work without getting distracted",
+         Item_2="Time passes quickly while I'm working",
+         Item_3="I find it difficult to mentally disconnect from work", 
+         Item_4 = "Thinking about work saps my energy",
+         Item_5 = "I'm able to maintain good levels of energy throughout the workday",
+         Item_6 = "I plan to stay with this company as my career advances",
+         Item_7 = "I believe this company cares about my career goals",
+         Item_8 = "This organization challenges me to work at my full potential",
+         Item_9 = "I enjoy thinking about work even when I'm not at work",
+         Item_10 = "I love starting my workday",
+         Item_11 = "I enjoy spending time completing my job tasks",
+         Item_12 = "I feel motivated to go beyond what is asked of me at work",
+         Item_13 = "I feel proud of my accomplishments within this organization",
+         Item_14 = "My job makes me feel like I'm part of something meaningful",
+         Item_15 = "I have to be reminded to take breaks while I'm at work" ,
+         Item_16 = "I never miss a work deadline",
+         Item_17 = "When work is slow I find ways to be productive",
+         Item_18 = "I express enthusiasm for my job while at work",
+         Item_19 = "I embrace challenging situations at work",
+         Item_20 = "I speak positively about this organization to others",
+         data = "prolific_inprogress") %>% 
+  select(Item_1,Item_2,Item_3,Item_4,Item_5,Item_6,Item_7,Item_8,Item_9,Item_10,Item_11,Item_12,Item_13,Item_14,Item_15,Item_16,Item_17,Item_18,Item_19,Item_20,data)
+
+
+engagement2 <- Engagement_post_Qualtrics %>% 
+  select(C1:Q180,data) %>% 
+  unite(., Item_1, C1, Q161,na.rm = TRUE) %>% 
+  unite(., Item_2, C3, Q162,na.rm = TRUE) %>% 
+  unite(., Item_3, C4, Q163,na.rm = TRUE) %>% 
+  unite(., Item_4, C14, Q175,na.rm = TRUE) %>% 
+  unite(., Item_5, C16, Q176,na.rm = TRUE) %>% 
+  unite(., Item_6, C25, Q168,na.rm = TRUE) %>% 
+  unite(., Item_7, C26, Q169,na.rm = TRUE) %>% 
+  unite(., Item_8, C28, Q170,na.rm = TRUE) %>% 
+  unite(., Item_9, A5, Q164, na.rm = TRUE) %>% 
+  unite(., Item_10, A8, Q165, na.rm = TRUE) %>% 
+  unite(., Item_11, A17, Q177, na.rm = TRUE) %>% 
+  unite(., Item_12, A19, Q178, na.rm = TRUE) %>% 
+  unite(., Item_13, A31, Q171, na.rm = TRUE) %>% 
+  unite(., Item_14, A32, Q172, na.rm = TRUE) %>% 
+  unite(., Item_15, B10, Q166, na.rm = TRUE) %>% 
+  unite(., Item_16, B11, Q167, na.rm = TRUE) %>% 
+  unite(., Item_17, B21, Q179, na.rm = TRUE) %>% 
+  unite(., Item_18, B22, Q180, na.rm = TRUE) %>% 
+  unite(., Item_19, B34, Q173, na.rm = TRUE) %>% 
+  unite(., Item_20, B35, Q174, na.rm = TRUE) %>% 
+  slice(-1:-2) %>% 
+  mutate(across(c("Item_1":"Item_20"),~case_when(. ==  "Strongly Disagree" ~ 1,
+                                                 . ==  "Disagree" ~ 2,
+                                                 . == "Somewhat Disagree" ~ 3,
+                                                 . == "Somewhat Agree" ~ 4,
+                                                 . == "Agree" ~ 5,
+                                                 . == "Strongly Agree" ~ 6)))
+
+together <- rbind(initial2,inprogress2,engagement2)
+
+
+# Gain careless code and attention checks
+
+
+library(careless)
+
+
+together$careless_long <- longstring(together[1:20])
+together$missing <- rowSums(is.na(together[1:20])) 
+
+together <- together %>% 
+  mutate(careless_long = longstring(together[1:20]),
+         missing =  rowSums(is.na(together[1:20])),
+         different = case_when(careless_long >= 16 | missing == 20 ~ "Problem",
+                               TRUE~ "No Problem")) %>% 
+# Recode variable for reversing coding 
+  mutate(across(c("Item_3","Item_5"),~case_when(. == 1 ~ 6,
+                                             . == 2 ~ 5,
+                                             . == 3 ~ 4,
+                                             . == 4 ~ 3,
+                                             . == 5 ~ 2,
+                                             . == 6 ~ 1)))
+```
+
+
+```{r CFA, echo=FALSE, warning=FALSE, message=FALSE}
+
+options("scipen"=100, "digits"=2)  ## suppresses scientific notation
+
+library(lavaan)
+library(sem)
+library(semPlot)
+library(dplyr)
+ 
+
+CFAdata<-together[,2:37]
+
+
+CFAdata<-CFAdata%>%rename(
+  Item_1=`Iâ€™m able to concentrate on my work without distractions.`,
+  Item_2=`I have a hard time detaching mentally from my work.`,
+  Item_3=`Time passes quickly while Iâ€™m working.`,
+  Item_4=`I find it difficult to mentally disconnect from work.`,
+  Item_5=`I enjoy thinking about work even when Iâ€™m not at work.`,
+  Item_6=`Most days, I feel happiest when the workday is soon to be complete.`,
+  Item_7=`I am happiest when I am immersed in a project.`,
+  Item_8=`I love starting my workday.`,
+  Item_9=`I devote more time than is expected of me.`,
+  Item_10=`I have to be reminded to take breaks while Iâ€™m at work.`,
+  Item_11=`I never miss a work deadline.`,
+  Item_12=`I never allow distractions to interfere with my work.`,
+  Item_13=`I devote my full attention to my work tasks throughout the day.`,
+  Item_14=`Thinking about work saps my energy.`,
+  Item_15=`I would rather direct my focus toward a work task than a personal task.`,
+  Item_16=`Iâ€™m able to maintain good levels of energy throughout the workday.`,
+  Item_17=`I enjoy spending time completing my job tasks.`,
+  Item_18=`Most days I feel enthusiastic about starting my work day.`,
+  Item_19=`I feel motivated to go beyond what is asked of me.`,
+  Item_20=`This job drains my energy.`,
+  Item_21=`When work is slow I find ways to be productive.`,
+  Item_22=`I express enthusiasm for my job while at work.`,
+  Item_23=`I try my best to perform well at work.`,
+  Item_24=`If I notice my energy level is low, I take corrective steps to re-energize.`,
+  Item_25=`I plan my future with this company.`,
+  Item_26=`I believe this company cares about my career goals.`,
+  Item_27=`I often think about finding another job.`,
+  Item_28=`This organization challenges me to work at my full potential.`,
+  Item_29=`I am proud to be a member of this organization.`,
+  Item_30=`I feel supported by my supervisor when I fail at a task.`,
+  Item_31=`I feel proud of my accomplishments within this organization.`,
+  Item_32=`My job makes me feel like Iâ€™m part of something meaningful.`,
+  Item_33=`I make valued contributions to the organization.`,
+  Item_34=`I embrace challenging situations at work.`,
+  Item_35=`I speak positively about this organization to others.`,
+  Item_36=`This organization provides the resources necessary for me to successfully perform my job.`
+)
+
+
+Sub_Model<-'
+Absorption=~Item_1+Item_2+Item_3+Item_4+Item_5+Item_6+Item_7+Item_8+Item_9+Item_10+Item_11+Item_12
+Vigor=~Item_13+Item_14+Item_15+Item_16+Item_17+Item_18+Item_19+Item_20+Item_21+Item_22+Item_23+Item_24
+Dedication=~Item_25+Item_26+Item_27+Item_28+Item_29+Item_30+Item_31+Item_32+Item_33+Item_34+Item_35+Item_36
+'
+
+Fit1.1<-lavaan::cfa(Sub_Model, data = CFAdata)
+semPlot::semPaths(Fit1.1, "col", "std", "lisrel", "circle")
+fit1.1 <- as.data.frame(fitMeasures(Fit1.1))
+fit1.1$rounded <- round(fit1.1$`fitMeasures(Fit1.1)`, 2)
+## summary(Fit1.1, fit.measure=TRUE)
+
+
+Att_Model<-'
+Cognitive=~Item_1+Item_2+Item_3+Item_4+Item_13+Item_14+Item_15+Item_16+Item_25+Item_26+Item_27+Item_28
+Affective=~Item_5+Item_6+Item_7+Item_8+Item_17+Item_18+Item_19+Item_20+Item_29+Item_30+Item_31+Item_32
+Behavioral=~Item_9+Item_10+Item_11+Item_12+Item_21+Item_22+Item_23+Item_24+Item_33+Item_34+Item_35+Item_36
+'
+
+Fit1.2<-lavaan::cfa(Att_Model, data = CFAdata)
+semPlot::semPaths(Fit1.2,"col", "std", "lisrel", "circle")
+fit1.2 <- as.data.frame(fitMeasures(Fit1.2))
+fit1.2$rounded <- round(fit1.2$`fitMeasures(Fit1.2)`, 2)
+
+## CFA comparison
+
+# Substantive Scale
+CFA1 <-'
+Absorption=~Item_1+Item_2+Item_3+Item_4+Item_5+Item_6+Item_7+Item_8+Item_9+Item_10+Item_11+Item_12
+Vigor=~Item_13+Item_14+Item_15+Item_16+Item_17+Item_18+Item_19+Item_20+Item_21+Item_22+Item_23+Item_24
+Dedication=~Item_25+Item_26+Item_27+Item_28+Item_29+Item_30+Item_31+Item_32+Item_33+Item_34+Item_35+Item_36
+Engagement =~ Absorption + Vigor + Dedication
+'
+# fit the model
+fit1 <- lavaan::cfa(CFA1, data = CFAdata) # dont know is using missing = "ML" instead
+######################################### summary(fit1, fit.measures = TRUE, standardized = TRUE, rsq = TRUE)
+
+# into data frames
+fit1.H <- as.data.frame(fitMeasures(fit1))
+fit1.H$rounded <- round(fit1.H$`fitMeasures(fit1)`, 2)
+
+# Attitudinal scale
+CFA2 <- '
+Cognitive=~Item_1+Item_2+Item_3+Item_4+Item_13+Item_14+Item_15+Item_16+Item_25+Item_26+Item_27+Item_28
+Affective=~Item_5+Item_6+Item_7+Item_8+Item_17+Item_18+Item_19+Item_20+Item_29+Item_30+Item_31+Item_32
+Behavioral=~Item_9+Item_10+Item_11+Item_12+Item_21+Item_22+Item_23+Item_24+Item_33+Item_34+Item_35+Item_36
+Engagement =~ Cognitive + Affective + Behavioral
+'
+# Fit the model
+fit2 <- lavaan::cfa(CFA2, data = CFAdata)
+######################################### summary(fit2, fit.measures = TRUE, standardized = TRUE, rsq = TRUE)
+
+# into data frame
+fit2.A <- as.data.frame(fitMeasures(fit2))
+fit2.A$rounded <- round(fit2.A$`fitMeasures(fit2)`, 2)
+
+# Visuals 
+library(semPlot)
+
+# http://sachaepskamp.com/semPlot/examples?page_id=489
+
+semPaths(fit1,"std", edge.label.cex = 0.5, curvePivot = TRUE, rotation=2)
+
+semPaths(fit2,"std", edge.label.cex = 0.5, curvePivot = TRUE, rotation=4)
+
+```
 
 # Results
 
