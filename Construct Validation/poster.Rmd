@@ -37,7 +37,7 @@ main_findings:
 #  - '![](ChallPlot.svg){.main_pic}'
 #  - '![](HinderPlot.svg){.main_pic}'
 logoleft_name: '![](https://www.montclair.edu/university-communications/wp-content/uploads/sites/144//2020/10/hawk-logo-color.svg){.new-img-left}'
-#logoright_name: '![](Quill_White.png){.main-img-right}'
+logoright_name: '![](harver.png){.main-img-right}'
 main_width: 0.3	
 csl: "apa7.csl"
 body_textsize: "48px"
@@ -60,6 +60,43 @@ r_refs("r-references.bib")
 # Seed for random number generation
 set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
+```
+
+```{css, echo=FALSE}
+.main_pic {
+  border-radius: 50%;
+  width: 90%;
+  vertical-align: top;
+}
+
+.main-img-right {
+  width: 100%;
+}
+
+.new-img-right {
+  position: absolute;
+  bottom: 100px;
+  right: 150px;
+  width: 1500px;           /* Play with width and height specifications if image stretches*/
+  height: 800px;
+}
+
+.new-img-left {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  width: 1200px;           /* Play with width and height specifications if image stretches*/
+  height: 1100px;
+}
+
+.new-img-top {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  width: 1200px;           
+  height: 100px;
+}
+
 ```
 
 The roots of employee [sometimes aka work, e.g., @schaufeli_conceptualization_2010] engagement research likely started with theoretical expansions of forms of employee participation [see, for example, @ferris_added_1984] and job involvement [e.g., @elloy_examination_1991]. This exploration extended into broader considerations of attitudes and emotions [@staw_employee_1994] and were informed by further exploration of the dimensionality of constructs such as organizational commitment [@meyer_three-component_1991]. The 1990's saw focused development and refinement. @staw_employee_1994 investigated the  relationships between *positive emotions* and favorable work outcomes, and although they do not use the word, "engagement", their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct. 
