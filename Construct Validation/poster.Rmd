@@ -32,7 +32,8 @@ caption_textsize: "40pt"
 column_numbers: 3
 title_textsize: "105pt"         ## https://githubhelp.com/brentthorne/posterdown
 #main_picwidth: "55%"           ## https://github.com/brentthorne/posterdown/wiki/posterdown_betterland
-main_findings: 
+main_findings:
+  - "I am **testing** this **shit** out!"
   - '![](racoon.jpg){.main_pic}' # main_pic is used to center align 
 #  - '![](ChallPlot.svg){.main_pic}'
 #  - '![](HinderPlot.svg){.main_pic}'
@@ -56,7 +57,7 @@ library("papaja")
 r_refs("r-references.bib")
 ```
 
-```{r analysis-preferences}
+```{r analysis-preferences, echo = FALSE}
 # Seed for random number generation
 set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
@@ -97,8 +98,13 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
   height: 100px;
 }
 
+.main_font {
+  font-family: "Impact";
+}
+
 ```
 
+## Intro  <!-- added to test padding -->
 The roots of employee [sometimes aka work, e.g., @schaufeli_conceptualization_2010] engagement research likely started with theoretical expansions of forms of employee participation [see, for example, @ferris_added_1984] and job involvement [e.g., @elloy_examination_1991]. This exploration extended into broader considerations of attitudes and emotions [@staw_employee_1994] and were informed by further exploration of the dimensionality of constructs such as organizational commitment [@meyer_three-component_1991]. The 1990's saw focused development and refinement. @staw_employee_1994 investigated the  relationships between *positive emotions* and favorable work outcomes, and although they do not use the word, "engagement", their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct. 
 
 @kahn_psychological_1990 described engaged employees as being physically involved, cognitively vigilant, and emotionally connected. Although occasionally referred to as residing on the opposing pole to *burnout* [@maslach_early_2008], these two constructs are currently most commonly conceptualized as being distinct [@timms2012burnt; @kim_burnout_2009; @goering2017not; @schaufeli2008workaholism], although certainly not universally [@cole2012job; @taris2017burnout]. @goering2017not explore nomological networks, concluding that these two constructs have a moderate (negative) association, but also distinct nomological networks. @schaufeli2008workaholism investigated both internal and external association indicators, concluding that engagement and burnout (as well as *workaholism*) should be considered three distinct constructs. 
