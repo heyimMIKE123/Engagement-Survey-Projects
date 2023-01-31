@@ -33,7 +33,6 @@ column_numbers: 3
 title_textsize: "105pt"         ## https://githubhelp.com/brentthorne/posterdown
 #main_picwidth: "55%"           ## https://github.com/brentthorne/posterdown/wiki/posterdown_betterland
 main_findings:
-  - "I am **testing** this **shit** out!"
   - '![](racoon.jpg){.main_pic}' # main_pic is used to center align 
 #  - '![](ChallPlot.svg){.main_pic}'
 #  - '![](HinderPlot.svg){.main_pic}'
@@ -96,10 +95,6 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
   left: 100px;
   width: 1200px;           
   height: 100px;
-}
-
-.main_font {
-  font-family: "Impact";
 }
 
 ```

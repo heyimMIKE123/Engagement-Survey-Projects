@@ -1,0 +1,364 @@
+---
+title             : "Construct and Criterion-related validation of the Bifactor Engagement Scale"
+shorttitle        : "Bifactor Validation"
+
+author: 
+  - name          : "John Kulas,"
+    affiliation   : "1"
+    corresponding : yes    # Define only one 
+  - name          : "Mike DeFabiis,"
+    affiliation   : "3"
+  - name          : "Casey Osorio,"
+    affiliation   : "2"
+  - name          : "Morgan Russell"
+    affiliation   : "3"
+
+affiliation:
+  - id            : "1"
+    institution   : "eRg"
+  - id            : "2"
+    institution   : "Harver"
+  - id            : "3"
+    institution   : "Montclair State University"
+
+primary_colour: "#640d14"      ## https://coolors.co/250902-38040e-640d14-800e13-ad2831
+secondary_colour: "#ad2831"
+accent_colour: "#38040e"
+sectitle_bgcol: "#640d14"
+main_textsize: "269.666px" # Controls main-title (inside red rectangle) text size
+author_textsize: "2.3em"
+authorextra_textsize: "103.01px" # Controls author text size
+affiliation_textsize: "77.25px"
+reference_textsize: "40px"
+caption_textsize: "40pt"
+column_numbers: 3
+title_textsize: "125pt"         ## https://githubhelp.com/brentthorne/posterdown
+#main_picwidth: "55%"           ## https://github.com/brentthorne/posterdown/wiki/posterdown_betterland
+font_family: "Roboto"
+main_fontfamily: "Oswald"
+main_findings:
+  - "I am **testing** this **shit** out!"
+  - '![](racoon.jpg){.main_pic}' # main_pic is used to center align 
+#  - '![](ChallPlot.svg){.main_pic}'
+#  - '![](HinderPlot.svg){.main_pic}'
+logoleft_name: '![](https://www.montclair.edu/university-communications/wp-content/uploads/sites/144//2020/10/hawk-logo-color.svg){.new-img-left}'
+logoright_name: '![](harver.png){.main-img-right}'
+main_width: 0.3	
+csl: "apa7.csl"
+body_textsize: "63.66px"
+poster_height: "50in"
+poster_width: "70in"
+output: 
+    posterdown::posterdown_betterland:
+    self_contained: true
+knit: pagedown::chrome_print
+bibliography: ["engage.bib", "r-references.bib", "renata.bib", "siop.bib"]
+suppress-bibliography: true 
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+r_refs("r-references.bib")
+```
+
+```{r analysis-preferences, echo = FALSE}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
+```
+
+```{css, echo=FALSE}
+.main_pic {
+  border-radius: 50%;
+  width: 90%;
+  vertical-align: top;
+}
+
+.main-img-right {
+  width: 100%;
+}
+
+.new-img-right {
+  position: absolute;
+  bottom: 100px;
+  right: 150px;
+  width: 1500px;           /* Play with width and height specifications if image stretches*/
+  height: 800px;
+}
+
+.new-img-left {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  width: 1200px;           /* Play with width and height specifications if image stretches*/
+  height: 1100px;
+}
+
+.new-img-top {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  width: 1200px;           
+  height: 100px;
+}
+
+```
+
+## <h1 style="color:blue;">Intro</h1>  <!-- added to test padding -->
+The roots of employee [sometimes aka work, e.g., @schaufeli_conceptualization_2010] engagement research likely started with theoretical expansions of forms of employee participation [see, for example, @ferris_added_1984] and job involvement [e.g., @elloy_examination_1991]. This exploration extended into broader considerations of attitudes and emotions [@staw_employee_1994] and were informed by further exploration of the dimensionality of constructs such as organizational commitment [@meyer_three-component_1991]. The 1990's saw focused development and refinement. @staw_employee_1994 investigated the  relationships between *positive emotions* and favorable work outcomes, and although they do not use the word, "engagement", their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct. 
+
+@kahn_psychological_1990 described engaged employees as being physically involved, cognitively vigilant, and emotionally connected. Although occasionally referred to as residing on the opposing pole to *burnout* [@maslach_early_2008], these two constructs are currently most commonly conceptualized as being distinct [@timms2012burnt; @kim_burnout_2009; @goering2017not; @schaufeli2008workaholism], although certainly not universally [@cole2012job; @taris2017burnout]. @goering2017not explore nomological networks, concluding that these two constructs have a moderate (negative) association, but also distinct nomological networks. @schaufeli2008workaholism investigated both internal and external association indicators, concluding that engagement and burnout (as well as *workaholism*) should be considered three distinct constructs. 
+
+Burnout can be defined as a psychological syndrome characterized by exhaustion (low energy), cynicism (low involvement), and inefficacy (low efficacy), which is experienced in response to chronic job stressors [e.g., @leiter_areas_2004; @maslach1997causes]. Alternatively, engagement refers to an individual worker’s involvement and satisfaction as well as enthusiasm for work [@harter_business-unit-level_2002]. 
+
+[^burn]: Burnout is a psychological syndrome consisting of exhaustion, cynicism, and inefficacy [see, for example, @leiter_areas_2004].
+
+## Engagement as an attitude
+
+@staw_employee_1994 investigated the relationships between *positive emotions* and favorable work outcomes, and, although they do not explicitly mention the word "engagement", their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct. Clear in this history is the conceptualization of engagement as a work *attitude*. @kahn_psychological_1990 defines engagement as "the harnessing of organization members' selves to their work roles; in engagement, people employ and express themselves physically, cognitively, and emotionally during role performances" (p. 692). This definition of engagement as an attitude was also heavily influenced by @rosenberg_cognitive_1960's tripartite model of attitudes, which was popular in the 1990's. According to @rosenberg_cognitive_1960, attitudes are a molar construct with cognitive, affective, and behavioral dimensions. Although falling out of favor in the decades following its construction, interest in the tripartite model was revived by @kaiser_campbell_2019. The attitudinal perspectives of engagement eventually blended into perspectives that focused on exploring the engagement construct through the lens of other conceptually similar constructs [see, for example, @baumruk2004missing and @shaw2005engagement, who framed engagement in terms of one's cognitive and affective *commitment* to one's organization]. 
+
+## Existing Measures of Engagement
+
+Our review of existing instruments non-exhaustively presents measures that are commonly viewed as *either* predominantly academic or applied, although please note that this is an imposed subjective distinction.  
+
+### Research measures (e.g., freely available).
+
+@schaufeli_uwesutrecht_2003 characterize engagement as a "positive, fulfilling, work-related state of mind that is characterized by vigor, dedication, and absorption" (p. 74). Via their conceptualization, vigor is described as high levels of energy and mental resilience while working. Dedication refers to being strongly involved in one’s work and experiencing a sense of significance, enthusiasm, inspiration, pride, and challenge. Absorption is characterized by being fully concentrated and happily engrossed in one’s work, whereby time passes quickly and one has difficulties with detaching oneself from work [@schaufeli_measurement_2002]. This absorption element has been noted as being influenced in conceptual specification by [@csikszentmihalyi1990flow]'s concept of "flow". @schaufeli_uwesutrecht_2003 use this tripartite framework to measure engagement via the Utrecht Work Engagement Scale (UWES).
+
+The Intellectual, Social, Affective (ISA) Engagement Scale [@soane2012development] is another option for researchers. This 9-item measure draws inspiration from @kahn_psychological_1990's theory of engagement and can aggregate to three 3-item scales (Intellectual Engagement, Social Engagement, and Affective Engagement) or one 9-item summary aggregate (Overall Engagement). Intellectual engagement refers to the degree of intellectual absorption one has in their work and the degree they think about improving work [@soane2012development]. Social engagement primarily concerns social connections in a workplace context as well as having shared values with colleagues [@soane2012development]. According to @soane2012development, affective engagement refers to a positive emotional state relating to one's work role.  This measure has been explicitly validated at both the subscale and overall aggregate level  [@soane2012development]. 
+
+Another example of an engagement measure comes from @saks2006antecedents, who splits engagement into two distinct entities: job engagement and organization engagement. This dichotomy largely results from @kahn_psychological_1990’s theory that an individual’s role is central to engagement. @saks2006antecedents further posits that employees typically have more than one role, with the most important being their work role and their role as a member of an organization. The former role is specific to the employee’s job, while the latter is more broad and refers to the organization as a whole. Antecedents and consequences of this measure have been tested, with findings suggesting that perceived organizational support precedes both job and organizational engagement and that job satisfaction, organizational commitment, intent to quit, and organizational citizenship behaviors (OCBs) are consequences [@saks2006antecedents]. Recently the broader theoretical model underpinning the measure was revisited and revised to include several new antecedents (e.g. leadership, job demands, dispositional characteristics, etc.) leading to engagement as well as consequences (e.g. burnout, stress, health and well-being, etc.) resulting from high or low levels of engagement [@saks2019antecedents].
+
+### Commercial measures (e.g., typically fee-based).
+
+Gallup’s Q12 is a popular commercial measure for engagement. The Q12 is a 12-item measure that originated from a push to use “soft” metrics as opposed to “hard” ones for future action planning [@coffman_hard_1999]. In this interpretation “soft” metrics tend to be metrics that are more abstract and difficult to measure (e.g. engagement, brand loyalty), while “hard” metrics are easily-measured and typically deal with concrete numbers (e.g. turnover, profitability). In the original creation of the survey, each of the 12 items were found to relate to important organizational outcomes including productivity, profitability, turnover, and customer satisfaction [@coffman_hard_1999]. A recent meta-analysis of 456 studies revealed that the Q12 also relates to additional performance measures such as absenteeism, wellbeing, and organizational citizenship [@harter_relationship_2013]. While this engagement measure is one of the most popular, some scholars disagree with its conceptualization as “engagement”; some feel that this measure is better described as (or no different than) a measure of overall satisfaction, as the two concepts are highly correlated, *r* = .91 [@sirota2013enthusiastic]. 
+
+Gallup is not the only organization with an engagement measure; many consulting companies have commercially available surveys, models, and processes for measuring engagement. One such example is Aon Hewitt, a consulting firm that annually measures engagement for over 1000 companies worldwide. Their measurements are centered around an engagement model that focuses on three main factors: say, stay, and strive. Essentially, the model states that employees demonstrate engagement through saying positive statements about their organization, staying at their organization for a long time, and striving to put in their best effort and help the organization succeed [@hewitt2017]. In their most recent analysis. @hewitt2017 recently noted that global levels of engagement may be declining as in this report they had retracted since the previous year.
+
+BlessingWhite, another consulting firm, provides a different model for engagement. BlessingWhite's model, the X Model, measures engagement through the lens of satisfaction and contribution. Essentially, BlessingWhite believes that cooperation between the organization and individual employees is necessary, and that maximum engagement can only be reached when an employee reaches maximum levels of satisfaction while also outputting maximum contribution towards the organization [@blessingwhite2018]. Their model holds each level in the organization accountable for employee levels of engagement. From their view, executive leaders must shape the organization's culture, and managers must be able to effectively communicate with and motivate their subordinates [@blessingwhite2018]. 
+
+The last commercial example discussed here[^vendors] is the Towers Perrin-ISR, which holds the philosophy that employee engagement can only be worked on indirectly; engagement can only be attained through effective leadership, business strategy, and organizational culture [@towersperrin2009]. Rather than focus on building an involved model for engagement, Towers Perrin-ISR instead focuses on leadership development and creating a healthy organizational culture. Through fulfilling these antecedents of engagement, @towersperrin2009 argues that employees will have a vivid understanding of organizational goals. In addition, employees will become committed to the organization and motivated to contribute. 
+
+[^vendors]: This non-exhaustive list is not meant to be comprehensive. We intended to present some popular measures (albeit from larger vendors) in an attempt to capture the variety of rationales and purposes behind the creation and administration of these measures. 
+
+## Our Measure of Engagement
+
+Our theoretical conceptualization of work engagement is primarily informed by @schaufeli_uwesutrecht_2003 and @rosenberg_cognitive_1960. Through the lens of our framework, engagement is a mental state wherein employees: a) feel energized (*Vigor*), b) are enthusiastic about the content of their work and the things they do (*Dedication*), and c) are so immersed in their work activities that time seems compressed (*Absorption*). We further decompose each of these facets into three attitudinal components: d) feeling (e.g., affect), e) thought (e.g., cognition), and f) action (e.g., behavior). 
+
+@schaufeli2013engagement stated a preference for the label "work engagement" rather than referring to the construct as "employee engagement", arguing that the "employee" referrent perhaps invites a blurring of definitions with other conceptually similar constructs such as commitment or organizational citizenship. Regarding this distinction between "the job" and "the organization", our measure scatters indicators of both throughout, although we did not intentionally balance the measure with regard to the referent, as do others, such as @saks2006antecedents.  
+
+The current study's focus is on exploring external variable associations with our measure, focusing on indicies of construct and criterion-related validity via retention of two alternative measures of engagement (the Saks scale and the UWES), two measures of theoretically orthogonal constructs (activity regarding household chores and tending to pets), and one measure of a theoretically relevant outcome (intentions to quit). 
+
+# Methods
+
+We purchased Qualtrics panels of working adults and administered a standard Qualtrics survey via online delivery, however, as noted below, very cautious screening for indicators of careless responding resulted in our exclusion of many of these Qualtrics respondents from our presented analyses. The total survey was comprised of 74 items across 6 constructs of interest as well as several demographic items that are not the focus of this current presentation.
+
+## Participants
+
+```{r getdata}
+## Cleaning Qualtrics construct validation data - 10/14/21
+
+newdata.att <- read.csv("..\\Qualtrics\\Engagement+(Attitudinal)_October+12,+2021_08.02.csv"); names <- newdata.att[1,c(1:92)] #[47:66]
+newdata.sub <- read.csv("..\\Qualtrics\\Engagement+(Substantive)_October+12,+2021_08.01.csv")#[47:66]
+
+newdata.att <- newdata.att[-c(1:2),]                      ## peskies
+newdata.sub <- newdata.sub[-c(1:2),]
+
+write.csv(newdata.att, "changingnumerica.csv")
+newdata.att <- read.csv("changingnumerica.csv")            ## that worked!! 
+write.csv(newdata.sub, "changingnumerics.csv")
+newdata.sub <- read.csv("changingnumerics.csv") 
+
+library(careless)
+newdata.att$careless_long <- longstring(newdata.att[20:83])
+newdata.sub$careless_long <- longstring(newdata.sub[20:83])
+newdata.att$irv <- irv(newdata.att[48:51])
+newdata.sub$irv <- irv(newdata.sub[55:58])
+
+newdata.att$irv2 <- irv(newdata.att[25:28])   ## another reverse-score
+newdata.sub$irv2 <- irv(newdata.sub[25:28])
+
+## newdata.att$missing <- rowSums(is.na(newdata.att[20:83])) 
+## newdata.sub$missing <- rowSums(is.na(newdata.sub[20:83])) 
+#descr::freq(newdata.att$irv2)
+#descr::freq(newdata.sub$irv2)
+
+## need filter for non-differentiating reverse-score people
+
+newdata.att$flag <- "use"; newdata.sub$flag <- "use"         ## need to do because subset on lines 44/45 can't != "Flagged"
+                                                             ## upped time to 300 seconds as data still looked bad with 200
+
+newdata.att$flag[newdata.att$careless_long > 12 | newdata.att$Duration..in.seconds. < 300 | newdata.att$irv == 0 | newdata.att$irv2 == 0]  <- "Flagged"
+newdata.sub$flag[newdata.sub$careless_long > 12 | newdata.sub$Duration..in.seconds. < 300 | newdata.sub$irv == 0 | newdata.sub$irv2 == 0]  <- "Flagged"
+
+write.csv(newdata.att, "attitudeset.csv")
+write.csv(newdata.sub, "substantiveset.csv")
+
+newdata.att$flag <- as.factor(newdata.att$flag)
+newdata.sub$flag <- as.factor(newdata.sub$flag)
+
+#descr::freq(newdata.att$flag)
+#descr::freq(newdata.sub$flag)
+
+useatt <- newdata.att[ which(newdata.att$flag == "use"), c(1:92)]
+usesub <- newdata.sub[ which(newdata.sub$flag == "use"), c(1:92)]
+
+useseb.sorted <- usesub[,c(1:47, 48:50,55:56,61:63,51:52,57:58,64:65,53:54,59:60,66:67,68:92)]
+names(useseb.sorted) <- names(useatt)           ##### focal engagement is 48:67
+
+qualtrics <- as.data.frame(rbind(useseb.sorted,useatt))
+
+########################################### Engagement
+
+qualtrics$C14 <- 7-qualtrics$C14
+
+cognition.alpha  <- psych::alpha(qualtrics[c(48:55)])
+affect.alpha     <- psych::alpha(qualtrics[c(56:61)])
+behavior.alpha   <- psych::alpha(qualtrics[c(62:67)])
+
+absorption.alpha <- psych::alpha(qualtrics[c(48:50,56:57,62:63)])
+vigor.alpha      <- psych::alpha(qualtrics[c(51:52,58:59,64:65)])
+dedication.alpha <- psych::alpha(qualtrics[c(53:55,60:61,66:67)])
+
+qualtrics$cognition <- rowMeans(qualtrics[c(48:55)], na.rm=TRUE)
+qualtrics$affect    <- rowMeans(qualtrics[c(56:61)], na.rm=TRUE)
+qualtrics$behavior  <- rowMeans(qualtrics[c(62:67)], na.rm=TRUE)
+
+qualtrics$absorption <- rowMeans(qualtrics[c(48:50,56:57,62:63)], na.rm=TRUE)
+qualtrics$vigor      <- rowMeans(qualtrics[c(51:52,58:59,64:65)], na.rm=TRUE)
+qualtrics$dedication <- rowMeans(qualtrics[c(53:55,60:61,66:67)], na.rm=TRUE)
+
+# cor(qualtrics[93:98], use="complete.obs")
+
+########################################### Intent to quit
+
+intent.quit.alpha <- psych::alpha(qualtrics[c(80:83)])
+qualtrics$intentquit <- rowMeans(qualtrics[c(80:83)], na.rm=TRUE)
+
+########################################### Pets
+
+pets <- psych::alpha(qualtrics[c(75:79)])
+qualtrics$pets <- rowMeans(qualtrics[c(75:79)], na.rm=TRUE)
+
+########################################### Household Chores
+
+household <- psych::alpha(qualtrics[c(68:74)])
+qualtrics$household <- rowMeans(qualtrics[c(68:74)], na.rm=TRUE)
+
+########################################### Saks
+
+saks.job <- psych::alpha(qualtrics[c(20:24)])
+
+qualtrics$Q8 <- 6 - qualtrics$Q8
+saks.work <- psych::alpha(qualtrics[c(25:30)])
+
+qualtrics$saks.job <- rowMeans(qualtrics[c(20:24)], na.rm=TRUE)
+qualtrics$saks.work <- rowMeans(qualtrics[c(25:30)], na.rm=TRUE)
+
+########################################### UWES
+
+UWES.vigor      <- psych::alpha(qualtrics[c(31,34,38,42,45,47)])
+UWES.dedication <- psych::alpha(qualtrics[c(32,35,37,40,43)])
+UWES.absorption <- psych::alpha(qualtrics[c(33,36,39,41,44,46)])
+
+
+qualtrics$UWES.vigor      <- rowMeans(qualtrics[c(31,34,38,42,45,47)], na.rm=TRUE)
+qualtrics$UWES.dedication <- rowMeans(qualtrics[c(32,35,37,40,43)], na.rm=TRUE)
+qualtrics$UWES.absorption <- rowMeans(qualtrics[c(33,36,39,41,44,46)], na.rm=TRUE)
+
+```
+
+Of the `r (nrow(newdata.att)+nrow(newdata.sub))` total Qualtrics panel respondents, roughly half were excluded based on conservative indices of carelessness across the larger survey. These screens included respondents with more than 50% missing responses, those who provided consistently non-differentiating responses across more than 12 consecutive items, and those who completed the survey in less than 300 seconds. These conservative screens resulted in a retained validation sample of `r nrow(qualtrics)`. All analyses were derived from this *n* of `r nrow(qualtrics)`.
+
+## Data analysis
+
+We used `r cite_r("r-references.bib")` for all our analyses. As a straightforward validation study, our analyses consisted predominantly of Pearsons product-moment correlations. 
+
+# Results
+
+```{r itemstable}
+
+items <- read.csv("modification indices KEY - Hopefully Final.csv")  ## without 4
+
+apa_table(
+  items
+  , caption = "Suggested final scale definitions."
+  , escape = TRUE
+  , landscape = TRUE
+  , note = "The recommended response scale is 'Strongly Disagree', 'Disagree', 'Somewhat Disagree', 'Somewhat Agree', 'Agree', and 'Strongly Agree'"
+)
+
+```
+
+The items comprising the focal measure along with their scale associations and recommended administered response scale are located in Table \@ref(tab:itemstable). The current sample internal consistency estimates for our three substantive subscales were: 1) Absorption ($\alpha$ = `r round(absorption.alpha$total$raw_alpha,2)`), 2) Dedication ($\alpha$ = `r round(dedication.alpha$total$raw_alpha,2)`), and 3) Vigor ($\alpha$ = `r round(vigor.alpha$total$raw_alpha,2)`), and estimates for our three attitudinal subscales were: 1) Affect/"Feel" ($\alpha$ = `r round(affect.alpha$total$raw_alpha,2)`), 2) Behavior/"Do" ($\alpha$ = `r round(behavior.alpha$total$raw_alpha,2)`), and 3) Cognition/"Think" ($\alpha$ = `r round(cognition.alpha$total$raw_alpha,2)`).
+
+### Construct validation
+
+For convergent validity indices, we administered the 17-item Utrecht Work Engagement Scale [@schaufeli_measurement_2002; @schaufeli_defining_2010] as well as @saks2006antecedents's 12-item measure which aggregates to two scales: job and organizational engagement [see also @saks2019antecedents].[^gsux] 
+An example item from the @saks2006antecedents (job) scale is, "Sometimes I am so into my job that I lose track of time". An example item from the @schaufeli_measurement_2002 scale is, "At my work, I feel bursting with energy". The @schaufeli_measurement_2002 measure follows the same structure as our focal measure, so we aggregated to subscales of Absorption ($\alpha$ = `r round(UWES.absorption$total$raw_alpha,2)`), Dedication ($\alpha$ = `r round(UWES.dedication$total$raw_alpha,2)`), and Vigor ($\alpha$ = `r round(UWES.vigor$total$raw_alpha,2)`). Internal consistency estimates for the Saks scale were $\alpha$ = `r round(saks.job$total$raw_alpha,2)` (job engagement) and $\alpha$ = `r round(saks.work$total$raw_alpha,2)` (organizational engagement). Also note here that the English version of the UWES may actually be a translation (it is difficult to say for sure, as the test manual describes an original Dutch sample although the manual is written in English). Further suggesting that the English version may be a translation, some items have odd grammar (for example, "I am proud on *[sic]* the work that I do"). 
+
+[^gsux]: We had also intended to use the Gallup "Q12" for construct validation [@thackray_gallup_2005; @harter_relationship_2013], but Gallup was not willing to share item- or person-level data.
+
+Two short scales from the Oregon Avocational Interest Scales [@goldberg2010personality] were retained for discriminant validitation - [the 5-item "Pets" and 5-item "Household Activities" scales](https://ipip.ori.org/newORAISKey.htm#Food-Related). These items asked how frequently respondents engaged in different activities. An example Household Activity item is, "Cleaned the house" (current sample $\alpha$ = `r round(household$total$raw_alpha,2)`) and an example Pets item is "Fed a pet animal" (current sample $\alpha$ = `r round(pets$total$raw_alpha,2)`).
+
+### Criterion-related validation
+
+We administered a short 4-item intent-to-quit scale developed by @kelloway1999source. An example item is, "I don't plan to be in this organization much longer" (current sample $\alpha$ = `r round(intent.quit.alpha$total$raw_alpha,2)`). 
+
+```{r corrtable2}
+# cor(qualtrics[93:106], use="complete.obs")
+
+r <- corx::corx(qualtrics[,c(94,95,93,98,96,97,102,103,105,106,104,99,100,101)],                     ## can extend if needed
+                triangle = "lower",
+                stars = c(0.05, 0.01, 0.001),
+                describe = c(`$M$` = mean, `$SD$` = sd))
+
+papaja::apa_table(r$apa, # apa contains the data.frame needed for apa_table
+                  caption = "Unit-weighted scale intercorrelations (all variables).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = TRUE,
+                  escape = F)
+
+```
+
+```{r corrtable3}
+# cor(qualtrics[93:106], use="complete.obs")
+
+new <- qualtrics[,c(94,95,93,98,96,97,102,103,105,106,104,99,100,101)]
+
+new$focal <- rowMeans(new[1:3], na.rm=TRUE)
+new$Saks <- rowMeans(new[7:8], na.rm=TRUE)
+new$UWES <- rowMeans(new[9:11], na.rm=TRUE)
+
+
+r <- corx::corx(new[,c(15:17, 12:14)],                     ## can extend if needed
+                triangle = "lower",
+                stars = c(0.05, 0.01, 0.001),
+                describe = c(`$M$` = mean, `$SD$` = sd))
+
+papaja::apa_table(r$apa, # apa contains the data.frame needed for apa_table
+                  caption = "Scale intercorrelations (Overall engagement aggregates).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = TRUE,
+                  escape = F)
+
+```
+
+Table \@ref(tab:corrtable2) presents associations among the focal measure subscales, the convergent construct validity subscales, the intent to quit criterion, and the two disciminant validity scales. Here we note higher-than-desired interscale correlations for our focal measure (*r*'s range from .68 to .82 for the attitudinal scales and range from .73 to .89 for our substantive scales). The associations between the two scales are inflated due to the sharing of items (for example, the "affect" and "dedication" scales share 2 items in common). Convergent indices are generally higher for our subscales with the Saks "work" scale, which stresses the job referrent. This may be due to the majority of our items (see Table \@ref(tab:itemstable)) also reflecting the job as opposed to the organization. The pattern of convergence with the UWES subscales largely emerged as expected: dedication (*r* = .74), absorption (*r* = .68), and vigor (*r* = .74) exhibited elevated inter-scale correlations, although we also note moderately high values throughout (ranging from a low of *r* = .63 to a high of *r* = .77). The focal scales of Cognition and Dedication did exhibit the highest magnitude associations with the intent to quit criterion of all administered variables, and the discriminant measures revealed generally small associations, although *r*'s above .15 are potentially of concern.
+
+The results of internal structural analyses via bifactor analysis (as well as Table \@ref(tab:corrtable2) correlations) do suggest that overall scale aggregation may be supported, and because this is likely the desired use for some, we also present overall scale associations in Table \@ref(tab:corrtable3). Here we see elevated convergent indices among all three engagement measures (ranging from *r* = .69 to *r* = .81). The focal measure retains superiority with regard to intent to quit (*r* = -.39 vs. *r*'s = -.29; Fisher's *z* = 3.78, *p* < .05), however, this association is muted with regard to the superior Dedication scale association (*r* = -.49) found in Table \@ref(tab:corrtable2). Additionally, one of the discriminant measures (household activities), again exhibited a non-trivial association with the focal measure aggregate (as well as the UWES). Collectively the results suggest a high level of convergent validity, a fair degree of discriminant validity, and potentially superior predictive validity (focused on the intent to quit scale).
+
+# Discussion
+
+Our primary aspiration for developing this measure was that it would be a public domain instrument that would draw equal appeal from both practitioners and academics. These preliminary investigations suggest that it is scaleable to two aggregations which we have been referring to as: 1) research (DAC), and 2) actionable (ABC). Our (as-of-yet untested) assumption is that practitioners may be more interested in feedback regarding how their employees *think*, *feel*, and *behave* with regard to engagement. Academics, on the other hand, may be more interested in possible differentiation between levels of dedication, absorption, and vigor. Having one assessment that may aggregate to either framework not only addresses the demand of constituent users, but it also facilitates aggregation across samplings for broader purposes such as norms development, validation, and metaanalysis.
+
+The convergent indices provide preliminary evidence that the three engagement measures are measuring similar but not redundant content. The criterion-related indices suggest that the focal variable may have superior prediction, although more validation needs to occur, both with turnover intentions as well as actual turnover behavior. The disciminant validity indices did exhibit magnitudes slightly higher than anticipated, however, upon close inspection, the largest coefficients (*r*'s of .15 and .17) emerged across the focal "behavior" and "dedication" scales. In retrospect, our sample respondents who engaged in more engagement behavior and exhibited higher levels of dedication could very well be expected to also extend those proclivities beyond work - perhaps including household and pet-care activities. 
+
+Although not explored here, there is also further predictive power potentially located within our intentionally complex instrument. It is possible that combined scale focus (for example, "Cognitively Dedicated" - shared items across the cognitive and dedication scales) exhibits even more predictive power for targeted outcomes of interest. Future investigations may wish to additionally probe for associations at this "cell" level. 
+
+\newpage
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::
