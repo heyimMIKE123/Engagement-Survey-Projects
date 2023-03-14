@@ -29,17 +29,20 @@ caption_textsize: "40pt"
 column_numbers: 3
 title_textsize: "105pt"         ## https://githubhelp.com/brentthorne/posterdown
 #main_picwidth: "55%"           ## https://github.com/brentthorne/posterdown/wiki/posterdown_betterland
+main_fontfamily: "Cormorant Upright"
+main_textcol: 
+main_textsize: 
 main_findings: 
-  - '![](bigpic3.svg){.main_pic}' # main_pic is used to center align 
-  - '![](racoon.jpg)' 
+  - "I am **testing** this out"
+  - '![](bigpic3.svg){.main_pic2}' # main_pic is used to center align 
 main_picwidth: 100% # controls size of corrplot pic
 logoleft_name: '![](https://www.montclair.edu/university-communications/wp-content/uploads/sites/144//2020/10/hawk-logo-color.svg){.new-img-left}'
-logoright_name: '![](harver.png){.main-img-right}'
-main_width: 0.3	
+logoright_name: '![](racoon.jpg){.main-img-right}'
+main_width: 0.35	
 csl: "apa7.csl"
 body_textsize: "48px"
-poster_height: "50in"
-poster_width: "70in"
+poster_height: "36in"
+poster_width: "48in"
 output: 
     posterdown::posterdown_betterland:
     self_contained: true
@@ -61,11 +64,17 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
 
 ```
 
-```{css format, echo=FALSE, eval=FALSE}
+```{css format, echo=FALSE}
 
-.main_pic {
-  border-radius: 50%;
-  width: 90%;
+.fancy{
+  font-family: 'Cormorant Upright', serif;
+  font-weight: 700;
+}
+.main_pic2 {
+  border-radius: 20%;
+  height: 900px;
+  position: relative;
+  left: -60px;
   vertical-align: top;
 }
 
@@ -98,7 +107,7 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
 }
 
 ```
-
+## CHANGE THIS TO A TITLE
 The roots of employee [sometimes aka work, e.g., @schaufeli_conceptualization_2010] engagement research likely started with theoretical expansions of forms of employee participation [see, for example, @ferris_added_1984] and job involvement [e.g., @elloy_examination_1991]. This exploration extended into broader considerations of attitudes and emotions [@staw_employee_1994] and were informed by further exploration of the dimensionality of constructs such as organizational commitment [@meyer_three-component_1991]. The 1990's saw focused development and refinement. @staw_employee_1994 investigated the  relationships between *positive emotions* and favorable work outcomes, and although they do not use the word, "engagement", their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct. 
 
 ## Our Measure of Engagement
