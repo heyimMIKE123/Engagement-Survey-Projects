@@ -3,27 +3,27 @@ title             : "Construct and Criterion-related validation of the Bifactor 
 shorttitle        : "Bifactor Validation"
 author: 
   - name          : "John Kulas"
-    affiliation   : "1"
+    affil : "1"
     corresponding : yes    # Define only one 
   - name          : "Mike DeFabiis"
-    affiliation   : "3"
+    affil : "2"
   - name          : "Casey Osorio"
-    affiliation   : "2"
+    affil : "3"
   - name          : "Morgan Russell"
-    affiliation   : "3"
+    affil : "2"
 affiliation:
-  - id            : "1"
-    institution   : "eRg"
-  - id            : "2"
-    institution   : "Harver"
-  - id            : "3"
-    institution   : "Montclair State University"
+  - num            : "1"
+    address   : e`r fontawesome::fa("r-project")`g
+  - num            : "3"
+    address   : "Harver"
+  - num            : "2"
+    address   : "Montclair State University"
 primary_colour: "#640d14"      ## https://coolors.co/250902-38040e-640d14-800e13-ad2831
 secondary_colour: "#ad2831"
 accent_colour: "#38040e"
 sectitle_bgcol: "#640d14"
 authorextra_textsize: "70px"
-affiliation_textsize: "50px"
+affiliation_textsize: "60px"
 reference_textsize: "40px"
 caption_textsize: "40pt"
 column_numbers: 3
@@ -33,11 +33,11 @@ main_fontfamily: "Cormorant Upright"
 main_textcol: 
 main_textsize: 
 main_findings: 
-  - "I am **testing** this out"
   - '![](bigpic3.svg){.main_pic2}' # main_pic is used to center align 
+  - '![](harver.png){.main_pic3}' # main_pic is used to center align 
 main_picwidth: 100% # controls size of corrplot pic
 logoleft_name: '![](https://www.montclair.edu/university-communications/wp-content/uploads/sites/144//2020/10/hawk-logo-color.svg){.new-img-left}'
-logoright_name: '![](racoon.jpg){.main-img-right}'
+logoright_name: '![](erg3.svg){.new-img-right}'
 main_width: 0.35	
 csl: "apa7.csl"
 body_textsize: "48px"
@@ -78,22 +78,26 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
   vertical-align: top;
 }
 
-.main-img-right {
-  width: 100%;
+.main_pic3 {
+  border-radius: 20%;
+  height: 900px;
+  position: absolute;
+  left: 200px;
+  vertical-align: top;
 }
 
 .new-img-right {
   position: absolute;
-  bottom: 100px;
-  right: 150px;
-  width: 1500px;           /* Play with width and height specifications if image stretches*/
-  height: 800px;
+  top: 5px;
+  left: 50px;
+  width: 600px;           /* Play with width and height specifications if image stretches*/
+  height: 600px;
 }
 
 .new-img-left {
   position: absolute;
   bottom: 100px;
-  left: 100px;
+  left: -100px;
   width: 1200px;           /* Play with width and height specifications if image stretches*/
   height: 1100px;
 }
@@ -107,13 +111,12 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
 }
 
 ```
-## CHANGE THIS TO A TITLE
-The roots of employee [sometimes aka work, e.g., @schaufeli_conceptualization_2010] engagement research likely started with theoretical expansions of forms of employee participation [see, for example, @ferris_added_1984] and job involvement [e.g., @elloy_examination_1991]. This exploration extended into broader considerations of attitudes and emotions [@staw_employee_1994] and were informed by further exploration of the dimensionality of constructs such as organizational commitment [@meyer_three-component_1991]. The 1990's saw focused development and refinement. @staw_employee_1994 investigated the  relationships between *positive emotions* and favorable work outcomes, and although they do not use the word, "engagement", their distinction between felt and expressed emotion likely held influence upon the burgeoning interest in the engagement construct. 
 
 ## Our Measure of Engagement
 
 Our theoretical conceptualization of work engagement is primarily informed by @schaufeli_uwesutrecht_2003 and @rosenberg_cognitive_1960. Through the lens of our framework, engagement is a mental state wherein employees: a) feel energized (*Vigor*), b) are enthusiastic about the content of their work and the things they do (*Dedication*), and c) are so immersed in their work activities that time seems compressed (*Absorption*). We further decompose each of these facets into three attitudinal components: d) feeling (e.g., affect), e) thought (e.g., cognition), and f) action (e.g., behavior). 
 
+The current study's focus is on exploring external variable associations with our measure, focusing on indicies of construct and criterion-related validity via retention of two alternative measures of engagement (the Saks scale and the UWES), two measures of theoretically orthogonal constructs (activity regarding household chores and tending to pets), and one measure of a theoretically relevant outcome (intentions to quit).
 
 ## Participants
 
@@ -232,13 +235,9 @@ qualtrics$UWES.absorption <- rowMeans(qualtrics[c(33,36,39,41,44,46)], na.rm=TRU
 
 Of the `r (nrow(newdata.att)+nrow(newdata.sub))` total Qualtrics panel respondents, roughly half were excluded based on conservative indices of carelessness across the larger survey. These screens included respondents with more than 50% missing responses, those who provided consistently non-differentiating responses across more than 12 consecutive items, and those who completed the survey in less than 300 seconds. These conservative screens resulted in a retained validation sample of `r nrow(qualtrics)`. All analyses were derived from this *n* of `r nrow(qualtrics)`.
 
-## Data analysis
-
-We used `r cite_r("r-references.bib")` for all our analyses. As a straightforward validation study, our analyses consisted predominantly of Pearsons product-moment correlations. 
-
 # Results
 
-```{r itemstable}
+```{r itemstable, eval=FALSE}
 
 items <- read.csv("modification indices KEY - Hopefully Final.csv")  ## without 4
 
@@ -252,22 +251,23 @@ apa_table(
 
 ```
 
-The items comprising the focal measure along with their scale associations and recommended administered response scale are located in Table \@ref(tab:itemstable). The current sample internal consistency estimates for our three substantive subscales were: 1) Absorption ($\alpha$ = `r round(absorption.alpha$total$raw_alpha,2)`), 2) Dedication ($\alpha$ = `r round(dedication.alpha$total$raw_alpha,2)`), and 3) Vigor ($\alpha$ = `r round(vigor.alpha$total$raw_alpha,2)`), and estimates for our three attitudinal subscales were: 1) Affect/"Feel" ($\alpha$ = `r round(affect.alpha$total$raw_alpha,2)`), 2) Behavior/"Do" ($\alpha$ = `r round(behavior.alpha$total$raw_alpha,2)`), and 3) Cognition/"Think" ($\alpha$ = `r round(cognition.alpha$total$raw_alpha,2)`).
+The current sample internal consistency estimates for our three substantive subscales were: 1) Absorption ($\alpha$ = `r round(absorption.alpha$total$raw_alpha,2)`), 2) Dedication ($\alpha$ = `r round(dedication.alpha$total$raw_alpha,2)`), and 3) Vigor ($\alpha$ = `r round(vigor.alpha$total$raw_alpha,2)`), and estimates for our three attitudinal subscales were: 1) Affect/"Feel" ($\alpha$ = `r round(affect.alpha$total$raw_alpha,2)`), 2) Behavior/"Do" ($\alpha$ = `r round(behavior.alpha$total$raw_alpha,2)`), and 3) Cognition/"Think" ($\alpha$ = `r round(cognition.alpha$total$raw_alpha,2)`).
 
 ### Construct validation
 
 For convergent validity indices, we administered the 17-item Utrecht Work Engagement Scale [@schaufeli_measurement_2002; @schaufeli_defining_2010] as well as @saks2006antecedents's 12-item measure which aggregates to two scales: job and organizational engagement [see also @saks2019antecedents].[^gsux] 
-An example item from the @saks2006antecedents (job) scale is, "Sometimes I am so into my job that I lose track of time". An example item from the @schaufeli_measurement_2002 scale is, "At my work, I feel bursting with energy". The @schaufeli_measurement_2002 measure follows the same structure as our focal measure, so we aggregated to subscales of Absorption ($\alpha$ = `r round(UWES.absorption$total$raw_alpha,2)`), Dedication ($\alpha$ = `r round(UWES.dedication$total$raw_alpha,2)`), and Vigor ($\alpha$ = `r round(UWES.vigor$total$raw_alpha,2)`). Internal consistency estimates for the Saks scale were $\alpha$ = `r round(saks.job$total$raw_alpha,2)` (job engagement) and $\alpha$ = `r round(saks.work$total$raw_alpha,2)` (organizational engagement). Also note here that the English version of the UWES may actually be a translation (it is difficult to say for sure, as the test manual describes an original Dutch sample although the manual is written in English). Further suggesting that the English version may be a translation, some items have odd grammar (for example, "I am proud on *[sic]* the work that I do"). 
+
+The @schaufeli_measurement_2002 measure follows the same structure as our focal measure, so we aggregated to subscales of Absorption ($\alpha$ = `r round(UWES.absorption$total$raw_alpha,2)`), Dedication ($\alpha$ = `r round(UWES.dedication$total$raw_alpha,2)`), and Vigor ($\alpha$ = `r round(UWES.vigor$total$raw_alpha,2)`). Internal consistency estimates for the Saks scale were $\alpha$ = `r round(saks.job$total$raw_alpha,2)` (job engagement) and $\alpha$ = `r round(saks.work$total$raw_alpha,2)` (organizational engagement). 
 
 [^gsux]: We had also intended to use the Gallup "Q12" for construct validation [@thackray_gallup_2005; @harter_relationship_2013], but Gallup was not willing to share item- or person-level data.
 
-Two short scales from the Oregon Avocational Interest Scales [@goldberg2010personality] were retained for discriminant validitation - [the 5-item "Pets" and 5-item "Household Activities" scales](https://ipip.ori.org/newORAISKey.htm#Food-Related). These items asked how frequently respondents engaged in different activities. An example Household Activity item is, "Cleaned the house" (current sample $\alpha$ = `r round(household$total$raw_alpha,2)`) and an example Pets item is "Fed a pet animal" (current sample $\alpha$ = `r round(pets$total$raw_alpha,2)`).
+5-item "Pets" and "Household Activities" scales from the Oregon Avocational Interest Scales [@goldberg2010personality] were retained for discriminant validation. 
 
 ### Criterion-related validation
 
-We administered a short 4-item intent-to-quit scale developed by @kelloway1999source. An example item is, "I don't plan to be in this organization much longer" (current sample $\alpha$ = `r round(intent.quit.alpha$total$raw_alpha,2)`). 
+We administered a short 4-item intent-to-quit scale developed by @kelloway1999source (current sample $\alpha$ = `r round(intent.quit.alpha$total$raw_alpha,2)`). 
 
-```{r corrtable2}
+```{r corrtable2, eval=FALSE}
 # cor(qualtrics[93:106], use="complete.obs")
 
 r <- corx::corx(qualtrics[,c(94,95,93,98,96,97,102,103,105,106,104,99,100,101)],                     ## can extend if needed
@@ -307,7 +307,7 @@ papaja::apa_table(r$apa, # apa contains the data.frame needed for apa_table
 ```
 
 
-```{r fancycor, message=FALSE, warning=FALSE}
+```{r fancycor, message=FALSE, warning=FALSE, eval=FALSE}
 library(corrplot)
 
 # forsiopplot <- cor(new[,c(15:17, 12:14)], use="complete.obs")
@@ -317,13 +317,11 @@ corrplot(forsiopplot, method="circle", type="lower", order="original", tl.col="b
 
 ```
 
-Table \@ref(tab:corrtable2) presents associations among the focal measure subscales, the convergent construct validity subscales, the intent to quit criterion, and the two disciminant validity scales. Here we note higher-than-desired interscale correlations for our focal measure (*r*'s range from .68 to .82 for the attitudinal scales and range from .73 to .89 for our substantive scales). The associations between the two scales are inflated due to the sharing of items (for example, the "affect" and "dedication" scales share 2 items in common). Convergent indices are generally higher for our subscales with the Saks "work" scale, which stresses the job referrent. This may be due to the majority of our items (see Table \@ref(tab:itemstable)) also reflecting the job as opposed to the organization. The pattern of convergence with the UWES subscales largely emerged as expected: dedication (*r* = .74), absorption (*r* = .68), and vigor (*r* = .74) exhibited elevated inter-scale correlations, although we also note moderately high values throughout (ranging from a low of *r* = .63 to a high of *r* = .77). The focal scales of Cognition and Dedication did exhibit the highest magnitude associations with the intent to quit criterion of all administered variables, and the discriminant measures revealed generally small associations, although *r*'s above .15 are potentially of concern.
+The central figure presents associations among the focal measure subscales, the convergent construct validity subscales, the intent to quit criterion, and the two disciminant validity scales, whereas Table \@ref(tab:corrtable3) presents correlations among "collapsed" subscales. The focal scales of Cognition and Dedication did exhibit the highest magnitude associations with the intent to quit criterion of all administered variables, and the discriminant measures revealed generally small associations, although *r*'s above .15 are potentially of concern. Collectively the results suggest a high level of convergent validity, a fair degree of discriminant validity, and potentially superior predictive validity (focused on the intent to quit scale).
 
-The results of internal structural analyses via bifactor analysis (as well as Table \@ref(tab:corrtable2) correlations) do suggest that overall scale aggregation may be supported, and because this is likely the desired use for some, we also present overall scale associations in Table \@ref(tab:corrtable3). Here we see elevated convergent indices among all three engagement measures (ranging from *r* = .69 to *r* = .81). The focal measure retains superiority with regard to intent to quit (*r* = -.39 vs. *r*'s = -.29; Fisher's *z* = 3.78, *p* < .05), however, this association is muted with regard to the superior Dedication scale association (*r* = -.49) found in Table \@ref(tab:corrtable2). Additionally, one of the discriminant measures (household activities), again exhibited a non-trivial association with the focal measure aggregate (as well as the UWES). Collectively the results suggest a high level of convergent validity, a fair degree of discriminant validity, and potentially superior predictive validity (focused on the intent to quit scale).
+![](racoon.jpg) ![](https://www.siop.org/portals/84/Conference/2023/SIOP_Annual_Conference_2023_rgb_100ppi.png?ver=A30vhFpMOc5O9rvGEichoQ%3D%3D){height=200px}
 
 \newpage
-
-# References
 
 ::: {#refs custom-style="Bibliography"}
 :::
