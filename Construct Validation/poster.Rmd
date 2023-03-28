@@ -8,14 +8,12 @@ author:
   - name          : "Mike DeFabiis"
     affil : "2"
   - name          : "Casey Osorio"
-    affil : "3"
+    affil : "2"
   - name          : "Morgan Russell"
     affil : "2"
 affiliation:
   - num            : "1"
     address   : e`r fontawesome::fa("r-project")`g
-  - num            : "3"
-    address   : "Harver"
   - num            : "2"
     address   : "Montclair State University"
 primary_colour: "#640d14"      ## https://coolors.co/250902-38040e-640d14-800e13-ad2831
@@ -33,11 +31,10 @@ main_fontfamily: "Cormorant Upright"
 main_textcol: 
 main_textsize: 
 main_findings: 
-  - '![](bigpic3.svg){.main_pic2}' # main_pic is used to center align 
-  - '![](harver.png){.main_pic3}' # main_pic is used to center align 
+  - '![](bigpic3.svg){.center_pic}' # main_pic is used to center align 
 main_picwidth: 100% # controls size of corrplot pic
-logoleft_name: '![](https://www.montclair.edu/university-communications/wp-content/uploads/sites/144//2020/10/hawk-logo-color.svg){.new-img-left}'
-logoright_name: '![](erg3.svg){.new-img-right}'
+logoleft_name: '![](https://www.montclair.edu/university-communications/wp-content/uploads/sites/144//2020/10/hawk-logo-color.svg){.bottom}'
+logoright_name: '![](erg3.svg){.uppermiddle}'
 main_width: 0.35	
 csl: "apa7.csl"
 body_textsize: "48px"
@@ -70,51 +67,40 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
   font-family: 'Cormorant Upright', serif;
   font-weight: 700;
 }
-.main_pic2 {
+
+.mybreak {
+   break-before: column;
+}
+
+.uppermiddle {
+  border-radius: 20%;
+  height: 800px;
+  position: fixed;
+  top: 0px;        /* good up-down location*/
+  right: 1850px;      /* bigger numbers move image toward left*/
+}
+
+.center_pic{
   border-radius: 20%;
   height: 900px;
-  position: relative;
-  left: -60px;
-  vertical-align: top;
+  position: fixed;
+  top: 30%;         /* good up-down location*/
+  right: 1540px;      /* bigger numbers move image toward left*/
 }
 
-.main_pic3 {
-  border-radius: 20%;
-  height: 900px;
-  position: absolute;
-  left: 200px;
-  vertical-align: top;
-}
-
-.new-img-right {
-  position: absolute;
-  top: 5px;
-  left: 50px;
-  width: 600px;           /* Play with width and height specifications if image stretches*/
-  height: 600px;
-}
-
-.new-img-left {
+.bottom {
   position: absolute;
   bottom: 100px;
-  left: -100px;
+  left: 160px;
   width: 1200px;           /* Play with width and height specifications if image stretches*/
   height: 1100px;
-}
-
-.new-img-top {
-  position: absolute;
-  top: 100px;
-  left: 100px;
-  width: 1200px;           
-  height: 100px;
 }
 
 ```
 
 ## Our Measure of Engagement
 
-Our theoretical conceptualization of work engagement is primarily informed by @schaufeli_uwesutrecht_2003 and @rosenberg_cognitive_1960. Through the lens of our framework, engagement is a mental state wherein employees: a) feel energized (*Vigor*), b) are enthusiastic about the content of their work and the things they do (*Dedication*), and c) are so immersed in their work activities that time seems compressed (*Absorption*). We further decompose each of these facets into three attitudinal components: d) feeling (e.g., affect), e) thought (e.g., cognition), and f) action (e.g., behavior). 
+Our theoretical conceptualization of work engagement is primarily informed by @schaufeli_uwesutrecht_2003 and @rosenberg_cognitive_1960. Here, engagement is a mental state wherein employees: a) feel energized (`Vigor`), b) are enthusiastic about the content of their work and the things they do (`Dedication`), and c) are so immersed in their work activities that time seems compressed (`Absorption`). We further decompose each of these facets into three attitudinal components: d) feeling (`Affect`), e) thought (`Cognition`), and f) action (`Behavior`). 
 
 The current study's focus is on exploring external variable associations with our measure, focusing on indicies of construct and criterion-related validity via retention of two alternative measures of engagement (the Saks scale and the UWES), two measures of theoretically orthogonal constructs (activity regarding household chores and tending to pets), and one measure of a theoretically relevant outcome (intentions to quit).
 
@@ -253,6 +239,8 @@ apa_table(
 
 The current sample internal consistency estimates for our three substantive subscales were: 1) Absorption ($\alpha$ = `r round(absorption.alpha$total$raw_alpha,2)`), 2) Dedication ($\alpha$ = `r round(dedication.alpha$total$raw_alpha,2)`), and 3) Vigor ($\alpha$ = `r round(vigor.alpha$total$raw_alpha,2)`), and estimates for our three attitudinal subscales were: 1) Affect/"Feel" ($\alpha$ = `r round(affect.alpha$total$raw_alpha,2)`), 2) Behavior/"Do" ($\alpha$ = `r round(behavior.alpha$total$raw_alpha,2)`), and 3) Cognition/"Think" ($\alpha$ = `r round(cognition.alpha$total$raw_alpha,2)`).
 
+<br />
+
 ### Construct validation
 
 For convergent validity indices, we administered the 17-item Utrecht Work Engagement Scale [@schaufeli_measurement_2002; @schaufeli_defining_2010] as well as @saks2006antecedents's 12-item measure which aggregates to two scales: job and organizational engagement [see also @saks2019antecedents].[^gsux] 
@@ -299,7 +287,7 @@ r <- corx::corx(new[,c(15:17, 12:14)],                     ## can extend if need
                 describe = c(`$M$` = mean, `$SD$` = sd))
 
 papaja::apa_table(r$apa, # apa contains the data.frame needed for apa_table
-                  caption = "Scale intercorrelations (Overall engagement aggregates).",
+                  caption = "Scale intercorrelations (overall engagement aggregates).",
                   note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
                   landscape = TRUE,
                   escape = F)
