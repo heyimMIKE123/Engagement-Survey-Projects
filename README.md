@@ -1,5 +1,5 @@
 # Engagement-Survey-Projects
-A repo containing all projects related to the Engagement Survey. /n
+A repo containing all projects related to the Engagement Survey.
 Visit https://bookdown.org/kulasj/engagetech/#home for more info. 
 
 # SIOP 2022
