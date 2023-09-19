@@ -1,0 +1,111 @@
+\begin{lltable}
+
+\begin{TableNotes}[para]
+\normalsize{\textit{Note.} The recommended response scale is 'Strongly Disagree', 'Disagree', 'Somewhat Disagree', 'Somewhat Agree', 'Agree', and 'Strongly Agree'}
+\end{TableNotes}
+
+\begin{longtable}{llll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:itemstable}Suggested final scale definitions.}\\
+\toprule
+Substantive & \multicolumn{1}{c}{Attitudinal} & \multicolumn{1}{c}{Item.Number} & \multicolumn{1}{c}{Item.Stem}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:itemstable} continued}}\\
+\toprule
+Substantive & \multicolumn{1}{c}{Attitudinal} & \multicolumn{1}{c}{Item.Number} & \multicolumn{1}{c}{Item.Stem}\\
+\midrule
+\endhead
+Absorption & Cognitive & 1 & I am able to concentrate on my work without getting distracted\\
+Absorption & Cognitive & 3 & Time passes quickly while I'm working\\
+Absorption & Affective & 5 & I enjoy thinking about work even when I'm not at work\\
+Absorption & Affective & 8 & I love starting my workday\\
+Absorption & Behavioral & 10 & I have to be reminded to take breaks while I'm at work\\
+Absorption & Behavioral & 11 & I never miss a work deadline\\
+Vigor & Cognitive & 14 & Thinking about work saps my energy\\
+Vigor & Cognitive & 16 & I'm able to maintain good levels of energy throughout the workday\\
+Vigor & Affective & 17 & I enjoy spending time completing my job tasks\\
+Vigor & Affective & 19 & I feek motivated to go beyond what is asked of me at work\\
+Vigor & Behavioral & 21 & When work is slow I find ways to be productive\\
+Vigor & Behavioral & 22 & I express enthusiasm for my job while at work\\
+Dedication & Cognitive & 25 & I plan to stay with this company as my career advances\\
+Dedication & Cognitive & 26 & I believe this company cares about my career goals\\
+Dedication & Affective & 31 & I feel proud of my accomplishments within this organization\\
+Dedication & Affective & 32 & My job makes me feel like I'm part of something meaningful\\
+Dedication & Behavioral & 34 & I embrace challenging situations at work\\
+Dedication & Behavioral & 35 & I speak positively about this organization to others\\
+\bottomrule
+\addlinespace
+\insertTableNotes
+\end{longtable}
+
+\end{lltable}
+\efloatseparator
+ 
+\begin{lltable}
+
+\begin{TableNotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{TableNotes}
+
+\begin{longtable}{llllllllllllllll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:corrtable2}Unit-weighted scale intercorrelations (all variables).}\\
+\toprule
+ & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & \multicolumn{1}{c}{5} & \multicolumn{1}{c}{6} & \multicolumn{1}{c}{7} & \multicolumn{1}{c}{8} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{11} & \multicolumn{1}{c}{12} & \multicolumn{1}{c}{13} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$SD$}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:corrtable2} continued}}\\
+\toprule
+ & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & \multicolumn{1}{c}{5} & \multicolumn{1}{c}{6} & \multicolumn{1}{c}{7} & \multicolumn{1}{c}{8} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{11} & \multicolumn{1}{c}{12} & \multicolumn{1}{c}{13} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$SD$}\\
+\midrule
+\endhead
+1. affect & - &  &  &  &  &  &  &  &  &  &  &  &  & 4.15 & 1.02\\
+2. behavior & .74*** & - &  &  &  &  &  &  &  &  &  &  &  & 4.39 & 0.83\\
+3. cognition & .82*** & .68*** & - &  &  &  &  &  &  &  &  &  &  & 4.04 & 0.85\\
+4. dedication & .87*** & .78*** & .89*** & - &  &  &  &  &  &  &  &  &  & 4.37 & 1.04\\
+5. absorption & .84*** & .78*** & .81*** & .73*** & - &  &  &  &  &  &  &  &  & 3.93 & 0.87\\
+6. vigor & .82*** & .77*** & .79*** & .74*** & .66*** & - &  &  &  &  &  &  &  & 4.24 & 0.80\\
+7. saks.job & .61*** & .60*** & .60*** & .60*** & .59*** & .59*** & - &  &  &  &  &  &  & 3.73 & 0.85\\
+8. saks.work & .72*** & .59*** & .67*** & .72*** & .67*** & .54*** & .54*** & - &  &  &  &  &  & 3.36 & 0.81\\
+9. UWES.dedication & .77*** & .65*** & .72*** & .74*** & .66*** & .70*** & .59*** & .57*** & - &  &  &  &  & 4.96 & 1.36\\
+10. UWES.absorption & .69*** & .66*** & .66*** & .66*** & .68*** & .63*** & .70*** & .55*** & .82*** & - &  &  &  & 4.64 & 1.24\\
+11. UWES.vigor & .70*** & .67*** & .66*** & .65*** & .63*** & .74*** & .56*** & .46*** & .82*** & .80*** & - &  &  & 4.89 & 1.18\\
+12. intentquit & -.36*** & -.24*** & -.48*** & -.49*** & -.23*** & -.36*** & -.23*** & -.28*** & -.32*** & -.23*** & -.26*** & - &  & 2.85 & 1.22\\
+13. pets & .05 & .15** & .07 & .06 & .12* & .07 & .16** & .07 & .07 & .13* & .12* & .03 & - & 3.71 & 1.01\\
+14. household & .10 & .15* & .17** & .14* & .13* & .15* & .12* & .03 & .20*** & .21*** & .23*** & -.07 & .34*** & 4.00 & 0.64\\
+\bottomrule
+\addlinespace
+\insertTableNotes
+\end{longtable}
+
+\end{lltable}
+\efloatseparator
+ 
+\begin{lltable}
+
+\begin{TableNotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{TableNotes}
+
+\begin{longtable}{llllllll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:corrtable3}Scale intercorrelations (Overall engagement aggregates).}\\
+\toprule
+ & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & \multicolumn{1}{c}{5} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$SD$}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:corrtable3} continued}}\\
+\toprule
+ & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & \multicolumn{1}{c}{5} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$SD$}\\
+\midrule
+\endhead
+1. focal & - &  &  &  &  & 4.19 & 0.82\\
+2. Saks & .79*** & - &  &  &  & 3.55 & 0.73\\
+3. UWES & .81*** & .69*** & - &  &  & 4.83 & 1.18\\
+4. intentquit & -.39*** & -.29*** & -.29*** & - &  & 2.85 & 1.22\\
+5. pets & .09 & .13* & .11 & .03 & - & 3.71 & 1.01\\
+6. household & .15** & .09 & .23*** & -.07 & .34*** & 4.00 & 0.64\\
+\bottomrule
+\addlinespace
+\insertTableNotes
+\end{longtable}
+
+\end{lltable}

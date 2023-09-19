@@ -1,0 +1,315 @@
+---
+title             : "Construct and Criterion-related validation of the Bifactor Engagement Scale"
+shorttitle        : "Bifactor Validation"
+author: 
+  - name          : "John Kulas"
+    affil : "1"
+    corresponding : yes    # Define only one 
+  - name          : "Mike DeFabiis"
+    affil : "2"
+  - name          : "Casey Osorio"
+    affil : "2"
+  - name          : "Morgan Russell"
+    affil : "2"
+affiliation:
+  - num            : "1"
+    address   : e`r fontawesome::fa("r-project")`g
+  - num            : "2"
+    address   : "Montclair State University"
+primary_colour: "#640d14"      ## https://coolors.co/250902-38040e-640d14-800e13-ad2831
+secondary_colour: "#ad2831"
+accent_colour: "#38040e"
+sectitle_bgcol: "#640d14"
+authorextra_textsize: "70px"
+affiliation_textsize: "60px"
+reference_textsize: "40px"
+caption_textsize: "40pt"
+column_numbers: 3
+title_textsize: "105pt"         ## https://githubhelp.com/brentthorne/posterdown
+#main_picwidth: "55%"           ## https://github.com/brentthorne/posterdown/wiki/posterdown_betterland
+main_fontfamily: "Cormorant Upright"
+main_textcol: 
+main_textsize: 
+main_findings: 
+  - '![](bigpic3.svg){.center_pic}' # main_pic is used to center align 
+main_picwidth: 100% # controls size of corrplot pic
+logoleft_name: '![](https://www.montclair.edu/university-communications/wp-content/uploads/sites/144//2020/10/hawk-logo-color.svg){.bottom}'
+logoright_name: '![](erg3.svg){.uppermiddle}'
+main_width: 0.35	
+csl: "apa7.csl"
+body_textsize: "48px"
+poster_height: "36in"
+poster_width: "48in"
+output: 
+    posterdown::posterdown_betterland:
+    self_contained: true
+knit: pagedown::chrome_print
+bibliography: ["engage.bib", "r-references.bib", "renata.bib", "siop.bib"]
+suppress-bibliography: true 
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+
+library("papaja")
+r_refs("r-references.bib")
+
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
+
+```
+
+```{css format, echo=FALSE}
+
+.fancy{
+  font-family: 'Cormorant Upright', serif;
+  font-weight: 700;
+}
+
+.mybreak {
+   break-before: column;
+}
+
+.uppermiddle {
+  border-radius: 20%;
+  height: 800px;
+  position: fixed;
+  top: 0px;        /* good up-down location*/
+  right: 1850px;      /* bigger numbers move image toward left*/
+}
+
+.center_pic{
+  border-radius: 20%;
+  height: 900px;
+  position: fixed;
+  top: 30%;         /* good up-down location*/
+  right: 1540px;      /* bigger numbers move image toward left*/
+}
+
+.bottom {
+  position: absolute;
+  bottom: 100px;
+  left: 160px;
+  width: 1200px;           /* Play with width and height specifications if image stretches*/
+  height: 1100px;
+}
+
+```
+
+## Our Measure of Engagement
+
+Our theoretical conceptualization of work engagement is primarily informed by @schaufeli_uwesutrecht_2003 and @rosenberg_cognitive_1960. Here, engagement is a mental state wherein employees: a) feel energized (`Vigor`), b) are enthusiastic about the content of their work and the things they do (`Dedication`), and c) are so immersed in their work activities that time seems compressed (`Absorption`). We further decompose each of these facets into three attitudinal components: d) feeling (`Affect`), e) thought (`Cognition`), and f) action (`Behavior`). 
+
+The current study's focus is on exploring external variable associations with our measure, focusing on indicies of construct and criterion-related validity via retention of two alternative measures of engagement (the Saks scale and the UWES), two measures of theoretically orthogonal constructs (activity regarding household chores and tending to pets), and one measure of a theoretically relevant outcome (intentions to quit).
+
+## Participants
+
+```{r getdata}
+## Cleaning Qualtrics construct validation data - 10/14/21
+
+newdata.att <- read.csv("..\\Qualtrics\\Engagement+(Attitudinal)_October+12,+2021_08.02.csv"); names <- newdata.att[1,c(1:92)] #[47:66]
+newdata.sub <- read.csv("..\\Qualtrics\\Engagement+(Substantive)_October+12,+2021_08.01.csv")#[47:66]
+
+newdata.att <- newdata.att[-c(1:2),]                      ## peskies
+newdata.sub <- newdata.sub[-c(1:2),]
+
+write.csv(newdata.att, "changingnumerica.csv")
+newdata.att <- read.csv("changingnumerica.csv")            ## that worked!! 
+write.csv(newdata.sub, "changingnumerics.csv")
+newdata.sub <- read.csv("changingnumerics.csv") 
+
+library(careless)
+newdata.att$careless_long <- longstring(newdata.att[20:83])
+newdata.sub$careless_long <- longstring(newdata.sub[20:83])
+newdata.att$irv <- irv(newdata.att[48:51])
+newdata.sub$irv <- irv(newdata.sub[55:58])
+
+newdata.att$irv2 <- irv(newdata.att[25:28])   ## another reverse-score
+newdata.sub$irv2 <- irv(newdata.sub[25:28])
+
+## newdata.att$missing <- rowSums(is.na(newdata.att[20:83])) 
+## newdata.sub$missing <- rowSums(is.na(newdata.sub[20:83])) 
+#descr::freq(newdata.att$irv2)
+#descr::freq(newdata.sub$irv2)
+
+## need filter for non-differentiating reverse-score people
+
+newdata.att$flag <- "use"; newdata.sub$flag <- "use"         ## need to do because subset on lines 44/45 can't != "Flagged"
+                                                             ## upped time to 300 seconds as data still looked bad with 200
+
+newdata.att$flag[newdata.att$careless_long > 12 | newdata.att$Duration..in.seconds. < 300 | newdata.att$irv == 0 | newdata.att$irv2 == 0]  <- "Flagged"
+newdata.sub$flag[newdata.sub$careless_long > 12 | newdata.sub$Duration..in.seconds. < 300 | newdata.sub$irv == 0 | newdata.sub$irv2 == 0]  <- "Flagged"
+
+write.csv(newdata.att, "attitudeset.csv")
+write.csv(newdata.sub, "substantiveset.csv")
+
+newdata.att$flag <- as.factor(newdata.att$flag)
+newdata.sub$flag <- as.factor(newdata.sub$flag)
+
+#descr::freq(newdata.att$flag)
+#descr::freq(newdata.sub$flag)
+
+useatt <- newdata.att[ which(newdata.att$flag == "use"), c(1:92)]
+usesub <- newdata.sub[ which(newdata.sub$flag == "use"), c(1:92)]
+
+useseb.sorted <- usesub[,c(1:47, 48:50,55:56,61:63,51:52,57:58,64:65,53:54,59:60,66:67,68:92)]
+names(useseb.sorted) <- names(useatt)           ##### focal engagement is 48:67
+
+qualtrics <- as.data.frame(rbind(useseb.sorted,useatt))
+
+########################################### Engagement
+
+qualtrics$C14 <- 7-qualtrics$C14
+
+cognition.alpha  <- psych::alpha(qualtrics[c(48:55)])
+affect.alpha     <- psych::alpha(qualtrics[c(56:61)])
+behavior.alpha   <- psych::alpha(qualtrics[c(62:67)])
+
+absorption.alpha <- psych::alpha(qualtrics[c(48:50,56:57,62:63)])
+vigor.alpha      <- psych::alpha(qualtrics[c(51:52,58:59,64:65)])
+dedication.alpha <- psych::alpha(qualtrics[c(53:55,60:61,66:67)])
+
+qualtrics$cognition <- rowMeans(qualtrics[c(48:55)], na.rm=TRUE)
+qualtrics$affect    <- rowMeans(qualtrics[c(56:61)], na.rm=TRUE)
+qualtrics$behavior  <- rowMeans(qualtrics[c(62:67)], na.rm=TRUE)
+
+qualtrics$absorption <- rowMeans(qualtrics[c(48:50,56:57,62:63)], na.rm=TRUE)
+qualtrics$vigor      <- rowMeans(qualtrics[c(51:52,58:59,64:65)], na.rm=TRUE)
+qualtrics$dedication <- rowMeans(qualtrics[c(53:55,60:61,66:67)], na.rm=TRUE)
+
+# cor(qualtrics[93:98], use="complete.obs")
+
+########################################### Intent to quit
+
+intent.quit.alpha <- psych::alpha(qualtrics[c(80:83)])
+qualtrics$intentquit <- rowMeans(qualtrics[c(80:83)], na.rm=TRUE)
+
+########################################### Pets
+
+pets <- psych::alpha(qualtrics[c(75:79)])
+qualtrics$pets <- rowMeans(qualtrics[c(75:79)], na.rm=TRUE)
+
+########################################### Household Chores
+
+household <- psych::alpha(qualtrics[c(68:74)])
+qualtrics$household <- rowMeans(qualtrics[c(68:74)], na.rm=TRUE)
+
+########################################### Saks
+
+saks.job <- psych::alpha(qualtrics[c(20:24)])
+
+qualtrics$Q8 <- 6 - qualtrics$Q8
+saks.work <- psych::alpha(qualtrics[c(25:30)])
+
+qualtrics$saks.job <- rowMeans(qualtrics[c(20:24)], na.rm=TRUE)
+qualtrics$saks.work <- rowMeans(qualtrics[c(25:30)], na.rm=TRUE)
+
+########################################### UWES
+
+UWES.vigor      <- psych::alpha(qualtrics[c(31,34,38,42,45,47)])
+UWES.dedication <- psych::alpha(qualtrics[c(32,35,37,40,43)])
+UWES.absorption <- psych::alpha(qualtrics[c(33,36,39,41,44,46)])
+
+
+qualtrics$UWES.vigor      <- rowMeans(qualtrics[c(31,34,38,42,45,47)], na.rm=TRUE)
+qualtrics$UWES.dedication <- rowMeans(qualtrics[c(32,35,37,40,43)], na.rm=TRUE)
+qualtrics$UWES.absorption <- rowMeans(qualtrics[c(33,36,39,41,44,46)], na.rm=TRUE)
+
+```
+
+Of the `r (nrow(newdata.att)+nrow(newdata.sub))` total Qualtrics panel respondents, roughly half were excluded based on conservative indices of carelessness across the larger survey. These screens included respondents with more than 50% missing responses, those who provided consistently non-differentiating responses across more than 12 consecutive items, and those who completed the survey in less than 300 seconds. These conservative screens resulted in a retained validation sample of `r nrow(qualtrics)`. All analyses were derived from this *n* of `r nrow(qualtrics)`.
+
+# Results
+
+```{r itemstable, eval=FALSE}
+
+items <- read.csv("modification indices KEY - Hopefully Final.csv")  ## without 4
+
+apa_table(
+  items
+  , caption = "Suggested final scale definitions."
+  , escape = TRUE
+  , landscape = TRUE
+  , note = "The recommended response scale is 'Strongly Disagree', 'Disagree', 'Somewhat Disagree', 'Somewhat Agree', 'Agree', and 'Strongly Agree'. TAKE THE ITEM # COLUMN OUT BEFORE FINAL POSTER"
+)
+
+```
+
+The current sample internal consistency estimates for our three substantive subscales were: 1) Absorption ($\alpha$ = `r round(absorption.alpha$total$raw_alpha,2)`), 2) Dedication ($\alpha$ = `r round(dedication.alpha$total$raw_alpha,2)`), and 3) Vigor ($\alpha$ = `r round(vigor.alpha$total$raw_alpha,2)`), and estimates for our three attitudinal subscales were: 1) Affect/"Feel" ($\alpha$ = `r round(affect.alpha$total$raw_alpha,2)`), 2) Behavior/"Do" ($\alpha$ = `r round(behavior.alpha$total$raw_alpha,2)`), and 3) Cognition/"Think" ($\alpha$ = `r round(cognition.alpha$total$raw_alpha,2)`).
+
+<br />
+
+### Construct validation
+
+For convergent validity indices, we administered the 17-item Utrecht Work Engagement Scale [@schaufeli_measurement_2002; @schaufeli_defining_2010] as well as @saks2006antecedents's 12-item measure which aggregates to two scales: job and organizational engagement [see also @saks2019antecedents].[^gsux] 
+
+The @schaufeli_measurement_2002 measure follows the same structure as our focal measure, so we aggregated to subscales of Absorption ($\alpha$ = `r round(UWES.absorption$total$raw_alpha,2)`), Dedication ($\alpha$ = `r round(UWES.dedication$total$raw_alpha,2)`), and Vigor ($\alpha$ = `r round(UWES.vigor$total$raw_alpha,2)`). Internal consistency estimates for the Saks scale were $\alpha$ = `r round(saks.job$total$raw_alpha,2)` (job engagement) and $\alpha$ = `r round(saks.work$total$raw_alpha,2)` (organizational engagement). 
+
+[^gsux]: We had also intended to use the Gallup "Q12" for construct validation [@thackray_gallup_2005; @harter_relationship_2013], but Gallup was not willing to share item- or person-level data.
+
+5-item "Pets" and "Household Activities" scales from the Oregon Avocational Interest Scales [@goldberg2010personality] were retained for discriminant validation. 
+
+### Criterion-related validation
+
+We administered a short 4-item intent-to-quit scale developed by @kelloway1999source (current sample $\alpha$ = `r round(intent.quit.alpha$total$raw_alpha,2)`). 
+
+```{r corrtable2, eval=FALSE}
+# cor(qualtrics[93:106], use="complete.obs")
+
+r <- corx::corx(qualtrics[,c(94,95,93,98,96,97,102,103,105,106,104,99,100,101)],                     ## can extend if needed
+                triangle = "lower",
+                stars = c(0.05, 0.01, 0.001),
+                describe = c(`$M$` = mean, `$SD$` = sd))
+
+papaja::apa_table(r$apa, # apa contains the data.frame needed for apa_table
+                  caption = "Unit-weighted scale intercorrelations (all variables).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = TRUE,
+                  escape = F)
+
+```
+
+```{r corrtable3}
+# cor(qualtrics[93:106], use="complete.obs")
+
+new <- qualtrics[,c(94,95,93,98,96,97,102,103,105,106,104,99,100,101)]
+
+new$focal <- rowMeans(new[1:3], na.rm=TRUE)
+new$Saks <- rowMeans(new[7:8], na.rm=TRUE)
+new$UWES <- rowMeans(new[9:11], na.rm=TRUE)
+
+
+r <- corx::corx(new[,c(15:17, 12:14)],                     ## can extend if needed
+                triangle = "lower",
+                stars = c(0.05, 0.01, 0.001),
+                describe = c(`$M$` = mean, `$SD$` = sd))
+
+papaja::apa_table(r$apa, # apa contains the data.frame needed for apa_table
+                  caption = "Scale intercorrelations (overall engagement aggregates).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = TRUE,
+                  escape = F)
+
+```
+
+
+```{r fancycor, message=FALSE, warning=FALSE, eval=FALSE}
+library(corrplot)
+
+# forsiopplot <- cor(new[,c(15:17, 12:14)], use="complete.obs")
+forsiopplot <- cor(new, use="complete.obs")
+
+corrplot(forsiopplot, method="circle", type="lower", order="original", tl.col="black", col = COL1("YlOrRd", n = 8), tl.srt=45, diag=FALSE)
+
+```
+
+The central figure presents associations among the focal measure subscales, the convergent construct validity subscales, the intent to quit criterion, and the two disciminant validity scales, whereas Table \@ref(tab:corrtable3) presents correlations among "collapsed" subscales. The focal scales of Cognition and Dedication did exhibit the highest magnitude associations with the intent to quit criterion of all administered variables, and the discriminant measures revealed generally small associations, although *r*'s above .15 are potentially of concern. Collectively the results suggest a high level of convergent validity, a fair degree of discriminant validity, and potentially superior predictive validity (focused on the intent to quit scale).
+
+![](racoon.jpg) ![](https://www.siop.org/portals/84/Conference/2023/SIOP_Annual_Conference_2023_rgb_100ppi.png?ver=A30vhFpMOc5O9rvGEichoQ%3D%3D){height=200px}
+
+\newpage
+
+::: {#refs custom-style="Bibliography"}
+:::
