@@ -271,17 +271,109 @@ Our conceptualization of work engagement is a mental state wherein employees: a)
 \hypertarget{participants}{%
 \subsection{Participants}\label{participants}}
 
-Data was obtained from two sources. In the first sampling, 282 individuals responded to a snowball sampling initiated by Industrial and Organizational Psychology faculty and graduate students. There were four counterbalanced orderings of item presentations within this administration, as well as an additional 18 contextual items - this sample constituted the original scale development sample, and at the time of administration the additional contextual items were candidates for item retention. In the second data collection initiative, Qualtrics panels were solicited along with 2 additional contextual items. These respondents included 343 working adults who responded to attitudinally clustered items and 404 working adults who responded to substantively clustered items.
+Data was obtained from three sources. In the first sampling, 743 individuals responded to a Qualtrics panel survey including the focal survey as well as 2 convergent validation measures, 2 discriminant validation measures, and one criterion measure (good/bad pretty even 366 vs 377). The second sampling was identical to the first in survey composition, but the respondents were snowball sampled, initiated from the authors and colleagues (n = 232). The third data source was a Prolific sample (\emph{n}=785), and the survey battery differed in content (currently good = 568, bad = 96; probably need harsher screen or also include NAs).
 
 \hypertarget{materials}{%
 \subsection{Materials}\label{materials}}
 
-Our 18-item engagement measure was crafted to be intentionally complex (each item is intended to load on two constructs). This complexity, however, derives from a crossing of the attitudinal components of affect, cognition, and behavior with the substantive engagement components of vigor, dedication, and absorption. Within the current investigation, we realized \(\alpha\)'s of (Absorption), (Dedication), (Vigor), (Affect), (Cognition), and (Behavior). The 6-point response scale is: Strongly Disagree, Disagree, Somewhat Disagree, Somewhat Agree, Agree, Strongly Agree. The item stems as well as their scale assocation are presented in Table XX.
+Our 18-item engagement measure was crafted to be intentionally complex (each item is intended to load on two constructs). This complexity, however, derives from a crossing of the attitudinal components of affect, cognition, and behavior with the substantive engagement components of vigor, dedication, and absorption. Within the current investigation, we realized \(\alpha\)'s of (Absorption), (Dedication), (Vigor), (Affect), (Cognition), and (Behavior). The 6-point response scale is: Strongly Disagree, Disagree, Somewhat Disagree, Somewhat Agree, Agree, Strongly Agree. The item stems as well as their scale associations are presented in Table XX.
+
+\hypertarget{analysis}{%
+\subsection{Analysis}\label{analysis}}
+
+three datasets:\\
++ Engagement+(Attitudinal/Substantive) Qualtrics (n=743)
++ initial\_data\_screen/inprogress Prolific (n=784)
++ Engagement(post-Qualtrics) Snowball (n=232)
+
+\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{verbatim}
+## newdata.att$irv2 
+##                   Frequency  Percent Valid Percent
+## 0                        52  15.2493       17.1617
+## 0.5                      57  16.7155       18.8119
+## 0.577350269189626        34   9.9707       11.2211
+## 0.816496580927726        18   5.2786        5.9406
+## 0.957427107756338        24   7.0381        7.9208
+## 1                        35  10.2639       11.5512
+## 1.15470053837925          6   1.7595        1.9802
+## 1.25830573921179         10   2.9326        3.3003
+## 1.29099444873581          1   0.2933        0.3300
+## 1.4142135623731           8   2.3460        2.6403
+## 1.5                      15   4.3988        4.9505
+## 1.63299316185545          3   0.8798        0.9901
+## 1.70782512765993          2   0.5865        0.6601
+## 1.73205080756888          7   2.0528        2.3102
+## 1.89296944860009          9   2.6393        2.9703
+## 1.91485421551268          2   0.5865        0.6601
+## 2                        20   5.8651        6.6007
+## NA's                     38  11.1437              
+## Total                   341 100.0000      100.0000
+\end{verbatim}
+
+\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{verbatim}
+## newdata.sub$irv2 
+##                   Frequency  Percent Valid Percent
+## 0                        77  19.1542       22.0000
+## 0.5                      72  17.9104       20.5714
+## 0.577350269189626        48  11.9403       13.7143
+## 0.816496580927726        22   5.4726        6.2857
+## 0.957427107756338        26   6.4677        7.4286
+## 1                        36   8.9552       10.2857
+## 1.15470053837925          5   1.2438        1.4286
+## 1.25830573921179          8   1.9900        2.2857
+## 1.29099444873581          8   1.9900        2.2857
+## 1.4142135623731          14   3.4826        4.0000
+## 1.5                       9   2.2388        2.5714
+## 1.70782512765993          1   0.2488        0.2857
+## 1.73205080756888          6   1.4925        1.7143
+## 1.89296944860009          3   0.7463        0.8571
+## 1.91485421551268          1   0.2488        0.2857
+## 2                        14   3.4826        4.0000
+## NA's                     52  12.9353              
+## Total                   402 100.0000      100.0000
+\end{verbatim}
+
+\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{verbatim}
+## newdata.att$flag 
+##         Frequency Percent
+## Flagged       160   46.92
+## use           181   53.08
+## Total         341  100.00
+\end{verbatim}
+
+\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\begin{verbatim}
+## newdata.sub$flag 
+##         Frequency Percent
+## Flagged       206   51.24
+## use           196   48.76
+## Total         402  100.00
+\end{verbatim}
+
+\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-5.pdf}
+
+\begin{verbatim}
+## analyses$from 
+##               Frequency Percent
+## ProlificDrop         96   5.857
+## ProlificKeep        568  34.655
+## QualtricsDrop       366  22.331
+## QualtricsKeep       377  23.002
+## Snowball            232  14.155
+## Total              1639 100.000
+\end{verbatim}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-We used R (Version 4.2.1; R Core Team, 2021) and the R-packages \emph{papaja} (Version 0.1.1; Aust \& Barth, 2022), and \emph{tinylabels} (Version 0.2.3; Barth, 2022) for all our analyses.
+We used R {[}Version 4.2.2; R Core Team (2021){]} for all our analyses.
 
 The omnibus CFA's, regardless of item ordering, across respondents showed fair fit for both the substantive (\(\chi^2_{substantive}\)=, \emph{df}=, \emph{RMSEA}=) as well as attitudinal structures (\(\chi^2_{attitudinal}\)=, \emph{df}=, \emph{RMSEA}=). Additional fit indices for the two models are presented in Table XX. Figures 1 and 2 present the omnibus models visually (standardized coefficients displayed). Note that the primary source of misfit for both models within the omnibus analysis is item 14, which is the lone reverse-coded item within the inventory, ``Thinking about work saps my energy''.
 
@@ -296,10 +388,6 @@ The order of item presentation was: 1) random within substantive dimension, 2) r
 Because our six conditions were obtained across two different sampling procedures, we apply our analyses of measurement invariance twice - first investigating the four conditions administered within our initial snowball sampling and then secondly also extending to the follow-up Qualtrics panel respondents.
 
 We looked at structural invariance as well as latent means (Meredith, 1993; Steinmetz et al., 2009).
-
-\begin{figure}
-\includegraphics[width=4.71in]{steps} \caption{Steps for measurement invariance (as recommended by Xu, 2012).}\label{fig:figure1}
-\end{figure}
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -317,12 +405,6 @@ The item cues did provide slight response cues (attending to individual model fi
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-R-papaja}{}}%
-Aust, F., \& Barth, M. (2022). \emph{{papaja}: {Prepare} reproducible {APA} journal articles with {R Markdown}}. \url{https://github.com/crsh/papaja}
-
-\leavevmode\vadjust pre{\hypertarget{ref-R-tinylabels}{}}%
-Barth, M. (2022). \emph{{tinylabels}: Lightweight variable labels}. \url{https://cran.r-project.org/package=tinylabels}
-
 \leavevmode\vadjust pre{\hypertarget{ref-baumruk2004missing}{}}%
 Baumruk, R. (2004). \emph{The missing link: The role of employee engagement in business success}. \emph{47}, 48--52.
 

@@ -102,7 +102,7 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning=FALSE, echo=FALSE)
 
 Our theoretical conceptualization of work engagement is primarily informed by @schaufeli_uwesutrecht_2003 and @rosenberg_cognitive_1960. Here, engagement is a mental state wherein employees: a) feel energized (`Vigor`), b) are enthusiastic about the content of their work and the things they do (`Dedication`), and c) are so immersed in their work activities that time seems compressed (`Absorption`). We further decompose each of these facets into three attitudinal components: d) feeling (`Affect`), e) thought (`Cognition`), and f) action (`Behavior`). 
 
-The current study's focus is on exploring external variable associations with our measure, focusing on indicies of construct and criterion-related validity via retention of two alternative measures of engagement (the Saks scale and the UWES), two measures of theoretically orthogonal constructs (activity regarding household chores and tending to pets), and one measure of a theoretically relevant outcome (intentions to quit).
+The current study's focus is on exploring external variable associations with our measure, focusing on indices of construct and criterion-related validity via retention of two alternative measures of engagement (the Saks scale and the UWES), two measures of theoretically orthogonal constructs (activity regarding household chores and tending to pets), and one measure of a theoretically relevant outcome (intentions to quit).
 
 ## Participants
 
