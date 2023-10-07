@@ -281,10 +281,17 @@ Our 18-item engagement measure was crafted to be intentionally complex (each ite
 \hypertarget{analysis}{%
 \subsection{Analysis}\label{analysis}}
 
-three datasets:\\
-+ Engagement+(Attitudinal/Substantive) Qualtrics (n=743)
-+ initial\_data\_screen/inprogress Prolific (n=784)
-+ Engagement(post-Qualtrics) Snowball (n=232)
+three datasets:
+
+\begin{itemize}
+\tightlist
+\item
+  Engagement+(Attitudinal/Substantive) Qualtrics (n=743)
+\item
+  initial\_data\_screen/inprogress Prolific (n=784)
+\item
+  Engagement(post-Qualtrics) Snowball (n=232)
+\end{itemize}
 
 \includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-1.pdf}
 
@@ -362,18 +369,30 @@ three datasets:\\
 \begin{verbatim}
 ## analyses$from 
 ##               Frequency Percent
-## ProlificDrop         96   5.857
-## ProlificKeep        568  34.655
-## QualtricsDrop       366  22.331
-## QualtricsKeep       377  23.002
-## Snowball            232  14.155
-## Total              1639 100.000
+## ProlificDrop         96   5.131
+## ProlificKeep        568  30.358
+## QualtricsDrop       366  19.562
+## QualtricsKeep       377  20.150
+## Snowball            464  24.800
+## Total              1871 100.000
 \end{verbatim}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
 We used R {[}Version 4.2.2; R Core Team (2021){]} for all our analyses.
+
+\begin{verbatim}
+##     
+##      ProlificDrop ProlificKeep QualtricsDrop QualtricsKeep Snowball
+##   0             8          561           310           333      232
+##   1             0            7             0             0        0
+##   21           88            0            56            44      232
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.2.3
+\end{verbatim}
 
 The omnibus CFA's, regardless of item ordering, across respondents showed fair fit for both the substantive (\(\chi^2_{substantive}\)=, \emph{df}=, \emph{RMSEA}=) as well as attitudinal structures (\(\chi^2_{attitudinal}\)=, \emph{df}=, \emph{RMSEA}=). Additional fit indices for the two models are presented in Table XX. Figures 1 and 2 present the omnibus models visually (standardized coefficients displayed). Note that the primary source of misfit for both models within the omnibus analysis is item 14, which is the lone reverse-coded item within the inventory, ``Thinking about work saps my energy''.
 

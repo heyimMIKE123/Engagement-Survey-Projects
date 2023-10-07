@@ -34,7 +34,7 @@ abstract: |
 keywords          : "Measurement Invariance"
 wordcount         : "X"
 
-bibliography      : ["r-references.bib", "engage.bib", "siopadds.bib", "measinv.bib", "book.bib", "renata.bib"]
+bibliography      : ["r-references.bib", "engage.bib", "siopadds.bib", "measinv.bib", "renata.bib", "bifactor.bib"]
 
 floatsintext      : no #change to yes if we want all tables to be put in-line rather than pushed to end of paper
 figurelist        : no
@@ -278,9 +278,15 @@ prolificbad <- data.frame(lapply(prolificbad, function(x) as.numeric(as.characte
 ## The sample was expanded via further snowball sampling with Eagle newbies on/about March 2022, with the additional sample (n=232; "Engagement(post-Qualtrics)April1920221118.csv")
 ## The current sample has 234 using choice text from Engagement_Pos Qual_2022-05-01_Choic Text.csv. Was pulled on May 1, 2022. 
 
-snowball <- read.csv("..//Engagement-Survey-Projects//Snowball Data//Engagement_Pos Qual_2022-05-01_Numeric Text.csv")[-c(1:2),c(47:66)]
+snowball1 <- read.csv("..//Engagement-Survey-Projects//Snowball Data//Engagement_Pos Qual_2022-05-01_Numeric Text.csv")[-c(1:2),c(47:66)]   ## counterbalanced!!!!!!!! 
+snowball2 <- read.csv("..//Engagement-Survey-Projects//Snowball Data//Engagement_Pos Qual_2022-05-01_Numeric Text.csv")[-c(1:2),c(67:69,81:82,74:76,70:71,83:84,77:78,72:73,85:86,79:80)]   ## counterbalanced!!!!!!!! 
 
-snowball <- data.frame(lapply(snowball, function(x) as.numeric(as.character(x))))
+snowball1 <- data.frame(lapply(snowball1, function(x) as.numeric(as.character(x))))
+snowball2 <- data.frame(lapply(snowball2, function(x) as.numeric(as.character(x))))
+
+names(snowball2) <- names(snowball1)
+
+snowball <- rbind(snowball1,snowball2)
 
 ##########################################################################
 ##########################################################################
@@ -312,9 +318,9 @@ scales$whazzup <- rowSums(is.na(scales))
 table(scales$whazzup,scales$from)
 
 library(dplyr)
-scales %>%
-  group_by(from) %>%
-  summarize(cor=cor(absorb,vigor,dedicate))
+#scales %>%
+#  group_by(from) %>%
+#  summarize(cor=cor(absorb,vigor,dedicate))
 
 ```
 
