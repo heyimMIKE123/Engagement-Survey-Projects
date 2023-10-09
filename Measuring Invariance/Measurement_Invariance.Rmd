@@ -29,7 +29,7 @@ authornote: |
   Enter author note here.
 
 abstract: |
-  The literature tilts predominantly positive regarding the benefits of "purchased" samples that have become more prevalent within organizational surveying applications within the past 15 or so years. The current study explores the measurement invariance of an 18-item engagement survey across five different samples: 1) voluntary snowball, 2) cleaned Qualtrics, 3) cleaned Prolific, 4) flagged Qualtrics, and 5) flagged Prolific. 
+  The literature tilts predominantly positive regarding the benefits of "purchased" samples that have become more prevalent within organizational surveying applications within the past 15 or so years. The current study first explores the measurement invariance of an 18-item engagement survey across three different samples before conducting a follow-up across five: 1) voluntary snowball, 2) cleaned Qualtrics, 3) cleaned Prolific, 4) flagged Qualtrics, and 5) flagged Prolific. 
   
 keywords          : "Measurement Invariance"
 wordcount         : "X"
@@ -114,6 +114,10 @@ The present article explores two methods for constructing a scale that incorpora
 Existing measures include @soane2012development
 
 Our conceptualization of work engagement is a mental state wherein employees: a) feel energized (*Vigor*), b) are enthusiastic about the content of their work and the things they do (*Dedication*), and c) are so immersed in their work activities that time seems compressed (*Absorption*). We further decompose each of these facets into three attitudinal components: d) feeling (e.g., affect), e) thought (e.g., cognition), and f) action (e.g., behavior). Development and construct validation of the focal 18-item measure of engagement is described in @engage_2022 whereas the current study on administrative response cues in the form of order of item presentation. The expectation is that either model (attitudinal or substantive) will exhibit stronger factorial validity when item administration parallels latent structure.
+
+## Panels
+
+@landers2015inconvenient encourage researchers to avoid broad classifications such as good and bad regarding samples and sampling methodologies, concluding that online panels may be qualitatively "different" from traditional convenience samples, but they should not be stigmatized simply because they're different.  @cheung2017amazon conducted a thorough review of one of the earliest platforms to emerge within the realm of organziational research, MTurk, and highlighted a number of noted limitations, but provided redcommendations for addressing each limitation while again cautioning against negative stereotypes. @walter2019tale performed a meta-analysis focused on internal consistency estimates as well as IV-DV effects, noting similar results stemming from online panels (when compared to more traditional data sources). 
 
 # Methods
 

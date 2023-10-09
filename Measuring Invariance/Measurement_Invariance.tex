@@ -5,16 +5,19 @@
 \documentclass[
   man]{apa7}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -135,13 +138,13 @@
   {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
 \makeatother
 
-% \usepackage{etoolbox}
 \makeatletter
-\patchcmd{\HyOrg@maketitle}
+\usepackage{etoolbox}
+\patchcmd{\maketitle}
   {\section{\normalfont\normalsize\abstractname}}
   {\section*{\normalfont\normalsize\abstractname}}
   {}{\typeout{Failed to patch abstract.}}
-\patchcmd{\HyOrg@maketitle}
+\patchcmd{\maketitle}
   {\section{\protect\normalfont{\@title}}}
   {\section*{\protect\normalfont{\@title}}}
   {}{\typeout{Failed to patch title.}}
@@ -168,7 +171,7 @@
 \fi
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Bought but Paritially Sold? Measurement Invariance across Purchased and Snowball Samples},
   pdfauthor={John Kulas1, Casey Osorio-Duffoo3, Mike Defabiis2, \& Morgan Russell2},
@@ -197,7 +200,7 @@ Correspondence concerning this article should be addressed to John Kulas, 1 Awes
 \affiliation{\vspace{0.5cm}\textsuperscript{1} eRg\\\textsuperscript{2} Harver\\\textsuperscript{3} Montclair State University}
 
 \abstract{%
-The literature tilts predominantly positive regarding the benefits of ``purchased'' samples that have become more prevalent within organizational surveying applications within the past 15 or so years. The current study explores the measurement invariance of an 18-item engagement survey across five different samples: 1) voluntary snowball, 2) cleaned Qualtrics, 3) cleaned Prolific, 4) flagged Qualtrics, and 5) flagged Prolific.
+The literature tilts predominantly positive regarding the benefits of ``purchased'' samples that have become more prevalent within organizational surveying applications within the past 15 or so years. The current study first explores the measurement invariance of an 18-item engagement survey across three different samples before conducting a follow-up across five: 1) voluntary snowball, 2) cleaned Qualtrics, 3) cleaned Prolific, 4) flagged Qualtrics, and 5) flagged Prolific.
 }
 
 
@@ -264,6 +267,11 @@ The present article explores two methods for constructing a scale that incorpora
 Existing measures include (\textbf{soane2012development?})
 
 Our conceptualization of work engagement is a mental state wherein employees: a) feel energized (\emph{Vigor}), b) are enthusiastic about the content of their work and the things they do (\emph{Dedication}), and c) are so immersed in their work activities that time seems compressed (\emph{Absorption}). We further decompose each of these facets into three attitudinal components: d) feeling (e.g., affect), e) thought (e.g., cognition), and f) action (e.g., behavior). Development and construct validation of the focal 18-item measure of engagement is described in Russell et al. (2022) whereas the current study on administrative response cues in the form of order of item presentation. The expectation is that either model (attitudinal or substantive) will exhibit stronger factorial validity when item administration parallels latent structure.
+
+\hypertarget{panels}{%
+\subsection{Panels}\label{panels}}
+
+Landers and Behrend (2015) encourage researchers to avoid broad classifications such as good and bad regarding samples and sampling methodologies, concluding that online panels may be qualitatively ``different'' from traditional convenience samples, but they should not be stigmatized simply because they're different. Cheung et al. (2017) conducted a thorough review of one of the earliest platforms to emerge within the realm of organziational research, MTurk, and highlighted a number of noted limitations, but provided redcommendations for addressing each limitation while again cautioning against negative stereotypes. Walter et al. (2019) performed a meta-analysis focused on internal consistency estimates as well as IV-DV effects, noting similar results stemming from online panels (when compared to more traditional data sources).
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -380,7 +388,7 @@ three datasets:
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-We used R {[}Version 4.2.2; R Core Team (2021){]} for all our analyses.
+We used R {[}Version 4.3.1; R Core Team (2021){]} for all our analyses.
 
 \begin{verbatim}
 ##     
@@ -388,10 +396,6 @@ We used R {[}Version 4.2.2; R Core Team (2021){]} for all our analyses.
 ##   0             8          561           310           333      232
 ##   1             0            7             0             0        0
 ##   21           88            0            56            44      232
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'dplyr' was built under R version 4.2.3
 \end{verbatim}
 
 The omnibus CFA's, regardless of item ordering, across respondents showed fair fit for both the substantive (\(\chi^2_{substantive}\)=, \emph{df}=, \emph{RMSEA}=) as well as attitudinal structures (\(\chi^2_{attitudinal}\)=, \emph{df}=, \emph{RMSEA}=). Additional fit indices for the two models are presented in Table XX. Figures 1 and 2 present the omnibus models visually (standardized coefficients displayed). Note that the primary source of misfit for both models within the omnibus analysis is item 14, which is the lone reverse-coded item within the inventory, ``Thinking about work saps my energy''.
@@ -426,6 +430,9 @@ The item cues did provide slight response cues (attending to individual model fi
 \begin{CSLReferences}{1}{0}
 \leavevmode\vadjust pre{\hypertarget{ref-baumruk2004missing}{}}%
 Baumruk, R. (2004). \emph{The missing link: The role of employee engagement in business success}. \emph{47}, 48--52.
+
+\leavevmode\vadjust pre{\hypertarget{ref-cheung2017amazon}{}}%
+Cheung, J. H., Burns, D. K., Sinclair, R. R., \& Sliter, M. (2017). Amazon mechanical turk in organizational psychology: An evaluation and practical recommendations. \emph{Journal of Business and Psychology}, \emph{32}, 347--361.
 
 \leavevmode\vadjust pre{\hypertarget{ref-coffman_hard_1999}{}}%
 Coffman, C., \& Harter, J. (1999). A hard look at soft numbers. \emph{Position Paper, Gallup Organization}.
@@ -462,6 +469,9 @@ Kim, H. J., Shin, K. H., \& Swanger, N. (2009). Burnout and engagement: {A} comp
 
 \leavevmode\vadjust pre{\hypertarget{ref-kulikowski2017we}{}}%
 Kulikowski, K. (2017). Do we all agree on how to measure work engagement? Factorial validity of utrecht work engagement scale as a standard measurement tool--a literature review. \emph{International Journal of Occupational Medicine and Environmental Health}, \emph{30}(2), 161--175.
+
+\leavevmode\vadjust pre{\hypertarget{ref-landers2015inconvenient}{}}%
+Landers, R. N., \& Behrend, T. S. (2015). An inconvenient truth: Arbitrary distinctions between organizational, mechanical turk, and other convenience samples. \emph{Industrial and Organizational Psychology}, \emph{8}(2), 142--164.
 
 \leavevmode\vadjust pre{\hypertarget{ref-leiter_areas_2004}{}}%
 Leiter, M., \& Maslach, C. (2004). Areas of worklife: A structured approach to organizational predictors of job burnout. In \emph{Research in occupational stress and well-being} (Vol. 3, pp. 91--134). \url{https://doi.org/10.1016/S1479-3555(03)03003-8}
