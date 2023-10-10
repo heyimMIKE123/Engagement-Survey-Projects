@@ -5,19 +5,16 @@
 \documentclass[
   man]{apa7}
 \usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -138,13 +135,13 @@
   {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
 \makeatother
 
+% \usepackage{etoolbox}
 \makeatletter
-\usepackage{etoolbox}
-\patchcmd{\maketitle}
+\patchcmd{\HyOrg@maketitle}
   {\section{\normalfont\normalsize\abstractname}}
   {\section*{\normalfont\normalsize\abstractname}}
   {}{\typeout{Failed to patch abstract.}}
-\patchcmd{\maketitle}
+\patchcmd{\HyOrg@maketitle}
   {\section{\protect\normalfont{\@title}}}
   {\section*{\protect\normalfont{\@title}}}
   {}{\typeout{Failed to patch title.}}
@@ -171,7 +168,7 @@
 \fi
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
+\urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Bought but Paritially Sold? Measurement Invariance across Purchased and Snowball Samples},
   pdfauthor={John Kulas1, Casey Osorio-Duffoo3, Mike Defabiis2, \& Morgan Russell2},
@@ -301,102 +298,194 @@ three datasets:
   Engagement(post-Qualtrics) Snowball (n=232)
 \end{itemize}
 
-\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-1.pdf}
-
-\begin{verbatim}
-## newdata.att$irv2 
-##                   Frequency  Percent Valid Percent
-## 0                        52  15.2493       17.1617
-## 0.5                      57  16.7155       18.8119
-## 0.577350269189626        34   9.9707       11.2211
-## 0.816496580927726        18   5.2786        5.9406
-## 0.957427107756338        24   7.0381        7.9208
-## 1                        35  10.2639       11.5512
-## 1.15470053837925          6   1.7595        1.9802
-## 1.25830573921179         10   2.9326        3.3003
-## 1.29099444873581          1   0.2933        0.3300
-## 1.4142135623731           8   2.3460        2.6403
-## 1.5                      15   4.3988        4.9505
-## 1.63299316185545          3   0.8798        0.9901
-## 1.70782512765993          2   0.5865        0.6601
-## 1.73205080756888          7   2.0528        2.3102
-## 1.89296944860009          9   2.6393        2.9703
-## 1.91485421551268          2   0.5865        0.6601
-## 2                        20   5.8651        6.6007
-## NA's                     38  11.1437              
-## Total                   341 100.0000      100.0000
-\end{verbatim}
-
-\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-2.pdf}
-
-\begin{verbatim}
-## newdata.sub$irv2 
-##                   Frequency  Percent Valid Percent
-## 0                        77  19.1542       22.0000
-## 0.5                      72  17.9104       20.5714
-## 0.577350269189626        48  11.9403       13.7143
-## 0.816496580927726        22   5.4726        6.2857
-## 0.957427107756338        26   6.4677        7.4286
-## 1                        36   8.9552       10.2857
-## 1.15470053837925          5   1.2438        1.4286
-## 1.25830573921179          8   1.9900        2.2857
-## 1.29099444873581          8   1.9900        2.2857
-## 1.4142135623731          14   3.4826        4.0000
-## 1.5                       9   2.2388        2.5714
-## 1.70782512765993          1   0.2488        0.2857
-## 1.73205080756888          6   1.4925        1.7143
-## 1.89296944860009          3   0.7463        0.8571
-## 1.91485421551268          1   0.2488        0.2857
-## 2                        14   3.4826        4.0000
-## NA's                     52  12.9353              
-## Total                   402 100.0000      100.0000
-\end{verbatim}
-
-\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-3.pdf}
-
-\begin{verbatim}
-## newdata.att$flag 
-##         Frequency Percent
-## Flagged       160   46.92
-## use           181   53.08
-## Total         341  100.00
-\end{verbatim}
-
-\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-4.pdf}
-
-\begin{verbatim}
-## newdata.sub$flag 
-##         Frequency Percent
-## Flagged       206   51.24
-## use           196   48.76
-## Total         402  100.00
-\end{verbatim}
-
-\includegraphics{Measurement_Invariance_files/figure-latex/unnamed-chunk-1-5.pdf}
-
-\begin{verbatim}
-## analyses$from 
-##               Frequency Percent
-## ProlificDrop         96   5.131
-## ProlificKeep        568  30.358
-## QualtricsDrop       366  19.562
-## QualtricsKeep       377  20.150
-## Snowball            464  24.800
-## Total              1871 100.000
-\end{verbatim}
-
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-We used R {[}Version 4.3.1; R Core Team (2021){]} for all our analyses.
+We used R {[}Version 4.2.2; R Core Team (2021){]} for all our analyses.
 
 \begin{verbatim}
-##     
-##      ProlificDrop ProlificKeep QualtricsDrop QualtricsKeep Snowball
-##   0             8          561           310           333      232
-##   1             0            7             0             0        0
-##   21           88            0            56            44      232
+## Warning: package 'lavaan' was built under R version 4.2.3
 \end{verbatim}
+
+\begin{verbatim}
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 2;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 2;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 2;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 1;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+\end{verbatim}
+
+\begin{table}[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:CFAs}Measurement invariance summary statistics (attitudinal structure).}
+
+\begin{tabular}{lllllllll}
+\toprule
+ & \multicolumn{1}{c}{Df} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} & \multicolumn{1}{c}{Chisq} & \multicolumn{1}{c}{Chisq diff} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{Df diff} & \multicolumn{1}{c}{Pr(>Chisq)}\\
+\midrule
+configural.a & 396 & 76,649.82 & 77,551.88 & 2,160.92 & NA & NA & NA & NA\\
+weak.a & 426 & 76,855.34 & 77,599.14 & 2,426.44 & 265.52 & 0.13 & 30 & 0.00\\
+strong.a & 456 & 77,233.29 & 77,818.83 & 2,864.38 & 437.94 & 0.17 & 30 & 0.00\\
+strict.a & 492 & 77,446.00 & 77,841.64 & 3,149.10 & 284.72 & 0.12 & 36 & 0.00\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\begin{verbatim}
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 3;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 3;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+\end{verbatim}
+
+\begin{table}[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:CFAs}Measurement invariance summary statistics (substantive structure).}
+
+\begin{tabular}{lllllllll}
+\toprule
+ & \multicolumn{1}{c}{Df} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} & \multicolumn{1}{c}{Chisq} & \multicolumn{1}{c}{Chisq diff} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{Df diff} & \multicolumn{1}{c}{Pr(>Chisq)}\\
+\midrule
+configural.s & 396 & 76,127.87 & 77,029.93 & 1,638.97 & NA & NA & NA & NA\\
+weak.s & 426 & 76,366.22 & 77,110.02 & 1,937.32 & 298.35 & 0.14 & 30 & 0.00\\
+strong.s & 456 & 76,712.76 & 77,298.31 & 2,343.86 & 406.54 & 0.16 & 30 & 0.00\\
+strict.s & 492 & 76,819.56 & 77,215.20 & 2,522.66 & 178.80 & 0.09 & 36 & 0.00\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\begin{verbatim}
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 3;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+\end{verbatim}
+
+\begin{table}[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:CFAs}Measurement invariance summary statistics (substantive structure screened responses).}
+
+\begin{tabular}{lllllllll}
+\toprule
+ & \multicolumn{1}{c}{Df} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} & \multicolumn{1}{c}{Chisq} & \multicolumn{1}{c}{Chisq diff} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{Df diff} & \multicolumn{1}{c}{Pr(>Chisq)}\\
+\midrule
+configural.subscreen & 396 & 59,230.95 & 60,088.02 & 1,324.22 & NA & NA & NA & NA\\
+weak.subscreen & 426 & 59,268.28 & 59,974.99 & 1,421.55 & 97.33 & 0.08 & 30 & 0.00\\
+strong.subscreen & 456 & 59,416.49 & 59,972.84 & 1,629.76 & 208.21 & 0.13 & 30 & 0.00\\
+strict.subscreen & 492 & 59,423.09 & 59,799.00 & 1,708.36 & 78.60 & 0.06 & 36 & 0.00\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\begin{verbatim}
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 2;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 2;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 2;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in lav_object_post_check(object): lavaan WARNING: covariance matrix of latent variables
+##                 is not positive definite in group 3;
+##                 use lavInspect(fit, "cov.lv") to investigate.
+\end{verbatim}
+
+\begin{table}[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:CFAs}Measurement invariance summary statistics (substantive structure screened responses).}
+
+\begin{tabular}{lllllllll}
+\toprule
+ & \multicolumn{1}{c}{Df} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} & \multicolumn{1}{c}{Chisq} & \multicolumn{1}{c}{Chisq diff} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{Df diff} & \multicolumn{1}{c}{Pr(>Chisq)}\\
+\midrule
+configural.attscreen & 396 & 59,671.45 & 60,528.52 & 1,764.71 & NA & NA & NA & NA\\
+weak.attscreen & 426 & 59,715.17 & 60,421.88 & 1,868.44 & 103.72 & 0.08 & 30 & 0.00\\
+strong.attscreen & 456 & 59,896.96 & 60,453.30 & 2,110.22 & 241.79 & 0.14 & 30 & 0.00\\
+strict.attscreen & 492 & 59,943.55 & 60,319.46 & 2,228.82 & 118.59 & 0.08 & 36 & 0.00\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\begin{itemize}
+\tightlist
+\item
+  Tables into one
+\item
+  Split correlations across samples
+\end{itemize}
 
 The omnibus CFA's, regardless of item ordering, across respondents showed fair fit for both the substantive (\(\chi^2_{substantive}\)=, \emph{df}=, \emph{RMSEA}=) as well as attitudinal structures (\(\chi^2_{attitudinal}\)=, \emph{df}=, \emph{RMSEA}=). Additional fit indices for the two models are presented in Table XX. Figures 1 and 2 present the omnibus models visually (standardized coefficients displayed). Note that the primary source of misfit for both models within the omnibus analysis is item 14, which is the lone reverse-coded item within the inventory, ``Thinking about work saps my energy''.
 

@@ -1,0 +1,122 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:CFAs}Measurement invariance summary statistics (attitudinal structure).}
+
+\begin{tabular}{lllllllll}
+\toprule
+ & \multicolumn{1}{c}{Df} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} & \multicolumn{1}{c}{Chisq} & \multicolumn{1}{c}{Chisq diff} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{Df diff} & \multicolumn{1}{c}{Pr(>Chisq)}\\
+\midrule
+configural.a & 396 & 76,649.82 & 77,551.88 & 2,160.92 & NA & NA & NA & NA\\
+weak.a & 426 & 76,855.34 & 77,599.14 & 2,426.44 & 265.52 & 0.13 & 30 & 0.00\\
+strong.a & 456 & 77,233.29 & 77,818.83 & 2,864.38 & 437.94 & 0.17 & 30 & 0.00\\
+strict.a & 492 & 77,446.00 & 77,841.64 & 3,149.10 & 284.72 & 0.12 & 36 & 0.00\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:CFAs}Measurement invariance summary statistics (substantive structure).}
+
+\begin{tabular}{lllllllll}
+\toprule
+ & \multicolumn{1}{c}{Df} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} & \multicolumn{1}{c}{Chisq} & \multicolumn{1}{c}{Chisq diff} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{Df diff} & \multicolumn{1}{c}{Pr(>Chisq)}\\
+\midrule
+configural.s & 396 & 76,127.87 & 77,029.93 & 1,638.97 & NA & NA & NA & NA\\
+weak.s & 426 & 76,366.22 & 77,110.02 & 1,937.32 & 298.35 & 0.14 & 30 & 0.00\\
+strong.s & 456 & 76,712.76 & 77,298.31 & 2,343.86 & 406.54 & 0.16 & 30 & 0.00\\
+strict.s & 492 & 76,819.56 & 77,215.20 & 2,522.66 & 178.80 & 0.09 & 36 & 0.00\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:CFAs}Measurement invariance summary statistics (substantive structure screened responses).}
+
+\begin{tabular}{lllllllll}
+\toprule
+ & \multicolumn{1}{c}{Df} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} & \multicolumn{1}{c}{Chisq} & \multicolumn{1}{c}{Chisq diff} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{Df diff} & \multicolumn{1}{c}{Pr(>Chisq)}\\
+\midrule
+configural.subscreen & 396 & 59,230.95 & 60,088.02 & 1,324.22 & NA & NA & NA & NA\\
+weak.subscreen & 426 & 59,268.28 & 59,974.99 & 1,421.55 & 97.33 & 0.08 & 30 & 0.00\\
+strong.subscreen & 456 & 59,416.49 & 59,972.84 & 1,629.76 & 208.21 & 0.13 & 30 & 0.00\\
+strict.subscreen & 492 & 59,423.09 & 59,799.00 & 1,708.36 & 78.60 & 0.06 & 36 & 0.00\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:CFAs}Measurement invariance summary statistics (substantive structure screened responses).}
+
+\begin{tabular}{lllllllll}
+\toprule
+ & \multicolumn{1}{c}{Df} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC} & \multicolumn{1}{c}{Chisq} & \multicolumn{1}{c}{Chisq diff} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{Df diff} & \multicolumn{1}{c}{Pr(>Chisq)}\\
+\midrule
+configural.attscreen & 396 & 59,671.45 & 60,528.52 & 1,764.71 & NA & NA & NA & NA\\
+weak.attscreen & 426 & 59,715.17 & 60,421.88 & 1,868.44 & 103.72 & 0.08 & 30 & 0.00\\
+strong.attscreen & 456 & 59,896.96 & 60,453.30 & 2,110.22 & 241.79 & 0.14 & 30 & 0.00\\
+strict.attscreen & 492 & 59,943.55 & 60,319.46 & 2,228.82 & 118.59 & 0.08 & 36 & 0.00\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} * p < 0.05; ** p < 0.01; *** p < 0.001}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}

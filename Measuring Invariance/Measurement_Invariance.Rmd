@@ -169,8 +169,8 @@ newdata.sub$irv2 <- irv(newdata.sub[25:28])
 
 ## newdata.att$missing <- rowSums(is.na(newdata.att[20:83])) 
 ## newdata.sub$missing <- rowSums(is.na(newdata.sub[20:83])) 
-descr::freq(newdata.att$irv2)
-descr::freq(newdata.sub$irv2)
+#descr::freq(newdata.att$irv2)
+#descr::freq(newdata.sub$irv2)
 
 ## need filter for non-differentiating reverse-score people
 
@@ -186,8 +186,8 @@ write.csv(newdata.sub, "substantiveset.csv")
 newdata.att$flag <- as.factor(newdata.att$flag)
 newdata.sub$flag <- as.factor(newdata.sub$flag)
 
-descr::freq(newdata.att$flag)
-descr::freq(newdata.sub$flag)
+#descr::freq(newdata.att$flag)
+#descr::freq(newdata.sub$flag)
 
 useatt <- newdata.att[ which(newdata.att$flag == "use"), c(1:92)]
 usesub <- newdata.sub[ which(newdata.sub$flag == "use"), c(1:92)]
@@ -252,7 +252,7 @@ use$missing <- rowSums(is.na(use[18:404]))
 use$flag <- NA
 
 use$flag[use$item18 == 2 | use$careless_long > 20 | use$missing > 200] <- "Flagged"
-use$flag[use$item61 == 5 & use$item145 == 5 & use$item248 == 2 & use$item308 == 3] <- "Good"
+use$flag[use$item61 == 5 & use$item145 == 5 & use$item248 == 2 & use$item308 == 3 & use$careless_long < 20 & use$missing < 200] <- "Good"
 
 usegood <- use[which(use$flag == "Good"), ]
 usebad <- use[which(use$flag == "Flagged"), ]   ## 121 NAs here 
@@ -303,7 +303,7 @@ qualtrics.engage.drop$from <- "QualtricsDrop"
 prolificbad$from <- "ProlificDrop"
 
 analyses <- rbind(qualtrics.engage.keep, prolificgood, snowball, qualtrics.engage.drop,prolificbad)[,-c(3,8)]
-descr::freq(analyses$from)
+#descr::freq(analyses$from)
 
 ```
 
@@ -311,22 +311,128 @@ descr::freq(analyses$from)
 
 We used `r cite_r("r-references.bib")` for all our analyses.
 
+```{r CFAs}
+## https://users.ugent.be/~yrosseel/lavaan/multiplegroup6Dec2012.pdf
+library(lavaan)
+
+substantive <-'
+Absorption=~C1 + C3  + A5  + A8  + B10 + B11
+Vigor=~C14 + C16 + A17 + A19 + B21 + B22
+Dedication=~C25 + C26 + A31 + A32 + B34 + B35
+'
+attiduinal <-'
+Cognitive=~C1 + C3 + C14 + C16 + C25 + C26
+Affective=~A5 + A8 + A17 + A19 + A31 + A32
+Behavioral=~B10 + B11 + B21 + B22 + B34 + B35
+'
+
+pilot <- analyses
+pilot$from[pilot$from == "ProlificDrop"] <- "Prolific"      ## first just 3 samples - 10/10/23
+pilot$from[pilot$from == "ProlificKeep"] <- "Prolific"      ## first just 3 samples - 10/10/23
+pilot$from[pilot$from == "QualtricsDrop"] <- "Qualtrics"      ## first just 3 samples - 10/10/23
+pilot$from[pilot$from == "QualtricsKeep"] <- "Qualtrics"      ## first just 3 samples - 10/10/23
+
+configural.a <- cfa(model=attiduinal, data=pilot, group="from") # configural invariance
+weak.a <- cfa(model=attiduinal, data=pilot, group="from", group.equal="loadings") # weak invariance
+strong.a <- cfa(model=attiduinal, data=pilot, group="from", group.equal=c("intercepts", "loadings")) # strong invariance
+strict.a <- cfa(model=attiduinal, data=pilot, group="from", group.equal=c("loadings", "intercepts", "residuals"))
+# summary(configural.a, fit.measures=TRUE)
+
+## changed above to only adults
+
+fittab <- lavTestLRT(configural.a,weak.a,strong.a, strict.a)
+write.csv(fittab, "groupindicesatt.csv")
+#semPlot::semPaths(model1, "std", layout = "tree3", 
+#                  rotation = 2, curvePivot=TRUE, style="lisrel", nCharNodes = 0)
+
+papaja::apa_table(fittab, # apa contains the data.frame needed for apa_table
+                  caption = "Measurement invariance summary statistics (attitudinal structure).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = FALSE,
+                  escape = F)
+
+##############################################################
+##############################################################
+##############################################################
+
+
+configural.s <- cfa(model=substantive, data=pilot, group="from") # configural invariance
+weak.s <- cfa(model=substantive, data=pilot, group="from", group.equal="loadings") # weak invariance
+strong.s <- cfa(model=substantive, data=pilot, group="from", group.equal=c("intercepts", "loadings")) # strong invariance
+strict.s <- cfa(model=substantive, data=pilot, group="from", group.equal=c("loadings", "intercepts", "residuals"))
+
+
+fitsub <- lavTestLRT(configural.s,weak.s,strong.s, strict.s)
+write.csv(fitsub, "groupindicessub.csv")
+
+papaja::apa_table(fitsub, # apa contains the data.frame needed for apa_table
+                  caption = "Measurement invariance summary statistics (substantive structure).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = FALSE,
+                  escape = F)
+
+
+##############################################################
+##############################################################
+##############################################################
+
+keep <- rbind(qualtrics.engage.keep, prolificgood, snowball)[,-c(3,8)]
+
+configural.subscreen <- cfa(model=substantive, data=keep, group="from") # configural invariance
+weak.subscreen <- cfa(model=substantive, data=keep, group="from", group.equal="loadings") # weak invariance
+strong.subscreen <- cfa(model=substantive, data=keep, group="from", group.equal=c("intercepts", "loadings")) # strong invariance
+strict.subscreen <- cfa(model=substantive, data=keep, group="from", group.equal=c("loadings", "intercepts", "residuals"))
+
+
+fitsubscreen <- lavTestLRT(configural.subscreen,weak.subscreen,strong.subscreen, strict.subscreen)
+write.csv(fitsubscreen, "groupindicessubscreen.csv")
+
+papaja::apa_table(fitsubscreen, # apa contains the data.frame needed for apa_table
+                  caption = "Measurement invariance summary statistics (substantive structure screened responses).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = FALSE,
+                  escape = F)
+
+
+configural.attscreen <- cfa(model=attiduinal, data=keep, group="from") # configural invariance
+weak.attscreen <- cfa(model=attiduinal, data=keep, group="from", group.equal="loadings") # weak invariance
+strong.attscreen <- cfa(model=attiduinal, data=keep, group="from", group.equal=c("intercepts", "loadings")) # strong invariance
+strict.attscreen <- cfa(model=attiduinal, data=keep, group="from", group.equal=c("loadings", "intercepts", "residuals"))
+
+
+fitattscreen <- lavTestLRT(configural.attscreen,weak.attscreen,strong.attscreen, strict.attscreen)
+write.csv(fitattscreen, "groupindicesattscreen.csv")
+
+papaja::apa_table(fitattscreen, # apa contains the data.frame needed for apa_table
+                  caption = "Measurement invariance summary statistics (substantive structure screened responses).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = FALSE,
+                  escape = F)
+
+
+```
+
 ```{r alphas}
-scales <- analyses
+scales <- keep
 
 scales$absorb   <- rowMeans(scales[c(1:2,7:8,13:14)],na.rm=TRUE)
 scales$vigor    <- rowMeans(scales[c(3:4,9:10,15:16)],na.rm=TRUE)
 scales$dedicate <- rowMeans(scales[c(5:6,11:12,17:18)],na.rm=TRUE)
 
 scales$whazzup <- rowSums(is.na(scales))
-table(scales$whazzup,scales$from)
+#table(scales$whazzup,scales$from)
 
-library(dplyr)
+scales <- scales[complete.cases(scales),]
+
+#library(dplyr)
 #scales %>%
 #  group_by(from) %>%
-#  summarize(cor=cor(absorb,vigor,dedicate))
+#  summarize(cor=cor(absorb,vigor,dedicate, use="complete.obs"))
 
 ```
+
++ Tables into one
++ Split correlations across samples
 
 The omnibus CFA's, regardless of item ordering, across  respondents showed fair fit for both the substantive ($\chi^2_{substantive}$=, *df*=, *RMSEA*=) as well as attitudinal structures ($\chi^2_{attitudinal}$=, *df*=, *RMSEA*=). Additional fit indices for the two models are presented in Table XX. Figures 1 and 2 present the omnibus models visually (standardized coefficients displayed). Note that the primary source of misfit for both models within the omnibus analysis is item 14, which is the lone reverse-coded item within the inventory, "Thinking about work saps my energy".
 
